@@ -5,7 +5,7 @@ dysk 25gb
 
 
 
-sudo apt upgrade
+sudo apt upgrad
 
 sudo apt-get install git
 sudo apt-get install g++ gcc
