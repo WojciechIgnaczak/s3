@@ -1,0 +1,15 @@
+virtual box add xubuntu 24.04.01 amd64.iso
++guestaddictions
+ram1/2
+dysk 25gb
+
+
+
+sudo apt upgrade
+
+sudo apt-get install git
+sudo apt-get install g++ gcc
+installl vscode
+c/c++
+c/c++ extensionpack
+code runner

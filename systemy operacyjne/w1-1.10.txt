@@ -1,0 +1,52 @@
+system operacyjny:zarzadzanie zasobami komputera, stworzenie środowiska dla użytkownika
+to oprogramowanie ktory zarzaza zasobami komputera
+dzieki systemowi mozna uzyskac niezaleznosc programow od sprzetu i od innych programow
+
+pierwsza generacja systemow operacyjnych to brak systemow operacyjnych (1945-1955)
+
+
+1 generacja systemow operacyjnych
+komputery mainframe zajmowaly całe pomieszczenia
+
+2 generacja systemow operacyjnych 1955 1965
+GM-NAA jeden z pierwszych systemow operacyjnych dla komputera ibm704
+umozliwal automatyczne uruchomienie nowego programu po zakonczeniu wykonywania poprzedniego
+systemy operacyjne nie byly uniwersalne byly tworzone do konkretnego komputera
+
+3 generacja systemow operacyjnych 1965-1980
+pojawily sie uklady scalnone
+systemy wieloprogramowe ktore pozwalaly procesorowy byc caly c zas zajetym poprzez rozne zadania
+
+1969 UNIX
+programy łączone potokami - przekazywanie wyników
+hierarchiczny system plikow (dysk/katalog/plik)
+reprezentacja składników systemu jako plików
+obsługo wielu użytkowników
+
+
+4 generacja systemow operacyjnych
+początek ery PC, inne komputery: commodore,atari, zx spectru,
+niektore mialy wlasny system operacyjnych
+
+1981- MS-DOS    -system operacyjny konsolowy
+
+
+Wywłaszczanie- technika gdzie algorytm ktory szereguje zadania moze wstrzymac zadania aby umozliwic dzialanie innemu zadaniu powstało to ok.1990
+
+każdy program powinien mieć własną wydzieloną i chronioną pamięć by uniknąć problemów nadpisywania pamięci innych programow
+
+graficzny interfejs 1985 windows 1.0 
+    windows 2.0 1987 nakładki
+    windows 3.0 nowe GUI i 3 tryby pamięci(rzeczywisty,standardowy,rozszerzony)
+tryb chroniony odizolowanie programow od  ram
+
+windows nt 94 jego rodzina rozwija sie do dziś
+
+2ścieżki rozwoju
+-windows 3.11
+-windows nt
+
+
+Linux 1991
+Linux- kernel
+GNU/Linux system operacyjny z jądrem Linux
