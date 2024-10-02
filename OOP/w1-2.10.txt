@@ -1,0 +1,13 @@
+https://kosmatka.pl/pw/
+
+co to programowanie?
+paradygmaty programowania
+
+Abstrakcja dzieli projekt na części, dzięki czemu jest łatwiejsza w utrzymaniu
+
+OOP wprowadza modułową budowe kodu:
+tworzenie niezaleznych czesci kodu
+testowanie niezaleznych czesci kodu
+ponowne wykorzystywanie kodu w innych miejscach
+
+metoda a obiekt
