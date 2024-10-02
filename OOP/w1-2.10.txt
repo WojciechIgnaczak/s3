@@ -1,5 +1,5 @@
 https://kosmatka.pl/pw/
-
+https://kosmatka.pl/pw/po1.pdf
 co to programowanie?
 paradygmaty programowania
 
@@ -11,3 +11,13 @@ testowanie niezaleznych czesci kodu
 ponowne wykorzystywanie kodu w innych miejscach
 
 metoda a obiekt
+
+hermetyzacja: prywatna czesci której nie ma mozliwosci zmiany
+
+kompozycja - elementy innych klas są elementami klasy
+
+założenia paradygmatu obiektowego:
+Abstrakcja
+enkapsulacja (hermetyzacja)
+dziedziczenie
+polimorfizm
