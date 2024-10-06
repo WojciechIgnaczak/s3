@@ -1,27 +1,24 @@
-#include "point.h"
-struct line{
-    point_t *start;
-    point_t *end;
-};
-typedef struct line line_t;
+#include <stdlib.h>
+#include <math.h>
+#include "line.h"
 
-void line_free(line_t *l)
-{
+void line_free(line_t *l) {
     free(l);
 }
 
-struct point *line_get_start(line_t *l)
-{
+point_t *line_get_start(line_t *l) {
     return l->start;
 }
 
-struct point *line_get_end(line_t *l)
-{
+point_t *line_get_end(line_t *l) {
     return l->end;
-
 }
 
-double line_get_lenght(line_t *l)
-{
-    return 0;
+double line_get_length(line_t *l) {
+    int x1 = point_get_x(l->start);
+    int y1 = point_get_y(l->start);
+    int x2 = point_get_x(l->end);
+    int y2 = point_get_y(l->end);
+
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
