@@ -2,7 +2,6 @@ token do logowania na github przez terminal:  ghp_8aQL8MeOa4QhJu3nYm81mdOMZxsz3N
 jest zmienione hasło na pesel do linuxa
 interrupt przerwania to akcja 
 
-
 przerwania używane do:
 timerów sprzętowych
 przesyłania danych
