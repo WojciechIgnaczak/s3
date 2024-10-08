@@ -1,0 +1,49 @@
+man passwd -opis funkcji passwd wraz z opcjami
+man funkcja -opis funkcji
+man 3 fopen - pomoc dotyczaca wywołań bibliotek systemowych
+id - info jako kto jestem zalogowany uid-userid gid-groupid  grupy-grupy do ktorych jest przypisany user, informuje także do jakiech grupy należymy
+w- wyswietla uzytkownikow ktorzy teraz są zalogowani
+
+polecenia w terminalu mją postać zwykle:
+polecenie [przelączniki] [argumenty]
+
+cd-zmien katalog
+pwd- obecny katalod
+
+ls-listuje pliki/katalogi w obecnym
+ls -l -listuje szczegółowo
+ls -a -listuje również ukryte
+ls -t -istuje szczegółowo posortowane według daty modyfikacji
+ls -l -t jest rowne z ls -lt
+oprócz przełacznikow dodajemy argumentyls -lt /usr/bin 
+ls-polecenie-lt -przełącznik /usr/bin argument
+
+pliki/katalogi ukryte .test (trzeba kropke postawic przed nazwą)
+. -obecny katalog
+.. -katalog nadrzędny
+touch -tworzy pusty plik jeśli nie istnieje/aktualizuje date modyfikacji w pliku
+echo "tresc" > plik -dopisuje do pliku
+
+System plików systemu Linuksowego(jak jest uporządkowany): https://www.linuxfoundation.org/blog/blog/classic-sysadmin-the-linux-filesystem-explained
+/bin
+/boot
+/dev
+/etc
+/home
+/lib
+/media
+/mnt
+/opt
+/proc
+/root
+/run
+/sbin
+/usr
+/srv
+/sys
+/tmp
+/var
+
+dmesg - odczyt logów systemowych jądra
+cat - wyswietlenie zawartosci pliku
+/dev/sda -podłączony pendrive
