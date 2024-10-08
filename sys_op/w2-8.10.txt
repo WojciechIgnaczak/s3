@@ -1,0 +1,38 @@
+token do logowania na github przez terminal:  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
+jest zmienione hasło na pesel do linuxa
+interrupt przerwania to akcja 
+
+
+przerwania używane do:
+timerów sprzętowych
+przesyłania danych
+interfejsów komunikacyjnych
+obsługi zdarzeń urządzeń peryferyjnych
+obsługi innych zdarzeń zależnych od czasy
+
+najprostsze przerwanie sprzętowe to wciśnięcie przycisku klawiatury
+
+maskowanie przerwania  może działać:
+odroczenie wykonania zadania
+zignorowanie wykonania przerwania
+niektore przerwania nie są maskowane bo są krytyczne i nie mogą być wyłączone
+
+przerwania okresowe są stosowania:
+przetworników analogowo-cyfrowych
+enkoderów inkrementalnych
+wejść GPIO
+
+system operacyjny może wykorzystać się do harmonogramowania zadań systemu operacyjnego (przełączanie kontekstu)
+
+
+przerwania I/O wejścia/wyjścia
+wykorzystują DMA direct memory access
+
+przerwania sprzętowe w Linux
+w kernel linux przerwania sprzetowe są obsługiwane wenątrz jądra. aby zobaczyc przerwania: cat /proc/interrupts
+
+przerwania programowe jest generowane przez program dzialajacy na procesorze
+moze zostac wywołane przez bledy ktore program moze wywołać np. dzielenie przez 0
+rodzina x86 dzieli przerwania na sprzetowe interrupt oraz programowe wyjatki exceptions wyjątki są dzielone: fsults,traps,aborts
+
+specjalne przypadek przerwnaia jest wywolanie instrukcji ktorej procesor nie obsluguje
