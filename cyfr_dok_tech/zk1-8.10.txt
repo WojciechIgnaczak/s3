@@ -1,0 +1,129 @@
+overleaf
+https://pl.lipsum.com/
+wcięcia czyli akapit robimy wolnym wierszem
+
+
+main.tex
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\title{Pierwszy dokument w 
+\LaTeX-u}
+\author{Wojciech Ignaczak}
+\date{10 grudnia 2021}%zmiana daty
+%\date{}%bez daty
+
+\begin{document}
+\maketitle %dodawanie tytułu i autora 
+
+\tableofcontents %spis treści
+
+Żółta gęś poszła na zieloną łąkę się najeść.
+\input{02matematylka}
+\input{01tekst} %podpięcie dokumentu
+%\include{01tekst} %podpięcie dokumentu od nowej strony
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+01tekst.tex
+
+\section{Pierwsze zajęcia}
+\subsection{Matematyka}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec sagittis urna. Morbi laoreet ligula non nulla bibendum ullamcorper. Sed lectus lorem, dapibus vel hendrerit et, feugiat at tortor. Cras placerat ac magna eget blandit. Quisque consectetur tortor at massa molestie, quis tempus neque condimentum. Quisque sit amet auctor enim. Sed auctor dolor ut dui fermentum congue. Donec at viverra odio, in imperdiet justo. Morbi sollicitudin, leo elementum porttitor vulputate, augue sem rutrum libero, eu tincidunt sapien justo eu ante.
+
+Donec eget sodales quam. Etiam scelerisque magna felis, nec malesuada libero accumsan ut. Ut id pellentesque dui, vel consequat diam. Cras consectetur justo pellentesque nulla placerat, in sollicitudin mauris dignissim. Integer a diam ullamcorper, posuere tortor eu, rhoncus elit. Nunc lacinia sit amet neque vel sollicitudin. Nulla porta turpis vel scelerisque ultricies. Nullam gravida dui et massa feugiat viverra. Mauris laoreet tortor scelerisque nulla volutpat viverra. Curabitur odio dolor, sodales vel luctus sit amet, efficitur non velit.
+
+Integer feugiat ante a consequat ultricies. Praesent blandit metus sit amet purus ultricies dictum. Etiam ut facilisis neque, id ultrices purus. Aenean pretium augue et eros fermentum, sed efficitur diam bibendum. Cras consectetur dolor ac leo varius, ut imperdiet sem aliquam. Quisque et purus ante. Ut nec ligula diam. Cras consectetur, neque vitae lacinia ullamcorper, ligula est luctus est, sit amet congue diam massa quis tortor. Quisque laoreet lacinia auctor. Etiam quis diam mollis, eleifend lorem posuere, mattis enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum ut mauris vel egestas. Nullam quis arcu elit. Duis iaculis finibus libero, quis interdum urna dignissim vitae. Proin ultrices, dolor a lobortis luctus, lacus erat aliquet elit, sed vehicula urna dolor eu elit. Vivamus bibendum vestibulum consequat.
+
+\subsection{Fizyka}
+
+%tworzenie lity podpunktów numerowanych
+Dlaczego lubię \LaTeX-a?
+\begin{enumerate}
+    \item bo jest darmowy
+    \item bo jest łatwy
+    \item bo tak
+\end{enumerate}
+
+%tworzenie listy podpunktów
+Dalej:
+\begin{itemize}
+    \item bo jest darmowy
+        \begin{enumerate}
+            \item bo jest darmowy
+            \item bo jest łatwy
+            \item bo tak
+        \end{enumerate}
+    \item bo jest łatwy
+    \item bo tak
+\end{itemize}
+    
+Morbi vitae ipsum libero. Maecenas ornare est in fermentum eleifend. In consectetur erat risus, a fermentum massa ullamcorper id. Curabitur feugiat id ligula vitae pharetra. Fusce tincidunt venenatis purus nec tincidunt. Nullam interdum justo sed tellus aliquam, id ultricies nisi dictum. Nullam vitae metus vel erat scelerisque bibendum vel a arcu. Ut at lectus aliquam, ornare odio sed, sagittis orci. Mauris velit massa, blandit sit amet nisl efficitur, ultrices hendrerit ipsum. Morbi consectetur viverra ex, nec scelerisque tortor hendrerit ut. Ut auctor massa eu tellus egestas, at malesuada metus vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean mi velit, auctor at dui non, consequat mattis diam. Praesent ornare fringilla porta.
+
+Nullam sit amet nisi enim. Fusce pretium elit mauris. Ut quis arcu erat. Maecenas dignissim diam vel metus bibendum rhoncus. Fusce ultricies congue nibh, et pellentesque sapien sodales sed. Sed vel volutpat risus. In sit amet risus at justo efficitur cursus a in lacus. Curabitur vel enim elementum, ornare tellus eget, elementum sapien. Vivamus nec imperdiet mi. Quisque imperdiet, tortor in eleifend lobortis, dui justo cursus risus, vel vestibulum purus risus id sapien.
+
+\section{Drugie}
+\subsection{Informatyka}
+
+In urna quam, malesuada quis tellus ut, vestibulum lacinia libero. Nam tempor mattis imperdiet. Sed fringilla justo a condimentum condimentum. Duis nunc sapien, pharetra in aliquet luctus, placerat a lacus. Vestibulum sed odio et mi euismod gravida. Aliquam commodo ultrices arcu ut posuere. Suspendisse ac scelerisque sem, quis posuere lectus. Praesent pellentesque orci vel venenatis maximus. Quisque tempus metus rutrum tellus interdum sodales. Pellentesque sed massa eu urna efficitur consequat. Aenean id turpis purus. Curabitur et sem vel neque faucibus blandit laoreet in lorem.
+
+In rutrum elit tellus, at tempor orci porta non. Donec venenatis eros sapien, nec vestibulum tellus lacinia eget. Pellentesque sed porttitor mauris, id maximus nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vulputate non enim laoreet efficitur. Aliquam vitae eleifend turpis. Aliquam gravida velit velit, ac aliquam augue mattis ac. Etiam purus mi, gravida sit amet scelerisque nec, vehicula a tellus. Sed laoreet ipsum pellentesque risus congue accumsan. Etiam placerat luctus mi quis mattis.
+
+Pellentesque bibendum mi in diam congue, sed luctus lacus dapibus. Proin ac arcu cursus ipsum tincidunt ornare nec ac turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin turpis nunc, auctor ullamcorper eleifend nec, tempor at neque. Suspendisse hendrerit ex nisi. Mauris sed dolor dignissim, mattis mauris ac, blandit ipsum. Maecenas ultrices varius diam, quis convallis tortor suscipit a. Sed laoreet, urna nec tempus ornare, ligula orci ornare est, nec finibus ligula ipsum vel enim. Suspendisse augue diam, elementum sed volutpat nec, tincidunt at lorem. Aenean bibendum velit sed nisi efficitur tincidunt. Etiam placerat nibh sit amet facilisis eleifend. Aliquam auctor, dolor non porttitor venenatis, lorem arcu convallis tellus, ut lacinia tortor purus in lacus.
+
+\subsection{Pszczoła}
+
+Donec ornare id turpis at porta. Fusce tincidunt venenatis leo, nec venenatis enim ullamcorper a. Maecenas maximus vehicula nibh et dapibus. Vivamus finibus turpis vitae hendrerit gravida. Proin ac tristique justo. Sed accumsan ornare sagittis. Fusce risus metus, vestibulum ac bibendum eget, imperdiet sit amet libero. Morbi ut mauris urna. Maecenas pretium ligula vel nisi aliquet suscipit. Aliquam semper auctor turpis, eget elementum nibh vulputate nec. Praesent tellus risus, efficitur nec scelerisque sed, dictum et tellus. Mauris posuere at dui quis pharetra. Suspendisse ut erat ut urna vulputate aliquam id quis est. In mattis quis mi sed tempus. Mauris non consectetur magna.
+
+\section{Trzecie}
+
+Aliquam eget diam quis justo finibus luctus quis a lacus. Fusce dapibus at felis quis aliquet. Phasellus at eros dapibus, rutrum augue at, laoreet elit. Aliquam ullamcorper neque vel quam tempus, non egestas leo sodales. Nam mattis, tellus ut rutrum egestas, neque justo fringilla ex, sit amet vestibulum ipsum neque nec tellus. Donec aliquam hendrerit metus. Integer in mi vitae leo accumsan finibus nec vitae metus. Curabitur neque urna, viverra sit amet interdum quis, porttitor sed mauris. Sed aliquam volutpat velit ut faucibus. Integer ut dui sollicitudin, congue felis faucibus, sagittis ipsum. Cras venenatis, elit id tincidunt pharetra, lectus purus eleifend est, nec facilisis quam neque sit amet lacus. Suspendisse vitae laoreet mauris. Etiam fringilla dapibus lacinia. Morbi ac malesuada felis.
+
+Maecenas metus est, auctor in ultricies quis, mattis vel felis. Proin vitae egestas leo. Vivamus pharetra, nibh ut euismod placerat, ex tellus rhoncus nunc, eu mattis sem nisi non purus. Maecenas sagittis accumsan mi, eu dignissim odio. Nullam nunc quam, elementum eget blandit eu, dapibus et ipsum. Praesent mauris velit, eleifend vitae luctus a, consequat gravida velit. Etiam aliquam diam ac leo lacinia dictum. Phasellus elementum leo vel eros pharetra, eu bibendum augue luctus. Maecenas facilisis est est, nec iaculis elit varius eget. Vivamus dictum laoreet magna, non ullamcorper quam. Aenean mi urna, vestibulum gravida elit sed, scelerisque rhoncus ligula.
+
+Nulla nec enim mollis, gravida nunc quis, pulvinar turpis. Sed scelerisque semper erat sed dictum. Pellentesque congue, magna nec porta ornare, tellus nisi sodales leo, quis mattis augue urna nec velit. Nullam convallis est porta, sodales lorem sit amet, pretium quam. Praesent scelerisque nec est sed vestibulum. Nulla non mi magna. Sed mollis orci at dapibus dignissim. Nam porttitor luctus dignissim. Donec cursus sollicitudin lorem, sed iaculis mauris volutpat non.
+
+Sed at feugiat nisi, sed tempor tellus. Quisque purus orci, venenatis ut ullamcorper nec, finibus et lorem. Vestibulum cursus suscipit ante ut vestibulum. Maecenas metus nibh, consectetur et lobortis in, vehicula in massa. In justo odio, venenatis at massa eu, lobortis sagittis ante. Vivamus efficitur nunc risus. Cras eu tellus aliquet, iaculis dolor id, pharetra quam. Aliquam faucibus elementum nulla non fringilla. Cras sed sapien eu leo vestibulum pretium quis at neque. Morbi nec rutrum metus.
+\section{Czwarte}
+Nunc tellus mi, ultrices non neque eu, gravida tincidunt ipsum. Curabitur vitae convallis erat. Pellentesque vel nisl viverra, consectetur ligula id, scelerisque metus. Ut vel laoreet nisl. Sed dictum luctus velit, a vulputate neque tempus quis. Suspendisse faucibus enim ac lectus ornare, ac ullamcorper lorem scelerisque. Fusce ut dolor sed purus suscipit imperdiet. Donec sed commodo odio, eget mattis libero. Aliquam faucibus elit eu massa ultricies dapibus nec id metus. Curabitur vehicula mauris sed gravida aliquam. In accumsan cursus nisl, nec semper odio convallis quis. Sed elit magna, tristique non tellus vitae, mollis egestas dui. Cras id urna id sem cursus placerat sit amet sed enim.
+
+Suspendisse non vehicula tortor, vitae egestas libero. Pellentesque aliquet quis arcu id facilisis. Nunc sagittis dolor et leo eleifend ultricies. Vivamus egestas fermentum nisi a semper. Donec et lorem sit amet tortor egestas volutpat sed nec lorem. Fusce mattis auctor lobortis. Duis leo ex, ullamcorper id pretium vel, sagittis a leo. Vivamus pellentesque dui massa, vitae accumsan urna viverra sed. Vestibulum ultrices magna in justo vulputate scelerisque. Donec tempor euismod diam eu efficitur. Donec in massa at eros fermentum accumsan sit amet nec felis. Suspendisse rhoncus ipsum tellus, eu efficitur libero porttitor a. Nam viverra dolor et felis ornare, at facilisis ante malesuada. Pellentesque dignissim risus et erat porta, ac molestie leo vulputate.
+
+Proin sit amet risus lorem. Duis at pellentesque ex. Aenean quis mauris egestas, bibendum enim ac, imperdiet odio. Donec posuere laoreet eros, et mollis velit facilisis at. In eu quam tincidunt, iaculis lacus non, iaculis nisi. Praesent et purus et nulla congue ornare ac vitae magna. Morbi sodales porta augue. Fusce eleifend molestie purus, ut elementum elit faucibus vitae.
+
+Suspendisse potenti. Cras lacinia vulputate gravida. Aenean vulputate semper enim. Phasellus ut ligula massa. Donec in velit sit amet justo sollicitudin accumsan congue sed quam. Nulla facilisi. Duis ultrices lacus nec enim laoreet, et vulputate enim consequat. Donec suscipit, orci ac porttitor varius, mauris nisi lobortis massa, non volutpat velit purus vel lectus.
+
+\section{Piąte}
+
+Nam imperdiet lorem eget blandit ullamcorper. Duis mollis quis elit in ultricies. Nulla tincidunt tortor ac dolor eleifend interdum. Nullam sed arcu ut dolor euismod vestibulum eget eu urna. Etiam a vulputate nibh. Donec suscipit erat enim. Donec accumsan neque eget nisl vestibulum, sed bibendum purus consequat. Mauris malesuada rhoncus velit et lobortis. Pellentesque finibus orci sed congue molestie. Vestibulum eget ante tempus, posuere neque quis, euismod metus. Nulla erat orci, pulvinar vitae venenatis vel, finibus ut enim. Praesent nec dapibus erat.
+
+Proin purus orci, facilisis a odio in, hendrerit aliquam ipsum. Morbi eget sem lobortis, varius augue ac, pharetra justo. Nullam a libero eu metus feugiat malesuada. Fusce quis cursus nisi, eu vestibulum nisl. Integer eu vehicula dui. Pellentesque cursus, erat quis imperdiet rhoncus, est nunc mattis dolor, id placerat ipsum risus a leo. Suspendisse blandit bibendum turpis, eget lobortis sapien finibus in. Ut bibendum libero sem, vel dapibus sapien vulputate vel. Vestibulum et nunc in ante faucibus auctor. Suspendisse in sapien porttitor, lobortis mauris at, placerat arcu. Etiam pharetra nisi elit. Mauris rhoncus justo lectus, cursus dictum lorem fringilla ut. Fusce et pharetra justo. Quisque vel nisi quis massa pharetra volutpat. Aliquam placerat urna eros, nec auctor massa efficitur nec.
+
+Cras vitae eleifend orci. Vivamus ut finibus ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin est nisi, porta maximus magna tincidunt, condimentum ultrices dolor. Etiam ultrices consequat lobortis. Donec eu vulputate ipsum, id rhoncus orci. Sed eleifend ipsum eu leo interdum tempus. Nullam sollicitudin lorem at sapien convallis, ac fringilla nisi facilisis. 
+
+
+
+
+02matematyka.tex
+
+\section{Skład wzorów matematycznych}
+Niech $y=2x+4$ będzie funkcją liniową i niech $R$ będzie zbiorem liczb rzeczywistych a $ABC$ trójkątem. Mamy zate,
+$$
+f(x)=x+2y-3z+ \frac{1}{2}
+$$
+% $ służą do zmiany zwykłego tekstu na zmienne matematyczne
+
+% $$ służą do zmiany zwykłego tekstu ma zmienne matematyczne wyśrodkowane
+%wyeksponowany
