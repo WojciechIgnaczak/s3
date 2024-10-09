@@ -48,13 +48,13 @@ Complex Complex::operator*(double x){
     return Complex(re*x,im*x);
 }
 ostream& operator<<(ostream &os, const Complex &obj) {
-    if (obj.imag()>0)
+    if (obj.imag()>=0)
     {
-        os << obj.real() << " + " << obj.imag() << "i";
+        os << obj.real() << "+" << obj.imag() << "i";
     }
     else
     {
-        os << obj.real()<< obj.imag() << "i";
+        os << obj.real() <<obj.imag() << "i";
     }
     return os;
 };
@@ -63,6 +63,6 @@ int main()
 {
 Complex c1(1,1);
 Complex c2(2,2);
-cout<<c2*3<<endl;
+cout<<c1+c2<<endl;
 return 0;
 }
