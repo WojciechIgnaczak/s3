@@ -14,6 +14,7 @@ class Complex{
     Complex& operator-=(const Complex &c);
     Complex operator-(); //unarny jednoargumentowy
     Complex operator*(double x);
+    Complex operator*(const Complex &c);
 
     private:
         double re,im;
@@ -47,6 +48,12 @@ Complex Complex::operator-(){
 Complex Complex::operator*(double x){
     return Complex(re*x,im*x);
 }
+
+Complex Complex::operator*(const Complex &c)
+{
+    return Complex(re*c.re+im*c.im*(-1),re*c.im+im*c.re);
+}
+
 ostream& operator<<(ostream &os, const Complex &obj) {
     if (obj.imag()>=0)
     {
@@ -63,6 +70,6 @@ int main()
 {
 Complex c1(1,1);
 Complex c2(2,2);
-cout<<c1+c2<<endl;
+cout<<c1*c2<<endl;
 return 0;
 }
