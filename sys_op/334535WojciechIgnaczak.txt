@@ -20,3 +20,4 @@
 20.ls -la ~/lab3
 21.ls /dev/ | grep tty
 22.ls -R ~/lab3
+a
