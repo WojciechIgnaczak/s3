@@ -1,0 +1,31 @@
+Jądro systemu operacyjnego(kernel)- najwazniejsze w systemie, najwieksze uprawnienia, bazowa czesc systemu operacyjnego jest stale uruchomione
+typ jądra:
+mikrokernel- uproszczony rodzaj jądra, implementuja podtsawowe mechanizm no. zarzadzaja przestrzenia adresowa,zarzadzanie zadaniami itp.
+jądro monolityczne- to co wyżej+definiuje wirtualny interfejs wysokiego poziomu na sprzęcie komputerowym. sterowniki urzadzen mozna dodawac do jądra jako moduly
+jądro hybrydowe
+
+Zadania jądra:
+ochrona pamięci
+protection rings-pierścienie ochrony
+
+Linux kernel kontroluje zasoby sprzetowe oraz umozliwia i optymalizuje wykorzystanie wspolnych zasobow przez aplikacje. Kod źródlowy jądra znajduje się na Git
+wiekszosc kodu to sterowniki urządzeń
+Język C jest w nim napisany kernel, logika specyficzna jest napisana także w assembler
+Wprowadzono również w 2022 język Rust - umozliwia pisanie bezpieczniejszego kodu
+
+Charakterystyka Linux:
+wielozadaniowosc
+konfigurowalosc
+zaawansowane zarządzanie pamięcią
+komunikacja międzyprocesowa i mechanizmy synchronizacji
+wirtulany system plików
+wirtualizacja na poziomie systemu operacyjnego
+mechanizmy bezpieczeństwa dostępu
+wsparcie różnych protokołow komunikacji
+
+Procedury obsługi przerwań ISR w Linuxie są zagnieżdżane. Nowe przerwanie może zostać przez ISR o wyższym priorytecie niż ten aktualny
+
+Podział obsługi przerwań:
+top half
+bottom half
+
