@@ -1,0 +1,16 @@
+bash
+shell to program komputerowy ktory jest najbardziej zewnetrzną warstwą systemu operacyjnego
+powłoki tekstowe(sh,bash,zsha,powershell)
+powłoki graficzne
+
+Bash jest najpopularniejszą powłoką systemu Linux
+
+przejście do powłoki logowania ctrl+aktualizuje+f{n}, wyjście z powłoki logowania ctrl+alt+f1
+
+
+BASH SKRYPTY
+plik tekstowy o rozszerzeniu ".sh"
+pierwsza linia to znacznik "#!/bin/bash"
+należy dodać uprawnienia wykonywania: chmod +x test.sh
+wywołanie ./test.sh
+
