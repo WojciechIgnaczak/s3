@@ -4,8 +4,8 @@ echo "teskt2" >> plik.txt
 2.
 Alt+3
 3.
-dodaje alt+shift+}
-usuwa alt+shiht+{
+dodaje alt+shift+]
+usuwa alt+shiht+[
 4.
 ~/.nanorc
 set tabsize 4
@@ -16,6 +16,4 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 6.
-vimtutor
-:w nazwa_pliku.txt
-zrób od 3.3
+vimtutor w pliku zadanie6.txt

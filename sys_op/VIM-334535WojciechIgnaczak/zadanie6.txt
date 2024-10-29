@@ -671,6 +671,17 @@ UWAGA: Wciśnięcie  v  zaczyna tryb Wizualny. Możesz poruszać kursorem, by
 
 	    ** By wstawić zawartość pliku, wpisz   :r NAZWA_PLIKU **
 
+  1. Przenieś kursor do tego wiersza.
+
+  2. Wciśnij  v  i przenieś kursor do punktu 5. Zauważ, że tekst został
+     podświetlony.
+
+  3. Wciśnij znak  : . Na dole ekranu pojawi się  :'<,'> .
+
+  4. Wpisz  w TEST , gdzie TEST to nazwa pliku, który jeszcze nie istnieje.
+     Upewnij się, że widzisz  :'<,'>w TEST zanim wciśniesz Enter.
+
+  5. Vim zapisze wybrane linie do pliku TEST. Użyj  :!dir  lub  :!ls , żeby to
   1. Umieść kursor tuż powyżej tej linii.
 
 UWAGA: Po wykonaniu kroku 2. zobaczysz tekst z Lekcji 5.3. Potem przejdź
