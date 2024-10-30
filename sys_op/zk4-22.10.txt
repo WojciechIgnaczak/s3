@@ -14,7 +14,7 @@
 14.who > ~/lab3/tekst2.txt
 15.find / -type d -name "share"
 16.find /usr/bin -type f -size +5M 
-17.find //usr/bin -type f -size +300c -size -500c -exec cp {} ~/lab3 \;
+17.find /usr/bin -type f -size +300c -size -500c -exec cp {} ~/lab3 \;
 18.ln lab3/tekst2.txt lab3/TEKST2.TXT
 19.ln -s lab3/tekst2.txt lab3/Tekst2.txt
 20.ls -la ~/lab3
