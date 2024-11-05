@@ -1,0 +1,14 @@
+pliki: rysunki.mp
+
+po kommpilacji 
+
+rysunki1.mps
+rysunki2.mps
+rysunki3.mps
+
+
+mojagrafika.tex -> zalączaamy powyzsze rysunki
+mojagrafika.pdf
+
+terminal
+mpost rysunki & pdflatex mojagrafika.tex
