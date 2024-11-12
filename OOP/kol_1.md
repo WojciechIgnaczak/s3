@@ -1,5 +1,5 @@
 # Klasy i obiekty, konstruktory i destruktory
-Klasy, konstruktory, destruktowy
+**Tworzenie klasy,  kosntruktora,  konstruktora kopiującego,  desktruktora**
 ```
 class A{
     public:
@@ -19,13 +19,14 @@ class A{
     string nazwa;
 };
 ```
-Tworzenie obiektów
+**Tworzenie obiektów**
 ```
 int main()
 {
     A a(1,2,"a");           // tworzenie obiektu a
     A b(a);                 // tworzenie obiektu b, z konstruktorem kopiującym klasy A
     A *c=new A(3,4,"c");    // tworzenie dynamiczne obiektu c
+    delete c;
     B pochodna;
     A *bazowa=&pochodna;    // polimorfizm dynamiczny
     return 0;
@@ -84,10 +85,10 @@ static int lastUpdate;
 };
 int A::lastUpdate = 0;
 ```
-# Dostęp public, protected, private
-Public: dostęp w klasie, klasach pochodnych, poza klasami
-Protected: dostęp klasie i klasach pochodnych
-Private: dostęp tylko w obrębie klasy
+# Dostęp `public`, `protected`, `private`
+`Public`: dostęp w klasie, klasach pochodnych, poza klasami
+`Protected`: dostęp klasie i klasach pochodnych
+`Private`: dostęp tylko w obrębie klasy
 ```
 class A{
     private:
@@ -99,7 +100,7 @@ class A{
 };
 ```
 # Przeciążanie operatorów
-## Przeciążenie operatora <<
+## Przeciążenie operatora `<<`
 ```
 std::ostream& operator<<(std::ostream &os, const IntArray &obj)
 {
@@ -108,7 +109,7 @@ std::ostream& operator<<(std::ostream &os, const IntArray &obj)
 }
 
 ```
-## Przeciążenei operatora << (friend)
+## Przeciążenei operatora `<<` (friend)
 ```
 Class A{
 private:
@@ -123,7 +124,7 @@ std::ostream& operator<<(std::ostream &os, const IntArray &obj)
     return os;
 }
 ```
-## Przeciążenie oparatora =
+## Przeciążenie oparatora `=`
 ```
 Nazwa_klasy operator=(Nazwa_klasy& source){
     i=source.i;
@@ -131,14 +132,14 @@ Nazwa_klasy operator=(Nazwa_klasy& source){
     return *this;
 }
 ```
-## Przeciążenie oparatora ++
+## Przeciążenie oparatora `++`
 ```
 Nazwa_klasy operator++(){
     age++;
     return *this;
 }
 ```
-## Przeciążenie oparatora +
+## Przeciążenie oparatora `+`
 ```
 Nazwa_klasy operator+(Nazwa_klasy& source){
     return Nazwa_klasy(size+source.size,age+source.age);
@@ -197,8 +198,8 @@ int main() {
 
 ```
 # Dziedziczenie
-## Dziedzienie dzieli się na: public,protected,private
-### Dziedziczenie public:
+## Dziedzienie dzieli się na: `public`,`protected`,`private`
+### Dziedziczenie `public`:
 Wszystkie zmienne publiczne klasy bazowej stają się publiczne w klasie pochodnej.
 
 Wszystkie zmienne protected klasy bazowej stają się protected w klasie pochodnej.
@@ -208,7 +209,7 @@ Wszystkie zmienne prywatne  klasy bazowej nie dziedziczą się do klasy pochodne
 class Bazowa{};
 class Pochodna: public Bazowa{};
 ```
-### Dziedziczenie protected:
+### Dziedziczenie `protected`:
 Wszystkie zmienne publiczne klasy bazowej stają się protected w klasie pochodnej.
 
 Wszystkie zmienne protected klasy bazowej stają się protected w klasie pochodnej.
@@ -219,7 +220,7 @@ Wszystkie zmienne prywatne  klasy bazowej nie dziedziczą się do klasy pochodne
 class Bazowa{};
 class Pochodna: protected Bazowa{};
 ```
-### Dziedziczenie private:
+### Dziedziczenie `private`:
 Wszystkie zmienne publiczne klasy bazowej stają się prywatne w klasie pochodnej.
 
 Wszystkie zmienne publiczne klasy bazowej stają się protected w klasie pochodnej.
