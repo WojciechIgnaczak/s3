@@ -290,7 +290,7 @@ UPDATE pg_database SET dataconnlimit=-1 WHERE datname='nazwa_bazy';     //nie za
 ```
 
 ### Role
-_https://www.postgresql.org/docs/current/role-attributes.html_
+[ROLE_LINK](https://www.postgresql.org/docs/current/role-attributes.html)
 
 Role należą do klastra serwera a nie do konkretnej bazy.
 
@@ -395,7 +395,7 @@ CREATE TABLE moja_tabela(
 - Opcje debugowania
 
 
-Ustawienia są zawarte w  *pg_settings*
+Ustawienia są zawarte w  `pg_settings`
 
 Paramentry ustwawień
 - Boolean(wartości logiczne)
@@ -408,7 +408,7 @@ Paramentry ustwawień
 
 - String (ciąg znaków) np. ścieżka
 
-Ustwanienia kontekstu
+Ustawienia kontekstu
 w jaki sposób będziemy zmieniać wartości
 
 - Internal(wewnętrzy) Nie można zmieniać bezpośrednio
@@ -425,6 +425,210 @@ w jaki sposób będziemy zmieniać wartości
 
 ```SET``` i ```SHOW``` służą do zmiany i sprawdzania wartości parametrów ustawień
 
-Zmiana w *postgresql.conf* ma efekt globalny
+Zmiana w `postgresql.conf` ma efekt globalny
 
 Przeładowanie konfiguracji ```SELECT pg_reload_conf();```
+
+
+# Typy i obiekty w PostgreSQL
+
+Serwer:
+
+-bazy danych
+
+-role : użytkownicy lub grupy użytkowników. którym można nadawać uprawnienia do dostępu do różnych baz
+
+-przestrzeń tabel:zarządzanie fizyczne przechowywania danych na dysku
+
+-jezyk programowania: baza może wykorzystywać kilka języków programowania
+
+Podczas tworzenia bazy należy określić właściciela oraz kodowanie znaków
+
+Kodowanie określa w jaki sposób dane tekstowe będą przechowywane i przetwarzane
+
+Domyślny szablon kodowania (template1)
+
+```
+CREATE ROLE car_portal_role LOGIN;
+
+CREATE DATABASE car_portal
+    WITH 
+    ENCODING 'UTF8'
+    LC_COLLATE 'en_US.UTF-8'
+    LC_CTYPE 'en_US.UTF-8'
+    OWNER car_portal_role;
+```
+Schematy
+
+Baza danych może być traktowana jako kontener dla schematów bazy danych.
+
+Podstawowy schemat w bazie postgres to *public*, każda nowo utworzona baza zawiera ten schemat, wszyscy użytkownicy mają dostęp do tego schematu.
+
+Schemat jest wykorzystywany do organizacjii obiektów w bazach danych
+
+Nazwy obiektów mogą się powtarzać w różnych schematach bez konfliktów
+
+Aby zapobiec możliwości tworzenia obiektów w schemacie public przez wszystkich użytkowników należy wykonać
+```
+REVOKE CREATE ON SCHEMA public FROM PUBLIC
+```
+Dostęp do konkretnego obiektu
+```
+SELECT * FROM pg_catalog.pg_database;
+
+TABLE pg_catalog.pg_database;
+```
+
+Pełne nazwy są czasochłonne, dlatego preferuje się korzystanie z nazw obiektów, które zawierają tylko nazwę obiektu bez schematu.
+
+PostgreSQL umożliwia ustawienie `search_path` które ma ścieżkę wyszukiwania.
+
+Wykorzystanie schematów:
+
+- kontrola autoryzacji
+
+- organizacja obiektów bazy danych
+
+- utrzymywanie zewnętrznego kodu SQL
+
+Utworzenie schematu dla takiej samej roli (2), w (1) można zmienić na inną rolę
+```
+CREATE SCHEMA car_portal_app AUTHORIZATION car_portal_app 
+
+CREATE SCHEMA AUTHORIZATION car_portal_app 
+```
+[SCHEMATY DOKUMENTACJA](https://www.postgresql.org/docs/current/sql-createschema.html)
+
+Warto używać `IF NOT EXISTS` , żeby nie wywalało błędów naprzykład w skryptach automatyzacyjnych.
+
+## TABELE
+
+`CREATE TABLE`
+
+Mają 4 różne typy. Są dedykowane do konkretnych zadań. Jest możliwość klonowania zadań.
+
+Materializacja wyników przez `SELECT`.
+
+Tabele trwałe - zwykłe tabele, cykl od utworzenia do usunięcia
+
+Tabele tymczasowe - tabele, cykl życia to sesja użytkownika.
+
+Tabele bez logowanie *unlogged* - szybsze niż tabele trwałe, dane nie są zapisywane do plików WAL. Nie są odporne na awarie i nie mogą być replikowane na węzeł podrzędny
+
+Tabele podrzędne - tabela, która dziedziczy jedną lub więcej tabel. Dziedzizenie jest często używane z wykluczeniem ograniczeń (constraint exclusion) w celu fizycznego partycjonowania danych na dysku twardym.
+
+[TABELE DOKUMENATCJA](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+
+## Typy danych
+
+Zmiana typu danych na tabeli jest bardzo kosztowna, zwłaszcza dla tabel o dużym obciążeniu. Koszt wynika z blokowania tabeli, a w niektórych przypadkach również z koniecznością jej przypisania.
+
+Czynniki wyboru typu:
+- rozszerzalność - czy maksywalna długość typu może być zwiększona bez konieczności pełnego skanowania tabeli
+
+- rozmiar typu danych
+
+Typy:
+- numeryczne
+
+- znakowe
+
+- daty i czasu
+
+| Name                                 | Aliases                 | Opis                                                |
+|--------------------------------------|-------------------------|-----------------------------------------------------|
+| bigint                               | int8                    | ośmiobajtowa liczba całkowita ze znakiem            |
+| bigserial                            | serial8                 | ośmiobajtowa liczba całkowita autoincrementowana    |
+| bit [ (n) ]                          |                         | bit string o stałej długości                        |
+| bit varying [ (n) ]                  | varbit [ (n) ]          | bit string o zmiennej długości                      |
+| boolean                              | bool                    | wartość logiczna (prawda/fałsz)                     |
+| box                                  |                         | prostokąt na płaszczyźnie                           |
+| bytea                                |                         | dane binarne („tablica bajtów”)                     |
+| character [ (n) ]                    | char [ (n) ]            | łańcuch znaków o stałej długości                    |
+| character varying [ (n) ]            | varchar [ (n) ]         | łańcuch znaków o zmiennej długości                  |
+| cidr                                 |                         | adres sieciowy IPv4 lub IPv6                        |
+| circle                               |                         | okrąg na płaszczyźnie                               |
+| date                                 |                         | data kalendarzowa (rok, miesiąc, dzień)             |
+| double precision                     | float8                  | liczba zmiennoprzecinkowa o podwójnej precyzji (8 bajtów) nie są dokładne bo działają na binarnym czyli są zaokrąglone |
+| inet                                 |                         | adres hosta IPv4 lub IPv6                           |
+| integer                              | int, int4               | czterobajtowa liczba całkowita ze znakiem           |
+| interval [ fields ] [ (p) ]          |                         | okres czasu                                         |
+| json                                 |                         | dane JSON w postaci tekstowej                       |
+| jsonb                                |                         | dane JSON w postaci binarnej                        |
+| line                                 |                         | linia nieskończona na płaszczyźnie                  |
+| lseg                                 |                         | odcinek linii na płaszczyźnie                       |
+| macaddr                              |                         | adres MAC (Media Access Control)                    |
+| macaddr8                             |                         | adres MAC (Media Access Control) w formacie EUI-64  |
+| money                                |                         | kwota walutowa                                      |
+| numeric [ (p, s) ]                   | decimal [ (p, s) ]      | dokładna liczba o konfigurowalnej precyzji 12.344 (p,s)=(5,3)|         |
+| path                                 |                         | ścieżka geometryczna na płaszczyźnie                |
+| pg_lsn                               |                         | numer sekwencyjny logu PostgreSQL                   |
+| point                                |                         | punkt geometryczny na płaszczyźnie                  |
+| polygon                              |                         | zamknięta ścieżka geometryczna na płaszczyźnie      |
+| real                                 | float4                  | liczba zmiennoprzecinkowa o pojedynczej precyzji (4 bajty) |
+| smallint                             | int2                    | dwubajtowa liczba całkowita ze znakiem              |
+| smallserial                          | serial2                 | dwubajtowa liczba całkowita autoincrementowana      |
+| serial                               | serial4                 | czterobajtowa liczba całkowita autoincrementowana   |
+| text                                 |                         | łańcuch znaków o zmiennej długości                  |
+| time [ (p) ] [ without time zone ]   |                         | godzina (bez strefy czasowej)                       |
+| time [ (p) ] with time zone          | timetz                  | godzina, włącznie ze strefą czasową                 |
+| timestamp [ (p) ] [ without time zone]|                         | data i czas (bez strefy czasowej)                   |
+| timestamp [ (p) ] with time zone     | timestamptz             | data i czas, włącznie ze strefą czasową             |
+| tsquery                              |                         | zapytanie wyszukiwania pełnotekstowego              |
+| tsvector                             |                         | dokument wyszukiwania pełnotekstowego               |
+| txid_snapshot                        |                         | migawka identyfikatora transakcji na poziomie użytkownika |
+| uuid                                 |                         | uniwersalny unikatowy identyfikator                 |
+| xml                                  |                         | dane XML                                            |
+
+
+
+Typy numeryczne:
+- smallint 2 bajty -> int2
+
+- int 4 bajty -> int4
+
+- bigint 8 bajtów ->int8
+
+- numeric/decimal zmienny do 130,000 przed przecinkiem do 16,000 po przecinku
+
+- real 4 bajty -> Infinity/Nan
+
+- double/precision 8 bajtów
+
+typ danych `serial`
+
+część ułamkowa na int jest zawsze odrzucana(nie zaokrąglana) 2/3=0, 3/2=1
+
+Typy znakowe:
+- char - pojedynczy znak
+
+- name - odpowiednik varchar(64), używany przez postgres do nazw obiektów
+
+- char(n) - stała długość znaków, gdzie długość to *n*, na końcu zostaną dodane spacje.
+
+- varchar(n) - zmienna długość znaków gdzie maksymalna długość to *n*
+
+- text - zmienna długość znaków nieograniczona ilość
+
+Gdy długość większa od char, varchar to w *insert* i *update* zostanie zgłoszony błąd, chyba że nadmiarowe to spacje. W takim przypadku zostaną obcięte.
+
+Maksymalny rozmiar tekstu, który można przechować wynosi 1GB, co jest maksymalnym rozmiarem kolumny.
+
+Char i varchar dla ciągów o stałej długości zajmują taką samą ilość miejsca, w przypadku zmiennej długości to char zajmuje więcej miejsca bo uzupełnia miejsce spacjami.
+
+Nie ma różnicy w wydajności między typami tekstowymi.
+
+Typy daty i czasu:
+- timestamp without timezone - data i czas bez strefy czasowej
+
+- timestamp with timezone - data i czas z strefą czasową
+
+- date - data kalendarzowa rok, miesiąc, dzień
+
+- time without timezone - czas w ciągu dnia bez strefy czasowej
+
+- time with timezone - czas w ciągu dnia ze strefą czasową
+
+- interval - przedział czasu, porównanie 2 czasów
+
+Ustawienia: timezone, datastyle
