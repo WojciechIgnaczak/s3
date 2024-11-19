@@ -1,0 +1,10 @@
+1. head -n 1 iris.csv
+2. tail -n +2 iris.csv
+3. awk -F, 'BEGIN {OFS=","} {if ($5 == "\"Setosa\"") $5 = 1; else if ($5 == "\"Versicolor\"") $5 = 2; else if ($5 == "\"Virginica\"") $5 = 3; print $0}' iris.csv
+4. awk -F , 'NR > 1 {print $5}' iris.csv | sort | uniq | tr -d '"'
+5. LC_ALL=C awk -F, 'NR>1 { suma = $1 + $2 + $3 + $4 } { print suma }' iris.csv 
+6. LC_ALL=C awk -F, 'NR > 1 { total += $2; count++ } END { print total / count }' iris.csv
+7. LC_ALL=C awk -F, 'NR > 1 { if ($4 > max) { max = $4; line = $0 } } END { print line }' iris.csv
+8. LC_ALL=C awk -F, 'NR > 1 && $1 > 7 { print $5 }' iris.csv
+9. LC_ALL=C awk -F, 'NR > 1{ printf "%d\t%d\t%d\t%d\t%s\n", $1, $2, $3, $4, $5 }' iris.csv
+10. (head -n 1 iris.csv && tail -n +2 iris.csv | shuf) > shuffled_iris.csv
