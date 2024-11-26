@@ -32,8 +32,12 @@ getGPU() {
     gpu=$(lspci |grep -i "vga" | cut -d: -f3 | sed 's/^[[:space:]]*//')
 }
 getUser() {
+    user=$(whoami)
+    echo "User: $user"
 }
 getShell() {
+    shell=$(basename "$SHELL")
+    echo "Shell: $shell"
 }
 getProcesses() {
 }
