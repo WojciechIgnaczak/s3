@@ -50,7 +50,7 @@ kill_process_by_pid() {
         kill "$pid" 2>/dev/null
         if [[ $? -eq 0 ]]; then
             echo "Process with PID $pid killed."
-        
+        fi
     else
         echo "Invalid PID entered."
     fi
