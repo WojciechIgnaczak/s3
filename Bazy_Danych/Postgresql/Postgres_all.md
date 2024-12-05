@@ -632,3 +632,96 @@ Typy daty i czasu:
 - interval - przedział czasu, porównanie 2 czasów
 
 Ustawienia: timezone, datastyle
+
+# Modelowanie danych
+Reprezentowanie pojedynczych encji
+
+Diagramy ER
+
+Obiekty owalne - proste
+
+Obiekty prostikątne mają atrybuty złożone
+
+Znaczenie modeli danych odgrywają rolę w utrzymaniu spójności danych w systemach współpracujących. Źle zdefiniowane encje mogą prowadzić do zamieszania i niespójności w całej organizacji. np. (klient vs kontrahent), moze prowadzić do nieporozumień. 
+
+## Trzy modele danych:
+
+- konceptualny
+
+- logiczny - struktura danych okreslnonych technologii
+
+- fizyczny - implementacja bazy danych
+
+## Model encji i relacji (ER) 
+
+Jest typem modelu danych konceptualnego zaprojektowanych do uchwycenia i reprezentowania encji oraz ich relacji.
+
+Używany przez developerów i biznes
+
+## Praktyki w modelowaniu
+- nadmiarowość danych - zbyt duze moga powodowac problemy tj. niespójnosc i degradacja wydajnosci
+
+- saturacjia wartosci null - problem aby w JSON dany klucz nie przyjmuje wartosci NULL 
+
+- ścisłe powiązanie - ścisłe powiązanie miedzy enacjami moze prowadzic do sztywnych struktur, co utrudnia przyszle zmiany
+
+### pytania kontrolne check list
+co jest kluczem głównym?
+
+jaka domyślna wartość kolumny
+
+jaki typ kolumny
+
+ograniczenia
+
+uprawnienia
+
+klucze obce
+
+cykl życia danych
+
+jakie operacje są dozwolone
+
+
+
+### KLUCZE naturalne a zastepcze
+klucze naturalne - oczywiste i rozpoznawalne - mogą się zmieniać. a użycie klucza zastępczego zapewnia ze referencja do innych wierszy nie zostanie utracony, poniewać klucz zastepczy sie nie zmienia.
+
+błędne założenia o kluczach naturalnych 
+
+klucze zastepcze moga wspierac projekty bazy danych tymczasowej
+
+klucze zastepcze czesto uzywaja kompaktowych typow danych (liczby calkowite)
+
+klucz zastepcze sa generowane automatyczne co moze prowadzic do roznych wynikow w roznych bazach testowych
+
+klucz zastepczy nie jest opisowy
+
+
+### GUI
+[LINK](https://www.pgadmin.org/download/pgadmin-4-apt/)
+####
+ Setup the repository
+####
+
+#### Install the public key for the repository (if not done previously):
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+
+#### Create the repository configuration file:
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+####
+#### Install pgAdmin
+####
+
+#### Install for both desktop and web modes:
+sudo apt install pgadmin4
+
+#### Install for desktop mode only:
+sudo apt install pgadmin4-desktop
+
+#### Install for web mode only:  zainstaluj
+sudo apt install pgadmin4-web 
+
+#### Configure the webserver, if you installed pgadmin4-web:
+sudo /usr/pgadmin4/bin/setup-web.sh

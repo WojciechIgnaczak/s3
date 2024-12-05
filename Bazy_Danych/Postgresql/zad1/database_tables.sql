@@ -1,4 +1,9 @@
+CREATE ROLE admin WITH PASSWORD 'admin';
+GRANT ALL PRIVILEGES ON DATABASE car_rental TO admin; 
+
 CREATE DATABASE car_rental;
+
+\c car_rental
 
 CREATE SCHEMA customer;
 CREATE SCHEMA vehicle;
@@ -17,7 +22,7 @@ CREATE TABLE vehicle.car(
 car_ID SERIAL PRIMARY KEY,
 brand VARCHAR(20) NOT NULL,
 model VARCHAR(30) NOT NULL,
-year_of_productions INT NOT NULL CHECK (year_of_productions >= 1990),
+year_of_productions INT NOT NULL CHECK (year_of_productions >= 2000),
 vin_number CHAR(17) NOT NULL,
 category VARCHAR(30) NOT NULL,
 rejestration_number VARCHAR(8) NOT NULL,
@@ -90,7 +95,6 @@ JOIN vehicle.car car ON r.car_ID = car.car_ID
 WHERE CURRENT_DATE BETWEEN r.date_from AND r.date_to;
 
 
--- Tabela: customer.customer
 INSERT INTO customer.customer (name, surname, address, phone_number) VALUES
 ('Jan', 'Kowalski', 'ul. Zielona 5, Warszawa', '123456789'),
 ('Anna', 'Nowak', 'ul. Słoneczna 10, Kraków', '987654321'),
@@ -103,7 +107,6 @@ INSERT INTO customer.customer (name, surname, address, phone_number) VALUES
 ('Łukasz', 'Bąk', 'ul. Leśna 7, Lublin', '999000111'),
 ('Joanna', 'Nowicka', 'ul. Kościuszki 14, Katowice', '666777888');
 
--- Tabela: vehicle.car
 INSERT INTO vehicle.car (brand, model, year_of_productions, vin_number, category, registration_number, daily_price, availability) VALUES
 ('Toyota', 'Corolla', 2015, '1HGCM82633A123456', 'Sedan', 'WZ1234A', 150.00, 'available'),
 ('Ford', 'Focus', 2018, '1HGCM82633A654321', 'Hatchback', 'KR5678B', 170.00, 'rented'),
@@ -116,7 +119,6 @@ INSERT INTO vehicle.car (brand, model, year_of_productions, vin_number, category
 ('Skoda', 'Octavia', 2017, '1HGCM82633A999000', 'Sedan', 'GD6666I', 150.00, 'available'),
 ('Hyundai', 'Tucson', 2020, '1HGCM82633A111333', 'SUV', 'LU7777J', 240.00, 'available');
 
--- Tabela: employee.employee
 INSERT INTO employee.employee (name, surname, address, phone_number, salary, position, hire_date) VALUES
 ('Katarzyna', 'Maj', 'ul. Lipowa 8, Łódź', '111222333', 4500.00, 'Manager', '2023-01-15'),
 ('Marek', 'Nowicki', 'ul. Długa 15, Poznań', '444555666', 3500.00, 'Mechanik', '2022-11-10'),
@@ -129,7 +131,6 @@ INSERT INTO employee.employee (name, surname, address, phone_number, salary, pos
 ('Piotr', 'Kowal', 'ul. Słoneczna 2, Opole', '999222333', 3100.00, 'Kierowca', '2020-05-15'),
 ('Michał', 'Wiśniewski', 'ul. Św. Marcin 5, Poznań', '111333555', 4200.00, 'Kierownik oddziału', '2018-09-10');
 
--- Tabela: rental.reservation
 INSERT INTO rental.reservation (car_ID, customer_ID, date_from, date_to, employee_ID) VALUES
 (1, 1, '2024-12-01 10:00:00', '2024-12-05 18:00:00', 1),
 (2, 2, '2024-12-03 09:00:00', '2024-12-06 16:00:00', 2),
@@ -142,7 +143,6 @@ INSERT INTO rental.reservation (car_ID, customer_ID, date_from, date_to, employe
 (9, 9, '2024-12-09 11:00:00', '2024-12-15 14:00:00', 9),
 (10, 10, '2024-12-10 08:00:00', '2024-12-14 20:00:00', 10);
 
--- Tabela: rental.payment
 INSERT INTO rental.payment (price, customer_ID, reservation_ID) VALUES
 (600.00, 1, 1),
 (510.00, 2, 2),
@@ -155,7 +155,6 @@ INSERT INTO rental.payment (price, customer_ID, reservation_ID) VALUES
 (410.00, 9, 9),
 (390.00, 10, 10);
 
--- Tabela: vehicle.maintenance
 INSERT INTO vehicle.maintenance (car_ID, price, service, scope_of_repairs, date_from, date_to) VALUES
 (1, 1200.00, 'Warsztat AutoFix', 'Wymiana klocków hamulcowych', '2024-11-20 08:00:00', '2024-11-22 17:00:00'),
 (2, 500.00, 'AutoSerwis Plus', 'Wymiana oleju', '2024-11-15 09:00:00', '2024-11-15 15:00:00'),
