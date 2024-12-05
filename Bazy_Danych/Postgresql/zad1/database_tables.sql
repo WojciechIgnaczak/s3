@@ -68,13 +68,20 @@ FOREIGN KEY (customer_ID) REFERENCES customer.customer(customer_ID),
 FOREIGN KEY (reservation_ID) REFERENCES rental.reservation(reservation_ID)
 );
 
-CREATE VIEW car_rental.available_cars AS
+CREATE VIEW rental.available_cars AS
 SELECT * FROM vehicle.car
-WHERE status = 'available';
+WHERE availability = 'available';
 
-CREATE VIEW car_rental.active_reservations AS
-SELECT r.reservation_id, c.first_name, c.last_name, car.make, car.model, r.pickup_date, r.return_date
-FROM car_rental.reservations r
-JOIN car_rental.customers c ON r.customer_id = c.customer_id
-JOIN car_rental.cars car ON r.car_id = car.car_id
-WHERE CURRENT_DATE BETWEEN r.pickup_date AND r.return_date;
+CREATE VIEW rental.active_reservations AS
+SELECT 
+    r.reservation_ID,
+    c.name AS first_name,
+    c.surname AS last_name,
+    car.brand AS make,
+    car.model,
+    r.date_from AS pickup_date,
+    r.date_to AS return_date
+FROM rental.reservation r
+JOIN customer.customer c ON r.customer_ID = c.customer_ID
+JOIN vehicle.car car ON r.car_ID = car.car_ID
+WHERE CURRENT_DATE BETWEEN r.date_from AND r.date_to;
