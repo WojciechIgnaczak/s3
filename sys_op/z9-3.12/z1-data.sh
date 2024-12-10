@@ -1,5 +1,11 @@
 #!/bin/bash
+mkdir /tmp/data
 
+mkdir /tmp/data/various
+mkdir /tmp/data/random
+mkdir /tmp/data/empty
+
+mkdir /tmp/data/various
 # generowanie plików random
 dd if=/dev/urandom of=/tmp/data/random/1 bs=10M count=1
 dd if=/dev/urandom of=/tmp/data/random/2 bs=10M count=1
