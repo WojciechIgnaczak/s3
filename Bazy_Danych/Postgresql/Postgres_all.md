@@ -725,3 +725,123 @@ sudo apt install pgadmin4-web
 
 #### Configure the webserver, if you installed pgadmin4-web:
 sudo /usr/pgadmin4/bin/setup-web.sh
+
+
+# Widoki
+
+Widok to nazwana kwerenda lub osłona wokół instrukcji *SELECT*
+
+Widoki są podstawowym elementem relacyjnych baz danych, które można porównać do metod w klasach UML
+
+Jesteśmy wstanie dodawać, usuwać wiersze widoku.
+
+Widoki upraszczają zapytania i zwiększanią modularność kodu
+
+Korzyśći widoków:
+- uproszczenie złożonych zapytań
+- poprawa wydajności dzięki buforowaniu wyników
+- redukcja ilości kodu SQL
+- integracja z językami obiektowymi dzięki widokom aktualizowanym
+- zastosowanie mechanizmów autoryzacji na poziomie wiersza
+- łatwe prowadzenie zmian bez koniecznosci wdrażania nowego oprogramowania
+- implementacja warstwy abstrakcji między bazą danych a aplikacjami wysokopoziomowymi
+
+Różnice od procedów składowanych
+
+ich zależności są utrzymywane w bazie danych. są bardziej wydajne. modyfikacja widoku może być zabroniona z powodu efektu kaskadowych
+
+Tworzenie widoku
+```
+CREATE [OR REPLACE] [TEMP | TEMPORARY] [RECURSIVE] VIEW nazwa_widoku
+AS
+```
+
+Rodzaje widoków
+
+- tymczasowe : automatycznie usuwane na końcu sesji usera;
+```
+CREATE TEMP VIEW temp_user_view AS
+SELECT
+    id,
+    username,
+    email
+FROM
+    users
+WHERE
+    active=true;
+```
+- rekurencyjne obsługują rekurencje podobnie jak funckje w jezykach wysokiego poziomu. dane hierarchiczne
+```
+SELECT RECURSIVE VIEW employee(employee_id,employee_name,manager_id)
+(
+    --poziom bazowy
+    SELECT
+        id AS employee_id,
+        1 AS level
+    FROM employees
+    WHERE manager_id IS NULL
+
+    UNION ALL
+
+    --poziom rekurencyjny: pracownicy podlegli przełożonym
+    SELECT
+        e.id AS employee_id,
+        e.name AS employee_name,
+        e.manager_id,
+        eh.level +1
+    FROM employee e
+    JOIN employee_hierarchy eh
+    ON e.manager_id = eh.employee_id
+);
+```
+
+- Aktualizowane widoki (materializowane) - przechowuja fizycznie dane w tabelach i mogą być okresowo odświeżane. Używane w dużych i czesto wykonywanych zapytan
+```
+CREATE MATERIALIZE VIEW nazwa_widoku
+AS
+...
+;
+REFRESH MATERIALIZED VIEW nazwa_widoku;
+```
+Aby usunąć widok z zależnościami
+```
+DROP VIEW nazwa_widoku_zaleznego;
+DROP VIEW nazwa_widoku_pierwotnego;
+
+
+DROP VIEW nazwa_widoku CASCADE  -- usuwa odrazu widok pierwotny
+```
+
+widoki materializowane mają możliwość automatycznego aktualizoanie, co oznacza ze mozna robic INSERT UPDATE DELEE
+
+warunki dla aktualizowanych widoków:
+- oparty na tabeli
+- brak: distinct, with, group by, offset, having, limit, union, except, intersect
+
+# INDEKSY
+obiekty fizyczne przyspieszające odczyt danych
+- optymalizacja wydajnosci zapytan
+- weryfikacja ograniczeń tj. UNIQUE
+
+indeksy można tworzyć na tabeli lub na widoku
+
+Indeks unikalny CREATE UNIQUE INDEX nazwa ON nazwa_tabeli
+
+`index scan` możemy uzyc dzieki indeksowi aby zoptymalizowac wyszukiwanie zamiast wykonywac pelne skanowanie tabeli
+
+plan wykonania `EXPLAIN`  select powoduje wyswietlenie `query plan` w terminalu
+
+TYPY INDEKSÓW
+- unikalny
+- B-tree (domyślny) drzewo zbilansowane, gdy operacje porównawcze
+- Hash Index - do obsługi równości,choć b-tree zwykle spełnia te potrzeby, ale nie są transakcyjnie bezpieczne i nie są replikowane w węzłach slave podczas replikacji.
+- GIN (generalized inverted index)-odwrócony, przydatny gdy wiele wartosci zlozonych musi byc mapowanych na jeden wiersz np. tablice, json. Zastosowanie tablice, wyszukiwanie pełnotekstowe
+- GiST (generalized search tree) - dla zrównoważonych struktur drzewiastych. Zastosowanie: typy geometryczne, wyszukiwanie pełnotekstowe, wyszukiwanie przestrzenne
+- BRIN (Block Range Index) - orzydatny do duzych tabel, gdzie dane uporzadkowane. Jest wolniejszy od b-tree ale jest mniejszu. Zastosowanie: przechowywanie danych na dużą skalę.
+
+Indeksy częściowe
+obejmuje tylko podzbiówr danych w tabeli (po where)
+taki indeks zmiejsza rozmiar indeksu
+
+indeksy moga byc tworzone na wynikach wyrazen i funkcji.(konwersja typów danych)
+
