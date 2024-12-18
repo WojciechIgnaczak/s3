@@ -6,11 +6,14 @@
  #include <stdlib.h>
  #include <pthread.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #define TAB_LENGTH 10
 typedef struct shared {
     int tab[TAB_LENGTH];
     pthread_mutex_t mutex;
 } shared_t;
+
+
 int main(int argc, char *argv[]) {
     
     struct stat statbuf;
@@ -19,7 +22,7 @@ int main(int argc, char *argv[]) {
         printf("BŁĘDNA ILOSC ARGUMENTOW\n");
         return -1;
     }
-    printf("argc=%d\n", argc);
+   // printf("argc=%d\n", argc);
     int number_of_proccess=atoi(argv[2]);
     if(number_of_proccess<=0)
     {
@@ -33,7 +36,7 @@ int main(int argc, char *argv[]) {
         printf("BŁĄD\n");
         return -1;
     }
-    printf("fd=%d\n", fd);
+    //printf("fd=%d\n", fd);
     if(fstat(fd, &statbuf)==-1)
     {
         printf("ERROR GET SIZE\n");
@@ -41,10 +44,15 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     fstat(fd, &statbuf); 
-    printf("len=%ld\n", statbuf.st_size);
+    //printf("len=%ld\n", statbuf.st_size);
     char *content = mmap(NULL, statbuf.st_size, PROT_READ, MAP_SHARED, fd, 0);
-    printf("content ptr=%p\n", content);
-//z wykladu ALOKACJA PAMIECI WSPOLDZIELONES
+    if (content == MAP_FAILED) {
+        perror("Error mapping file");
+        close(fd);
+        return EXIT_FAILURE;
+    }
+    //printf("content ptr=%p\n", content);
+//z wykladu ALOKACJA PAMIECI WSPOLDZIELONES \>
     int prot = PROT_READ | PROT_WRITE; // odczyt i zapis
     int vis = MAP_SHARED | MAP_ANONYMOUS;
     shared_t *shr = (shared_t*)mmap(NULL, sizeof(shared_t), prot, vis, -1, 0);
@@ -66,24 +74,63 @@ int main(int argc, char *argv[]) {
         shr->tab[i]=0;
     }
     /* TODO: sprawdzic ret value z mmap */
-    for (int i = 0; i < statbuf.st_size; i++)
-    {
+
+    
+
+// fork i podzial zakresow
+// podział zakresów
+    size_t segment_size = statbuf.st_size / number_of_proccess;
+    size_t remainder = statbuf.st_size % number_of_proccess;
+
+    pid_t pids[number_of_proccess];
+
+// Fork 
+    int*pid_table=malloc(sizeof(int)*number_of_proccess);
+    for (int i = 0; i < number_of_proccess; i++) {
+        printf("WĄTEK: %d",i);
+        //size_t added=(i>0) ? 1: 0;
+        size_t start = i * segment_size;
+       // size_t  lengt= segment_size + (i == number_of_proccess - 1 ? remainder : 0)-added;
+        size_t end= (i == number_of_proccess-1) ? statbuf.st_size : start+segment_size;
+        //printf("Długosc: %ld Start: %ld, Koniec: %ld, ad\n",segment_size,start,start+length);
+        pid_t pid=fork();
+        printf("start: %ld, end: %ld", start,end);
+        switch (pid) {
+        case -1: /* coś poszło nie tak */
+        printf("ERROR");
+            return -5;
+        case 0: /* jesteśmy w nowym procesie */
+        //printf("CHILD: %d\n",pid_table[i]);
+            //process segment
+        for (int i = start; i < end; i++)
+        {
         /* [48, 57] */
         if (content[i] >= '0' && content[i] <= '9') { 
             int val = content[i] - '0'; /* content[i] - 48 */
             /* Zwiększyć odpowiednią wartość w tablicy,
                która zlicza ilość wystąpień */
+            pthread_mutex_lock(&shr->mutex);
             shr->tab[val]++;
+            pthread_mutex_unlock(&shr->mutex);
             //printf("%d", val);
+        }
+        }
+        return 0;
+        default: /* jesteśmy w starym procesie */
+            pid_table[i]=pid;
+            printf("parent: %d\n",pid_table[i]);
+            break;
         }
     }
 
+// Wait
+    for (int i = 0; i < number_of_proccess; i++) {
+        waitpid(pid_table[i], NULL,0);
+    }
     for(int i=0;i<TAB_LENGTH;i++)
     {
         printf("%d = %d\n",i,shr->tab[i]);
     }
-
-// fork i podzial zakresow
     munmap(content, statbuf.st_size);
     close(fd);
     return 0;
