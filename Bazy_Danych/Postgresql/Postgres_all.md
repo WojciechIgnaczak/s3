@@ -759,7 +759,7 @@ AS
 Rodzaje widoków
 
 - tymczasowe : automatycznie usuwane na końcu sesji usera;
-```
+~~~~sql
 CREATE TEMP VIEW temp_user_view AS
 SELECT
     id,
@@ -769,9 +769,9 @@ FROM
     users
 WHERE
     active=true;
-```
+~~~~
 - rekurencyjne obsługują rekurencje podobnie jak funckje w jezykach wysokiego poziomu. dane hierarchiczne
-```
+```sql
 SELECT RECURSIVE VIEW employee(employee_id,employee_name,manager_id)
 (
     --poziom bazowy
@@ -796,15 +796,15 @@ SELECT RECURSIVE VIEW employee(employee_id,employee_name,manager_id)
 ```
 
 - Aktualizowane widoki (materializowane) - przechowuja fizycznie dane w tabelach i mogą być okresowo odświeżane. Używane w dużych i czesto wykonywanych zapytan
-```
+```sql
 CREATE MATERIALIZE VIEW nazwa_widoku
 AS
 ...
 ;
 REFRESH MATERIALIZED VIEW nazwa_widoku;
-```
+``
 Aby usunąć widok z zależnościami
-```
+```sql
 DROP VIEW nazwa_widoku_zaleznego;
 DROP VIEW nazwa_widoku_pierwotnego;
 
@@ -818,6 +818,24 @@ warunki dla aktualizowanych widoków:
 - oparty na tabeli
 - brak: distinct, with, group by, offset, having, limit, union, except, intersect
 
+## Widok edytowalny - pozwala edycje danych
+```sql
+CREATE VIEW editable_view_customers AS
+SELECT id,username,email,balance,is_actibe
+FROM accounts
+WHERE is_active = TRUE AND balance >0
+WITH LOCAL CHECK OPTION;
+```
+## WIDOK TYLKO DO ODCZYTU
+```sql
+CREATE VIEW readonly_view_customers AS
+SELECT DISTINCT id,username,email,balance,is_actibe
+FROM accounts
+WHERE balance =0;
+```
+## WIDOK ZMIATERIALIZOWANY
+``
+``
 # INDEKSY
 obiekty fizyczne przyspieszające odczyt danych
 - optymalizacja wydajnosci zapytan
