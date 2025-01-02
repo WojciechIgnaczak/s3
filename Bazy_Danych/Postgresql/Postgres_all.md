@@ -108,20 +108,20 @@ Nie trzeba wykorzystywać wszystkich parametrów jeśli są domyślne
 \ds
 ```
 ### Wyświetlenie wartości id
-```
+```sql
 SELECT * FROM klienci_id_seq;
 
 SELECT last_value FROM klienci_id_seq;
 ```
 ### Wartość następnego id
-```
+```sql
 SELECT nextval('klienci_id_seq');
 ```
 
 
 # Zarządzanie wyjściem i zapis wyników do pliku
 ### Zapis danych wyjściowych do pliku
-```
+```sql
 \o nazwa_pliku.txt
 SELECT * FROM nazwa_tabeli;
 \o
@@ -180,7 +180,7 @@ alias **mytables** - wyświetla nam wszystkie tabele w schemacie
 
 # Zmienne
 ### Definiowanie zmiennej, aby użyc jej w zapytaniu
-```
+```sql
 \set min_salary 50000
 SELECT * FROM employees WHERE salary > :min_salary
 ```
@@ -238,7 +238,7 @@ podczas tworzenia nowej bazy danych w Postgres jest domyślnie klonowana templat
 ### Schema
 Służy do organizacji obiektów baz danych
 
-Serwer postgres ma 2 bazy szablonowe template0, template1 można wyświetlić przez ```\l```
+Serwer postgres ma 2 bazy szablonowe template0, template1 można wyświetlić przez `\l`
 
 ### Template1
 Domyślna baza która jest klonowana przy tworzeniu nowych baz. Można ją modyfikować aby wprowadzić zmiany globalne dla wszystkich nowo tworzonych baz. Np. chcemy używać we wszystkich nowych bazach jakiegoś rozszerzenia
@@ -260,11 +260,11 @@ Każda baza ma właściciela oraz zestaw uprawnien które kontrolują dzialania 
 
 
 ### Uprawnienia do baz
-- ```-C``` pozwla tworzyc nowe schematy
+- `-C` pozwla tworzyc nowe schematy
 
-- ```-c``` sprawdza uprawnienia roli przy próbie połączenie do bazy
+- `-c` sprawdza uprawnienia roli przy próbie połączenie do bazy
 
-- ```-T``` tworzenie tabel tymczasowych niszczone po zakończeniu sesji usera
+- `-T` tworzenie tabel tymczasowych niszczone po zakończeniu sesji usera
 
 jeśli nie ma wpisu w *Access privileges* to rola przypisna jest PUBLIC
 
@@ -281,9 +281,9 @@ Encoding pozwla na przechowywanie 1 lub wielobajtowych zestawów znaków tj *SQL
 - Ochrona- *datallowconn* - wyłącz możliwość połączenia z bazą danych, głównie w celu ochrony template0 przed modyfikacjami
 
 ### Tabele katalogowe *pg_catalog*
-Zwykłe tabele na których możemy używać ```SELECT```,```UPDATE```,```DELETE```. Nie zaleca się modyfikacji ręcznej, chyba że w wyjątkowych sytuacjach.
+Zwykłe tabele na których możemy używać `SELECT`,`UPDATE`,`DELETE`. Nie zaleca się modyfikacji ręcznej, chyba że w wyjątkowych sytuacjach.
 
-```
+```sql
 SELECT datconnlimit FROM pg_database WHERE datname="nazwa_bazy";        // wyświetlenie limitu połączeń z bazą danych
 ALTER DATABASE nazwa_bazy CONNECTION LIMIT 1                            //zmiana limitu połączeń na 1. -1 dla wszystkich
 UPDATE pg_database SET dataconnlimit=-1 WHERE datname='nazwa_bazy';     //nie zalecania zmiana limitu połączeń, ponieważ  przy nieprawidłowej wartości nie wyrzuca błędu np. "-2"
@@ -297,7 +297,7 @@ Role należą do klastra serwera a nie do konkretnej bazy.
 Rola może być userem bazy danych lub grupą użytkowników. Koncepcja roli łączny pojęcia użytkowników i grup z poprzednich wersji postgres.
 
 Polecenia:
-```
+```sql
 CREATE USER
 CREATE GROUP
 ```
@@ -329,24 +329,26 @@ Hasło - może zmienić swoje hasło
 Limit połączeń - może zmieniać limit połączeń
 
 Dziedziczenie (inherit) - może dziedziczyć uprawnienia do roli których jest członkiem
-```
+```sql
 CREATE ROLE janek WITH LOGIN PASSWORD 'hasło' // rola ma możliwość logowania do bazy z hasłem
 ```
+```sql
 CREATE GROUP jest równoznaczne z poleceniem CREATE ROLE z opcją NOLOGIN
 ```
+```sql
 CREATE ROLE programisci; // tworzy role która moze byc uzywana jako grupa
 ```
 
 ### Członkowstwo ról
 Rola może być członkiem innych roli. Rola bez logowania to grupa. 
-Dostęp realizują polecenia SQL ```GRANT``` i ```REVOKE```
-```
+Dostęp realizują polecenia SQL `GRANT` i `REVOKE`
+```sql
 GRANT programisci TO janek // dodanie janka do grupy programisci
 
 REVOKE programisci FROM janek // usuwa janke z grupy programisci
 ```
 ### Uprawnienia ról
-```
+```sql
 CREATE ROLE admin WITH CREATEDB LOGIN PASSWORG 'admin';                  // tworznie roli do tworzenia baz danych
 GRANT SELECT,INSERT ON tabela TO janek;                                  // przypisanie uprawinen do użytkownika
 CREATE ROLE superadmin WITH SUPERUSER LOGIN PASSWORD 'password'          // tworzenie roli superużytkownika
@@ -363,11 +365,11 @@ Przestrzeń dyskowa którą wskazujemy gdzie nasze dane będą przechowywane. Ka
 - Przenoszenie danych na szybsze dyski
 
 #### Tworzenie tablespace
-```
+```sql
 CREATE TABLESPACE fast_storage LOCATION '/mnt/ssd_partition/';
 ```
 #### Używanie tablespace
-```
+```sql
 CREATE TABLE moja_tabela(
     id SERIAL PRIMARY KEY;
     nazwa VARCHAR(255) NOT NULL;
@@ -423,11 +425,11 @@ w jaki sposób będziemy zmieniać wartości
 
 - User              W trakcie działanie bieżącej sesji
 
-```SET``` i ```SHOW``` służą do zmiany i sprawdzania wartości parametrów ustawień
+`SET` i `SHOW` służą do zmiany i sprawdzania wartości parametrów ustawień
 
 Zmiana w `postgresql.conf` ma efekt globalny
 
-Przeładowanie konfiguracji ```SELECT pg_reload_conf();```
+Przeładowanie konfiguracji `SELECT pg_reload_conf();`
 
 
 # Typy i obiekty w PostgreSQL
@@ -448,7 +450,7 @@ Kodowanie określa w jaki sposób dane tekstowe będą przechowywane i przetwarz
 
 Domyślny szablon kodowania (template1)
 
-```
+```sql
 CREATE ROLE car_portal_role LOGIN;
 
 CREATE DATABASE car_portal
@@ -469,11 +471,11 @@ Schemat jest wykorzystywany do organizacjii obiektów w bazach danych
 Nazwy obiektów mogą się powtarzać w różnych schematach bez konfliktów
 
 Aby zapobiec możliwości tworzenia obiektów w schemacie public przez wszystkich użytkowników należy wykonać
-```
+```sql
 REVOKE CREATE ON SCHEMA public FROM PUBLIC
 ```
 Dostęp do konkretnego obiektu
-```
+```sql
 SELECT * FROM pg_catalog.pg_database;
 
 TABLE pg_catalog.pg_database;
@@ -492,7 +494,7 @@ Wykorzystanie schematów:
 - utrzymywanie zewnętrznego kodu SQL
 
 Utworzenie schematu dla takiej samej roli (2), w (1) można zmienić na inną rolę
-```
+```sql
 CREATE SCHEMA car_portal_app AUTHORIZATION car_portal_app 
 
 CREATE SCHEMA AUTHORIZATION car_portal_app 
@@ -705,26 +707,26 @@ klucz zastepczy nie jest opisowy
 ####
 
 #### Install the public key for the repository (if not done previously):
-curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+`curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg`
 
 #### Create the repository configuration file:
-sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+`sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update`
 
 ####
 #### Install pgAdmin
 ####
 
 #### Install for both desktop and web modes:
-sudo apt install pgadmin4
+`sudo apt install pgadmin4`
 
 #### Install for desktop mode only:
-sudo apt install pgadmin4-desktop
+`sudo apt install pgadmin4-desktop`
 
 #### Install for web mode only:  zainstaluj
-sudo apt install pgadmin4-web 
+`sudo apt install pgadmin4-web `
 
 #### Configure the webserver, if you installed pgadmin4-web:
-sudo /usr/pgadmin4/bin/setup-web.sh
+`sudo /usr/pgadmin4/bin/setup-web.sh`
 
 
 # Widoki
@@ -751,7 +753,7 @@ Różnice od procedów składowanych
 ich zależności są utrzymywane w bazie danych. są bardziej wydajne. modyfikacja widoku może być zabroniona z powodu efektu kaskadowych
 
 Tworzenie widoku
-```
+```sql
 CREATE [OR REPLACE] [TEMP | TEMPORARY] [RECURSIVE] VIEW nazwa_widoku
 AS
 ```
@@ -802,7 +804,7 @@ AS
 ...
 ;
 REFRESH MATERIALIZED VIEW nazwa_widoku;
-``
+```
 Aby usunąć widok z zależnościami
 ```sql
 DROP VIEW nazwa_widoku_zaleznego;
@@ -862,4 +864,117 @@ obejmuje tylko podzbiówr danych w tabeli (po where)
 taki indeks zmiejsza rozmiar indeksu
 
 indeksy moga byc tworzone na wynikach wyrazen i funkcji.(konwersja typów danych)
+
+# PL/pgSQL Function
+PL/pgSQL to proceduralny język programowania umożliwiający rozszerzenie funkcjonalności PostgreSQL poprzez tworzenie funkcji,procedur,wyzwalaczy.
+
+PL/pgSQL umożliwia:
+- tworzenie funkcji i procedur z wykorzystaniem logiki proceduralnej
+- definiowanie zmiennych lokalnych
+- obsługa wyjątków
+- użycie pętli, instrukcji warunkowych
+
+
+## Instalacja PL/pgSQL
+
+```sql
+CREATE EXTEMSION IF NOT EXISTS plpgsql;
+```
+
+## Elementy funkcji
+określa typ zwracanej funkcji
+blok kodu z logiką
+instrukcja która określa watość zwracaną przez funckje
+język w ktorym jest napisana funckja
+
+## Przykładowe funkcje
+```sql
+CREATE OR REPLACE FUNCTION example_function() RETURNS TEXT AS $$
+BEGIN
+    RETURN 'HELLO';
+END;
+$$ LANGUAGE plpgsql;
+```
+
+```sql
+CREATE OR REPLACE FUNCTION add_number(a INT, b INT) RETURNS INT AS $$
+BEGIN
+    RETURN a+b;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT add_number(10,30);
+-- 40
+```
+
+```sql
+CREATE OR REPLACE FUNCTION get_all_users() RETURNS TABLE(user_id INT, user_name TEXT) AS $$
+BEGIN
+    RETURN QUERY SELECT id,name FROM users;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM get_all_users();
+```
+
+#### Funckje z parametrami domyślnymi
+```sql
+CREATE OR REPLACE FUNCTION calcuate_tax(price NUMERIC, tax_rate NUMERIC DEFAULT 23) 
+RETURNS NUMERIC AS $$
+BEGIN
+    RETURN price*tax_rate;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+#### Funkcje z wyjątkami
+```sql
+CREATE OR REPLACE FUNCTION calcuate_tax(price NUMERIC, tax_rate NUMERIC DEFAULT 23) 
+RETURNS NUMERIC AS $$
+BEGIN
+    IF b=0 THEN
+        RETURN NULL;
+    ELSE
+        RETURN a/b;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+### Best practies
+- dokładne określenie typów danych parametrów i wartości zwracanych
+- obaługa wyjątków EXCEPTION
+- unikanie ciężkich operacji- powinny być zoptymalizowane i unikać długich pętli
+- testowanie funkcji z różnymi zestawami danych
+- uważać na rekursje 
+- uważać na operacje zmieniające dane
+- uważać na nieefektywne zapytania w pętlach
+
+
+
+[FUNKCJE TEKSTOWE](https://www.postgresql.org/docs/17/functions-string.html)
+
+Funkcja `LENGTH(string)` służy do obliczania liczby znaków ciągu tekstowego
+Funkcja `REPLACE(string, from_sub, to_sub)`
+
+
+# JĘZYKI PLSQL
+- SQL       proste operacje,łatwe
+- PL/pgSQL  logika,pętle warunki
+- C         wymaga kompilacji, wysoka wydajność
+- PL/Python ogromne korzyści, numpy,pandas język plpython3u
+- PL/Perl   elastyczny do manipulacji tekstu i operacji na ciągach znaków
+- PL/Tcl    do wykonywania operacji proceduralnych rzadko używany
+- PL/V8 PL/JavaSript    
+- PL/R      do analiz statystycznych i wizualizacji danych
+
+Jakie języki
+`SELECT lanname AS language, lanpltrusted AS trusted FROM pg_language;`
+
+Jak zainstalowac
+
+```sql
+CREATE EXTENSION plpgsql;
+CREATE EXTENSION plpython3u;
+```
 
