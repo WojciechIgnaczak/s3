@@ -1013,5 +1013,35 @@ zaawansowane funkcje
 przyklady
 
 
-zmienne wbudowane w triggera
+## zmienne wbudowane w triggera
+1. NEW
+zawiera nowy stan wiersza po INSERT UPDATE
+dla DELETE niedostepna
 
+2. OLD
+poprzedni stan wiersza
+nie dostepny przy insercie
+
+3. TG_OP
+zmienna zwraca typ operacji wyzwalającej trigger (insert,update,delete,truncate)
+
+4. TG_NAME
+zmienna zwraca nazwę wyzwalacze
+
+5. TG_TABLE_NAME
+zwraca nazwe tabeli do ktorej jest przypisany wyzwalacz
+
+6. TG_WHEN
+zwraca moment wywolania triggera(before,after,insteadof)
+
+7. TG_RELID
+zwraca onformacje o identyfikatorze tabeli
+
+
+BEST PRACTISE
+minimlizuj logike w triggerach
+debuguj i testuj
+uniukja cyklicznych triggerow
+dokumentuj triggeru
+rozwaz wydajnosc
+obsluga błędów
