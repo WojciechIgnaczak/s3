@@ -59,6 +59,7 @@ CREATE TRIGGER instead_of_trigger
 INSTEAD OF INSERT
 ON user_view
 FOR EACH ROW
+
 EXECUTE FUNCTION handle_view_changes();
 
 
@@ -112,3 +113,4 @@ AFTER OF INSERT OR UPDATE OR DELETE
 ON products
 FOR EACH ROW
 EXECUTE FUNCTION log_products();
+
