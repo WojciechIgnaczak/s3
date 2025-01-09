@@ -39,7 +39,7 @@ unsigned int Animal::counter=0;
 
 class Elephant:public Animal{
 public:
-    Elephant(const string &_name, int _age,int _trunk_lenght):Animal(_name,_age),trunk_length(_trunk_lenght){};
+    Elephant(const string &_name, int _age,int _trunk_lenght):Animal(_name,_age),trunk_length(new int(_trunk_lenght)){};
     virtual string move() override{
         return("Slow\n");
     }
@@ -47,16 +47,18 @@ public:
         return name;
     }
     
-    ~Elephant(){};
+    ~Elephant(){
+        delete trunk_length;
+    };
     void set_trunk_lenght(int _trunk_lenght)
     {
-        trunk_length=_trunk_lenght;
+        *trunk_length=_trunk_lenght;
     }
     const void show(){
         cout<<name<<" , "<<age<<" , "<<trunk_length<<endl;
     }
 private:
-int trunk_length;
+int *trunk_length;
 friend ostream& operator<<(ostream &os, const Elephant &obj);
 
 };

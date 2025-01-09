@@ -1,10 +1,10 @@
 #include <string.h>
- #include <sys/stat.h>
- #include <sys/mman.h>
- #include <fcntl.h>
- #include <stdio.h>
- #include <stdlib.h>
- #include <pthread.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #define TAB_LENGTH 10
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
         close(fd);
         return -1;
     }
-    fstat(fd, &statbuf); 
+    //fstat(fd, &statbuf); 
     //printf("len=%ld\n", statbuf.st_size);
     char *content = mmap(NULL, statbuf.st_size, PROT_READ, MAP_SHARED, fd, 0);
     if (content == MAP_FAILED) {
@@ -56,8 +56,8 @@ int main(int argc, char *argv[]) {
     int prot = PROT_READ | PROT_WRITE; // odczyt i zapis
     int vis = MAP_SHARED | MAP_ANONYMOUS;
     shared_t *shr = (shared_t*)mmap(NULL, sizeof(shared_t), prot, vis, -1, 0);
-    if (shr == NULL)
-        return -1;
+    if (shr == MAP_FAILED)
+        return EXIT_FAILURE;
 
     pthread_mutexattr_t mutexattr;
     if (pthread_mutexattr_init(&mutexattr) != 0)
@@ -67,7 +67,6 @@ int main(int argc, char *argv[]) {
     if (pthread_mutex_init(&shr->mutex, &mutexattr) != 0)
         return -4;
 //z wykladu \>
-    if(shr==NULL) return -1;
 
     for(int i=0;i<TAB_LENGTH;i++)
     {
@@ -85,53 +84,61 @@ int main(int argc, char *argv[]) {
     pid_t pids[number_of_proccess];
 
 // Fork 
-    int*pid_table=malloc(sizeof(int)*number_of_proccess);
+    //int*pid_table=malloc(sizeof(int)*number_of_proccess);
     for (int i = 0; i < number_of_proccess; i++) {
-        printf("WĄTEK: %d",i);
+        //printf("WĄTEK: %d",i);
         //size_t added=(i>0) ? 1: 0;
         size_t start = i * segment_size;
        // size_t  lengt= segment_size + (i == number_of_proccess - 1 ? remainder : 0)-added;
         size_t end= (i == number_of_proccess-1) ? statbuf.st_size : start+segment_size;
         //printf("Długosc: %ld Start: %ld, Koniec: %ld, ad\n",segment_size,start,start+length);
         pid_t pid=fork();
-        printf("start: %ld, end: %ld", start,end);
+       //printf("start: %ld, end: %ld", start,end);
         switch (pid) {
         case -1: /* coś poszło nie tak */
-        printf("ERROR");
+            printf("ERROR");
             return -5;
         case 0: /* jesteśmy w nowym procesie */
         //printf("CHILD: %d\n",pid_table[i]);
             //process segment
-        for (int i = start; i < end; i++)
-        {
-        /* [48, 57] */
-        if (content[i] >= '0' && content[i] <= '9') { 
-            int val = content[i] - '0'; /* content[i] - 48 */
-            /* Zwiększyć odpowiednią wartość w tablicy,
-               która zlicza ilość wystąpień */
-            pthread_mutex_lock(&shr->mutex);
-            shr->tab[val]++;
+            int local_count[TAB_LENGTH]={0};
+            for (int j = start; j < end; j++)
+            {
+            /* [48, 57] */
+                if (content[j] >= '0' && content[j] <= '9') { 
+                    //int val = content[i] - '0'; /* content[i] - 48 */
+                    local_count[content[j]-'0']++;
+                    /* Zwiększyć odpowiednią wartość w tablicy,
+                    która zlicza ilość wystąpień */
+                    //printf("%d", val);
+                }
+                
+                //return 0;
+            }
+            pthread_mutex_lock(&shr->mutex); // wyniki do tablicy o dopiero mutex
+            for(int k=0;k<TAB_LENGTH;k++)
+            {
+                shr->tab[k]+=local_count[k];
+            }
             pthread_mutex_unlock(&shr->mutex);
-            //printf("%d", val);
-        }
-        }
-        return 0;
+        
         default: /* jesteśmy w starym procesie */
-            pid_table[i]=pid;
-            printf("parent: %d\n",pid_table[i]);
-            break;
+            pids[i]=pid;
+            //printf("parent: %d\n",pid_table[i]);
         }
     }
 
 // Wait
     for (int i = 0; i < number_of_proccess; i++) {
-        waitpid(pid_table[i], NULL,0);
+        waitpid(pids[i], NULL,0);
     }
     for(int i=0;i<TAB_LENGTH;i++)
     {
         printf("%d = %d\n",i,shr->tab[i]);
     }
     munmap(content, statbuf.st_size);
+    pthread_mutex_destroy(&shr->mutex);
+
     close(fd);
     return 0;
 }
