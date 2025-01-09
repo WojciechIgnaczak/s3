@@ -978,3 +978,40 @@ CREATE EXTENSION plpgsql;
 CREATE EXTENSION plpython3u;
 ```
 
+# TRIGGERY
+Trigger to mechanizm automatyzujący reakcje na zdarzenia w bazie danych.
+## pojecia
+- moment wykonania dla insert,update,delete,truncate
+- poziomy dzialanie for each row (dla kazdego wiersz), for each statement(rraz na cale zapytanie)
+- moment dzialania before, after, instead of
+
+## elementy skladowe
+```sql
+CREATE [ OR REPLACE ] [ CONSTRAINT ] TRIGGER name 
+    { BEFORE | AFTER | INSTEAD OF } { INSERT | UPDATE | DELETE | TRUNCATE}
+    ON table_name
+    [ NOT DEFERRABLE | [ DEFERRABLE ] [ INITIALLY IMMEDIATE | INITIALLY DEFERRED ] ]
+    [ REFERENCING { { OLD | NEW } TABLE [ AS ] transition_relation_name } [ ... ] ]
+    [ FOR [ EACH ] { ROW | STATEMENT } ]
+    [ WHEN ( condition ) ]
+    EXECUTE { FUNCTION | PROCEDURE } function_name ( arguments )
+```
+
+tworzenie
+
+rodzaje
+before
+aftere
+instead of
+
+
+zaawansowane funkcje
+
+1. Używanie WHEN
+
+2. Obsługa widoków INSTEAD OF
+przyklady
+
+
+zmienne wbudowane w triggera
+
