@@ -59,4 +59,58 @@ CREATE TRIGGER instead_of_trigger
 INSTEAD OF INSERT
 ON user_view
 FOR EACH ROW
+
 EXECUTE FUNCTION handle_view_changes();
+
+
+
+CREATE OR REPLACE FUNCTION log_trunate()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO users_log(action,change_time) VALUES ('TRUNCATE', CURRENT_TIMESTAMP);
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+
+
+-- zadanie
+CREATE TABLE products(
+    id serial PRIMARY KEY,
+    name VARCHAR(100),
+    price numeric,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products_logs(
+    id serial PRIMARY KEY,
+    action VARCHAR(15),
+    product_name VARCHAR(100),
+    price numeric,
+    change_time TIMESTAMP
+    CHECK (action IN ('INSERT', 'UPDATE','DELETE','TRUNCATE'))
+);
+
+
+CREATE OR REPLACE FUNCTION log_products()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP='INSERT' THEN
+        INSERT INTO products_logs(id,action,product_name,price,change_time) VALUES (NEW.id,'INSERT',NEW.name,NEW.price, CURRENT_TIMESTAMP);
+    ELSIF TG_OP='UPDATE' THEN
+        INSERT INTO products_logs(id,action,product_name,price,change_time) VALUES (NEW.id,'UPDATE',NEW.name,NEW.price, CURRENT_TIMESTAMP);
+    ELSIF TG_OP='DELETE' THEN
+        INSERT INTO products_logs(id,action,product_name,price,change_time) VALUES (OLD.id,'DELETE',OLD.name,OLD.price, CURRENT_TIMESTAMP);
+    RETURN NULL
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER products_to_log_trigger
+AFTER OF INSERT OR UPDATE OR DELETE
+ON products
+FOR EACH ROW
+EXECUTE FUNCTION log_products();
+

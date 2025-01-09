@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "line.h"
-#include "point.h"
+#include "Point.h"
 
 int main() {
     point_t *p1 = point_new(10, 20);
