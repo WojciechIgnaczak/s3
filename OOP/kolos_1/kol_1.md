@@ -193,7 +193,8 @@ public:
 int main() {
     Samochod samochod;
     samochod.opisz(); // Wywołanie metody opisującej samochód
-    return 0;
+    return 0;algorytmy np. sortowanie babelkowe
+
 }
 
 ```
@@ -262,3 +263,7 @@ void print() const; // OK
 int getValue() const; // OK
 void setValue(int); // tutaj już coś modyfikujemy
 ```
+
+szablonj
+wyjatki rzucic wychwycic
+algorytmy np. sortowanie babelkowe
