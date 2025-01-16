@@ -1045,3 +1045,62 @@ uniukja cyklicznych triggerow
 dokumentuj triggeru
 rozwaz wydajnosc
 obsluga błędów
+
+
+# procedury
+zarządzają transakcjami COMMIT, ROLLBACK
+wykonuja operacje bez zwracania wyników
+przechowywanie złożonej logiki biznesowej bez potrzeby przenoszenia jej na poziom apliakcji
+
+## tworzenie procedur
+
+```sql
+CREATE OR REPLACE PROCEDURE name_procedure(parameters)
+LANGUAGE plpsql AS $$
+BEGIN
+
+
+END;
+$$;
+
+CALL name_procedure_paramentry);
+
+
+
+CREATE OR REPLACE PROCEDURE name(parameters)
+LANGUAGE plpsql AS $$
+BEGIN
+
+
+END;
+$$;
+```
+
+
+CREATE PROCEDURE
+parametry wejściowe
+begin..end
+transakcje COMMIT, ROLLBACK
+
+
+Transakcje w procedurach
+START TRANSACTION
+COMMIT
+ROLLBACK
+
+Instrukcje kontrolne
+
+If, CASE
+
+petle loop, for, while
+
+
+wyjatki: exception
+
+procedury mogą być w triggerach
+
+best practis
+unikaj zagniezdzonych transakcji
+walidacja danych wejsciowych
+obsluga bledow
+optymalizacja zapytan
