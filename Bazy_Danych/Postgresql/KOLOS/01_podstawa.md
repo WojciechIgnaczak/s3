@@ -71,9 +71,8 @@ Constraint CHECK w PostgreSQL pozwala na ograniczenie wartości w tabeli, na prz
 Przykład: CHECK dla zakresu wartości
 Załóżmy, że masz tabelę z danymi o pracownikach i chcesz upewnić się, że pensja nie przekracza określonego limitu (np. 10000):
 
-sql
-Kopiuj
-Edytuj
+
+
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
@@ -82,9 +81,9 @@ CREATE TABLE employees (
 Przykład: CHECK z wyrażeniem regularnym
 Walidacja numeru telefonu w formacie (XXX) XXX-XXXX:
 
-sql
-Kopiuj
-Edytuj
+
+
+
 CREATE TABLE contacts (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
@@ -94,15 +93,16 @@ CREATE TABLE contacts (
 Przykład: CHECK z wieloma warunkami
 Złożony warunek, który sprawdza, czy wiek osoby jest w określonym zakresie (np. między 18 a 65):
 
-sql
-Kopiuj
-Edytuj
+
+
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
     age INT,
     CONSTRAINT valid_age CHECK (age BETWEEN 18 AND 65)
 );
+
 2. ENUM Types:
 Typ ENUM w PostgreSQL pozwala na stworzenie typu danych, który ma ograniczoną liczbę dozwolonych wartości. Jest to przydatne, gdy masz kolumnę, która przyjmuje tylko kilka określonych wartości (np. statusy, role).
 
