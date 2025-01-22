@@ -346,3 +346,30 @@ int main() {
     std::cout << "Silnia(" << n << ") = " << factorial(n) << std::endl;
     return 0;
 }
+
+
+
+
+Sortowanie
+
+std::vector<std::pair<int, std::string>> students = {
+
+{52543, "Adam"},
+
+{14172, "Ewa"},
+
+{25614, "Json"},
+
+{11111, "Radnom"}
+
+};
+
+std::sort(students.begin(),
+
+students.end(),
+
+[](const auto& a, const auto& b) {
+
+return a.first < b.first;
+
+})
