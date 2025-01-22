@@ -1,0 +1,80 @@
+[capture](parameters) -> return_type {
+    // body
+};
+ChatGPT
+
+Pamięć pełna
+Powiedziałeś(-aś):
+Lambda c++
+ChatGPT powiedział:
+ChatGPT
+W C++, lambda to funkcja anonimowa (czyli funkcja bez nazwy), którą można zadeklarować w locie i przekazać jako argument lub przypisać do zmiennej. Lambdy zostały wprowadzone w standardzie C++11, a ich możliwości rozszerzono w późniejszych wersjach języka.
+
+Oto składnia lambdy:
+
+[capture](parameters) -> return_type {
+    // body
+};
+Składniki lambdy:
+Capture list ([capture]): Określa, jakie zmienne z zewnętrznego zakresu lambda może używać.
+[ ] — Nie przechwytuje żadnych zmiennych.
+[=] — Przechwytuje wszystkie zmienne ze zewnętrznego zakresu przez wartość.
+[&] — Przechwytuje wszystkie zmienne ze zewnętrznego zakresu przez referencję.
+[x, &y] — Przechwytuje zmienną x przez wartość i y przez referencję.
+Parameters ((parameters)): Lista parametrów funkcji, podobnie jak w zwykłych funkcjach.
+Return type (-> return_type) (opcjonalne): Określa typ zwracanej wartości.
+Body ({}): Zawiera kod do wykonania
+
+
+auto greet = []() {
+    std::cout << "Hello, World!" << std::endl;
+};
+greet();
+
+auto add = [](int a, int b) {
+    return a + b;
+};
+std::cout << add(3, 4) << std::endl; // Wyjście: 7
+
+
+int x = 10, y = 20;
+
+// Przez wartość
+auto capture_by_value = [x, y]() {
+    std::cout << x << ", " << y << std::endl;
+};
+
+// Przez referencję
+auto capture_by_reference = [&x, &y]() {
+    x += 10;
+    y += 20;
+};
+
+capture_by_value();        // Wyjście: 10, 20
+capture_by_reference();
+std::cout << x << ", " << y << std::endl; // Wyjście: 20, 40
+
+
+
+
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+    std::for_each(numbers.begin(), numbers.end(), [](int n) {
+        std::cout << n * n << " ";
+    });
+    // Wyjście: 1 4 9 16 25
+    return 0;
+}
+
+
+
+auto multiply = [](double a, double b) -> double {
+    return a * b;
+};
+std::cout << multiply(2.5, 4.0) << std::endl; // Wyjście: 10
+
+
