@@ -73,7 +73,6 @@ FOREIGN KEY (customer_ID) REFERENCES customer.customer(customer_ID),
 FOREIGN KEY (reservation_ID) REFERENCES rental.reservation(reservation_ID)
 );
 
-<<<<<<< HEAD
 CREATE VIEW rental.available_cars AS
 SELECT * FROM vehicle.car
 WHERE availability = 'available';
@@ -87,30 +86,10 @@ SELECT
     car.model,
     r.date_from AS pickup_date,
     r.date_to AS return_date
-=======
-
-CREATE VIEW car_rental.available_cars AS
-SELECT * 
-FROM vehicle.car
-WHERE availability = 'available';
-
-
-CREATE VIEW car_rental.active_reservations AS
-SELECT 
-    r.reservation_ID, 
-    c.name AS customer_name, 
-    c.surname AS customer_surname, 
-    car.brand, 
-    car.model, 
-    r.date_from, 
-    r.date_to
->>>>>>> ed87c6d658a0407363aac81aa4a5e73ccb6436ff
 FROM rental.reservation r
 JOIN customer.customer c ON r.customer_ID = c.customer_ID
 JOIN vehicle.car car ON r.car_ID = car.car_ID
 WHERE CURRENT_DATE BETWEEN r.date_from AND r.date_to;
-<<<<<<< HEAD
-=======
 
 
 INSERT INTO customer.customer (name, surname, address, phone_number) VALUES
@@ -184,4 +163,3 @@ INSERT INTO vehicle.maintenance (car_ID, price, service, scope_of_repairs, date_
 (8, 250.00, 'Serwis 24h', 'Czyszczenie klimatyzacji', '2024-08-01 09:00:00', '2024-08-01 11:00:00'),
 (9, 1000.00, 'Auto Centrum', 'Naprawa zawieszenia', '2024-07-15 08:00:00', '2024-07-20 17:00:00'),
 (10, 400.00, 'Naprawy Ekspres', 'Wymiana akumulatora', '2024-06-10 08:00:00', '2024-06-10 14:00:00');
->>>>>>> ed87c6d658a0407363aac81aa4a5e73ccb6436ff

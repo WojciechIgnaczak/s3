@@ -62,6 +62,41 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
+```sql
+CREATE OR REPLACE FUNCTION funkcja_przyklad(param1 INT, param2 TEXT)
+RETURNS TEXT AS $$
+BEGIN
+    RETURN CONCAT('Wynik: ', param1, ' - ', param2);
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT funkcja_przyklad(10, 'Test');
+
+
+```
+
+
+
+```sql
+
+CREATE OR REPLACE FUNCTION count_character_occurrences(zdanie TEXT, znak CHAR) RETURNS INT AS $$
+DECLARE 
+    wynik INT :=0 ;
+    i INT;
+BEGIN
+    FOR i IN 1..length(zdanie) LOOP
+        IF SUBSTRING(zdanie, i, 1) = znak THEN
+            wynik := wynik + 1;
+        END IF;
+    END LOOP;
+    RETURN wynik;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT count_character_occurrences('Ala ma kota.', 'a');
+
+```
+
 ### Best practies
 - dokładne określenie typów danych parametrów i wartości zwracanych
 - obaługa wyjątków EXCEPTION
