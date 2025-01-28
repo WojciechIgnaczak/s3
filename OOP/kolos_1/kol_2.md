@@ -427,14 +427,18 @@ std::cout << m.size();  // Rozmiar mapy
 // Odwoływanie
 std::map<int, std::string> m = {{1, "Ala"}, {2, "Ola"}};
 std::cout << m[1] << std::endl;  // Odwołanie do wartości dla klucza 1
-std::cout << m.at(2) << std::endl; // Odwołanie do wartości dla klucza 2
+stack<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
-```
-## Unordered map
-```cpp
-#include<unordered_map>
+// Add elements to the stack
+cars.push("Volvo");
 
-// Tworzenie
+// Access the top element
+cout << cars.top(); 
+
+//Change the Top Element
+cars.top() = "Tesla";
+
+// Remove the last added element (Mazda)
 std::unordered_map<int, std::string> um = {{1, "Ala"}, {2, "Ola"}};
 
 //Zmiana
