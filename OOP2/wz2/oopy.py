@@ -19,9 +19,9 @@ class TextLines():
     def writeLine(self,text,numerWiersza):# dodanie wiersza w konkretnej pozycji, nie pozwalamy na dodanie wiersza z przerwą, gdy linia istnieje to zostaje nadpisany
        pass
 
-    def deleteLine(self,numerWiersza): # usuwanie wiersza i przenumerowanie tych poniżej
+    def deleteLine(self,numerWiersza): # usuwanie wiersza i bez przenumerowanie tych poniżej
         pass
-    
+        
     def getNumberOfLines():
         pass
 
@@ -38,7 +38,7 @@ class IdentifiedTextLines(TextLines):
     def writeLine(self,key,text,numerWiersza):# dodanie wiersza w konkretnej pozycji, nie pozwalamy na dodanie wiersza z przerwą, gdy linia istnieje to zostaje nadpisany
        pass
 
-    def deleteLine(self,identyfikator): # usuwanie wiersza i przenumerowanie tych poniżej
+    def deleteLine(self,identyfikator): # usuwanie wiersza i bez przenumerowanie tych poniżej
         pass
 
 class UniquelyIdentifiedTextLines():

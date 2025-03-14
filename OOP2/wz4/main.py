@@ -1,0 +1,206 @@
+from abc import ABC, abstractmethod
+
+# Abstract class
+class TextLines(ABC):
+    # BEGIN: public method
+    @abstractmethod
+    def get_number_of_lines(self):
+        pass
+
+    @abstractmethod
+    def read_line(self,line_number): # wiersz o zadanym numerze
+        pass
+
+    @abstractmethod
+    def delete_line(self,line_number): # usuwanie wiersza i bez przenumerowanie tych poniżej
+        pass
+    
+    @abstractmethod
+    def write_line(self,text,line_number=None):
+        pass
+    '''
+    def write_line(self,text,line_number=None):# dodanie wiersza w konkretnej pozycji, nie pozwalamy na dodanie wiersza z przerwą, gdy linia istnieje to zostaje nadpisany
+        if line_number is None:
+            self.__write_line_at_end(text)
+        else:
+            self.__write_line_at_index(text,line_number)
+    
+
+    # BEGIN: private method
+    @abstractmethod
+    def __write_line_at_end(self,text):
+        pass
+
+    @abstractmethod
+    def __write_line_at_index(self,text,line_number):
+        pass
+    '''
+
+class TextLinesInMemory(TextLines):
+    # BEGIN: public method
+    def __init__(self):
+        self.__lines=[]
+
+    def get_number_of_lines(self):
+        return len(self.__lines)
+
+    def read_line(self,line_number): # wiersz o zadanym numerze
+        if self.get_number_of_lines()>=line_number:
+            return self.__lines[line_number]
+        else:
+            raise IndexError("index out of range")
+            
+    def delete_line(self,line_number): # usuwanie wiersza i bez przenumerowanie tych poniżej
+        if self.get_number_of_lines()>=line_number and line_number >=0:
+            self.__lines[line_number]=""
+        else:
+            raise IndexError("index out of range")
+    
+
+    def write_line(self,text,line_number=None):# dodanie wiersza w konkretnej pozycji, nie pozwalamy na dodanie wiersza z przerwą, gdy linia istnieje to zostaje nadpisany
+        if line_number is None:
+            self.__write_line_at_end(text)
+        else:
+            self.__write_line_at_index(text,line_number)  
+
+    # BEGIN: private method
+    def __write_line_at_end(self,text):
+        if type(text) is not str:
+            raise TypeError("Text must be a text")
+        self.__lines.append(text)
+
+# Conservative
+
+#     def __write_line_at_index(self,text,line_number):
+#         if type(text) is not str:
+#             raise TypeError("Text must be a text")
+#         elif self.get_number_of_lines()>=line_number and line_number>=0:
+#             self.__lines[line_number]=text
+#         else:
+#             raise IndexError("index out of range")
+# # progressive
+    def __write_line_at_index(self,text,line_number):
+        if type(text) is not str:
+            raise TypeError("Text must be a text")
+        elif line_number>=0 and line_number<self.get_number_of_lines():
+            self.__lines[line_number]=text
+        else:
+            for i in range(line_number-self.get_number_of_lines()):
+                self.__write_line_at_end("")
+            self.__write_line_at_end(text)
+
+
+class IdentifiedTextLines():
+    def __init__(self):
+        self.__lines=TextLinesInMemory();
+        self.__ids={};
+
+    def get_identifiers(self):
+        return [d for d in self.__ids]
+    def write_line(self,text,identifier):
+        if identifier not in self.__ids:
+            self.__ids[identifier]=[]
+        self.__lines.write_line(text)
+        line_number=self.__lines.get_number_of_lines()-1
+        self.__ids[identifier].append(line_number)
+
+    def read_line(self,identifier):
+        if identifier not in self.__ids:
+            raise KeyError("Unknown identifier")
+        result=[]
+
+        for idx in self.__ids[identifier]:
+            line=self.__lines.read_line(idx)
+            result.append(line)
+        return result
+
+    def delete_line(self,identifier):
+        if identifier not in self.__ids:
+            raise KeyError("Unknown identifier")
+        for idx in self.__ids[identifier]:
+            self.__lines.delete_line(idx)
+            
+        del self.__ids[identifier]
+
+    def find_free_index(self):
+        number_of_lines=self.__lines.get_number_of_lines()
+        print(number_of_lines)
+        seq=[n for n in range(number_of_lines)]
+        print(seq)
+        for  key in self.__ids:
+            print(f"Identifier: {key}")
+            for idx in self.__ids[key]:
+                print(idx)
+                seq.remove(idx)
+        print(seq)
+        if len(seq)>0:
+            print(f"Use index {seq[0]}")
+        else:
+            print("use without index (append)")
+    
+def testIdentifiedTextLines():
+    titl=IdentifiedTextLines()
+    titl.write_line("foo1","f1")
+    titl.write_line("bar1","b1")
+    titl.write_line("foo2","f1")
+    titl.write_line("bar2","b1")
+    titl.write_line("foo3","f1")
+    lines=titl.read_line("f1")
+    print(titl.get_identifiers())
+
+    for l in lines:
+        print(l)
+    titl.delete_line("f1")
+    print(titl.get_identifiers())
+    titl.test()
+def main():
+    testIdentifiedTextLines()
+
+
+if __name__ =='__main__':
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def testTextLinesInMemory():
+    try:
+        tlim=TextLinesInMemory()
+        line_number=tlim.get_number_of_lines()
+        print(line_number)
+
+        tlim.write_line("ddd")
+        line_number=tlim.get_number_of_lines()
+        print(line_number)
+
+        tlim.write_line("eee",5)
+        line_number=tlim.get_number_of_lines()
+        print(line_number)
+
+        tlim.write_line("fff",2)
+        line_number=tlim.get_number_of_lines()
+        print(line_number)
+      
+        line=tlim.read_line(2);
+        print(line)
+
+        tlim.delete_line(2)
+        print(line_number)
+
+        line=tlim.read_line(2);
+        print(line)
+    except Exception as er:
+        print(er)
+
+
+
