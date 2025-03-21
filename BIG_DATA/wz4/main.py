@@ -165,12 +165,12 @@ def check_numbers(original_file, working_directory):
 
 def main():
     # begin=timer()
-    generate_data("data.dat",100_000,20_000)
+    generate_data("data2.dat",100,200)
     # end=timer()
     # print(f"Generate Time: {end-begin} s.")
     
     # begin=timer()
-    divide_file("data.dat",15,"work")
+    divide_file("data.dat",10,"work")
     # end=timer()
     # print(f"Divide time: {end-begin} s.")
     # begin=timer()
@@ -181,7 +181,7 @@ def main():
     merge_all_files("work")
     # end=timer()
     # print(f"Merge time: {end-begin} s.")
-    print(check_numbers("data.dat","work"))
+    print(check_numbers("data2.dat","work2"))
 if __name__=='__main__':
     main()
 
