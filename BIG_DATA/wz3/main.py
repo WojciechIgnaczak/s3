@@ -96,5 +96,6 @@ def main():
     merge_two_file("work","data_1.dat","data_2.dat","data_1_2.dat")
     end=timer()
     print(f"Time: {end-begin} s.")
+    
 if __name__=='__main__':
     main()
