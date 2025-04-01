@@ -10,11 +10,11 @@ def generate_data(file_path,size,max_value):
     with open(file_path,"w") as file_out:
         for _ in range(size-1):
             number=random.randint(0,max_value)
-            file_out.write(str(number)+"\n")
+            file_out.write(str(number)+",z"+str(random.randint(0,100))+"\n")
             if _%100_000 ==0:
                 print(f"{_} of {size}")
         number=random.randint(0,max_value)
-        file_out.write(str(number))
+        file_out.write(str(number)+",z"+str(number))
 
 def divide_file(file_path,size,working_directory):
     with open(file_path,"r") as file_data:
@@ -59,15 +59,20 @@ def sort_data_in_directory(working_directory):
     number_of_files=len(files)
     for file in files:
         file_path=os.path.join(working_directory,file)
-        data=None
+        data=[]
         with open(file_path,'r') as source_file:
-            data=[int(line.strip()) for line in source_file]
+            for line in source_file:
+                data_p=line.split(",",1)
+                data_p[0]=int(data_p[0])
+                data_p[1]=str(data_p[1].strip())
+                data.append(data_p)
+            
+           # data=[[int(line.split(",",1))] for line in source_file]
         data.sort()
-
         with open(file_path,'w') as result_file:
             for i in range(len(data)-1):
-                result_file.write(str(data[i])+"\n")
-            result_file.write(str(data[-1]))            
+                result_file.write(str(data[i][0])+","+str(data[i][1])+"\n")
+            result_file.write(str(data[-1][0])+","+data[-1][1])            
 
         if c%10 ==0:
             print(f"{c} of {number_of_files}")
@@ -86,8 +91,10 @@ def merge_two_file(working_directory,file_in_1_name,file_in_2_name,file_out_name
 
                 while True:
                     if line_1 and line_2:
-                        v1=int(line_1)
-                        v2=int(line_2)
+                        l1=line_1.split(",",1)
+                        l2=line_2.split(",",1)
+                        v1=int(l1[0])
+                        v2=int(l2[0])
                         if v1<v2:
                             file_out.write(line_1)
                             line_1=file_in_1.readline().strip()
@@ -150,38 +157,82 @@ def check_numbers(original_file, working_directory):
         raise NameError("Zły katalog")
 
     sorted_file_path = os.path.join(working_directory, sorted_file[0])
+    numbers={}
+    with open(sorted_file_path, 'r') as file_sort:
+        for line in file_sort:
+            number=line.strip().split(",",1)
+            number=int(number[0])
+            if not number in numbers:
+                numbers[number]=0
+            numbers[number]+=1
+        
+    with open(original_file, 'r') as file_original:
+        for line in file_original:
+            number=line.strip().split(",",1)
+            number=int(number[0])
+            if not number in numbers:
+                numbers[number]=0
+            numbers[number]-=1
+    
+    for number in numbers.values():
+        if number!=0:
+            return False
+    return True
+    
+def is_sorted(working_directory):
+    sorted_file = get_all_files_in_directory(working_directory)
+    if len(sorted_file) != 1:
+        raise NameError("Zły katalog")
+
+    sorted_file_path = os.path.join(working_directory, sorted_file[0])
 
     with open(sorted_file_path, 'r') as file_sort:
-        sd = [line.strip() for line in file_sort if line.strip()]
+        x=file_sort.readline().strip().split(",",1)
+        x=int(x[0])
+        for line in file_sort:
+            number=line.strip().split(",",1)
+            number=int(number[0])
+            if number < x:
+                return False
+            x=number
 
-    with open(original_file, 'r') as file_original:
-        od = [line.strip() for line in file_original if line.strip()]
+        return True
 
-    return sd == sorted(od)
+def check_correct(original_file,working_directory):
+    return  is_sorted(working_directory) and check_numbers(original_file,working_directory)
 
+def clear_directory(working_directory):
+    files = get_all_files_in_directory(working_directory)
 
-
-
+    for file in files:
+        file_path = os.path.join(working_directory, file)
+        if not os.path.isdir(file_path):
+            if os.path.exists(file_path):
+                os.remove(file_path)
 
 def main():
-    # begin=timer()
-    generate_data("data.dat",100_000,20_000)
-    # end=timer()
-    # print(f"Generate Time: {end-begin} s.")
+    clear_directory("work")
+    begin=timer()
+    generate_data("data.dat",200_000,25_000)
+    end=timer()
+    print(f"Generate Time: {end-begin} s.")
     
-    # begin=timer()
-    divide_file("data.dat",15,"work")
-    # end=timer()
-    # print(f"Divide time: {end-begin} s.")
-    # begin=timer()
+    begin=timer()
+    divide_file("data.dat",5000,"work")
+    end=timer()
+    print(f"Divide time: {end-begin} s.")
+    begin=timer()
     sort_data_in_directory("work")
-    # end=timer()
-    # print(f"Sort Time: {end-begin} s.")
-    # begin=timer()
+    end=timer()
+    print(f"Sort Time: {end-begin} s.")
+    begin=timer()
     merge_all_files("work")
-    # end=timer()
-    # print(f"Merge time: {end-begin} s.")
-    print(check_numbers("data.dat","work"))
+    end=timer()
+    print(f"Merge time: {end-begin} s.")
+    begin=timer()
+    print(check_correct("data.dat","work"))
+    end=timer()
+    print(f"Check time: {end-begin} s.")
 if __name__=='__main__':
     main()
 

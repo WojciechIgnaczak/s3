@@ -152,7 +152,9 @@ def testIdentifiedTextLines():
         print(l)
     titl.delete_line("f1")
     print(titl.get_identifiers())
-    titl.test()
+    #titl.test()
+
+
 def main():
     testIdentifiedTextLines()
 
