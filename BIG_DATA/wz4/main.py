@@ -237,12 +237,3 @@ if __name__=='__main__':
     main()
 
 
-# sprawdz czy sa posortowane
-# zlicz czy elemetow jest tyle samo
-
-# aby dzialalo na pliku:
-# 1,11
-# 5,555
-# 12,1323232
-# 7,444
-# 9,32323
