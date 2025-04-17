@@ -2,12 +2,12 @@ import os
 from PIL import Image
 import math
 import time
-KAFELEK_SIZE = 6
+KAFELEK_SIZE = 16
 KATALOG_ZDJEC = "seg_pred"
 OUTPUT_FILE = "srednie_rgb.txt"
 MAIN_IMAGE = "test.png"
 RESULT_IMAGE = "mozaika.png"
-TILE_WIDTH=150
+TILE_WIDTH=150 # rozmiar obrazów zamiast kafelka do nowego obrazu 150x150
 
 # Liczy średnie RGB danego obrazka
 def srednia_z_obrazu(title, directory):
@@ -35,7 +35,7 @@ def srednie_z_katalogu(directory, output_file):
             
     print(f"Zapisano dane do pliku: {output_file}")
 
-# Znajduje najbliższy RGB obrazek
+# Znajduje najbliższy  obrazek
 def znajdz_najblizszy_kafelek(r_s, g_s, b_s):
     min_dist = float("inf") # początkowa wartość nieskończoności do dystansu
     best_match = None
@@ -45,78 +45,13 @@ def znajdz_najblizszy_kafelek(r_s, g_s, b_s):
             parts = line.strip().split(",")
         
             nazwa, r, g, b = parts[0], int(parts[1]), int(parts[2]), int(parts[3])
-            dist = math.sqrt((r_s - r) ** 2 + (g_s - g) ** 2 + (b_s - b) ** 2)
+            dist = (r_s - r) ** 2 + (g_s - g) ** 2 + (b_s - b) ** 2
             if dist < min_dist:
                 min_dist = dist
                 best_match = nazwa
     return best_match
 
-# robienie nowego obrazu # IMAGE.PASTE
-# def generuj_mozaike():
-#     # Wczytaj obraz główny
-#     img = Image.open(MAIN_IMAGE)
-#     pixels = img.load()
-#     cols, rows = img.size
-#     s = KAFELEK_SIZE * KAFELEK_SIZE
 
-
-
-#         # OBRAZ TAKIEGO SAMEGO ROZMIARU
-#     #  nowy obraz o takim samym rozmiarze jak oryginalny
-# #     mozaika = Image.new("RGB", (cols, rows))
-
-# # # obliczanie średniego koloru dla kafelka i przypisanie odpowiedniego kafelka
-# #     for i in range(cols // KAFELEK_SIZE):
-# #         for j in range(rows // KAFELEK_SIZE):
-# #             r_s = g_s = b_s = 0
-# #             for x in range(KAFELEK_SIZE):
-# #                 for y in range(KAFELEK_SIZE):
-# #                     r, g, b = pixels[i * KAFELEK_SIZE + x, j * KAFELEK_SIZE + y]
-# #                     r_s += r
-# #                     g_s += g
-# #                     b_s += b
-# #             r_avg = int(r_s / s)
-# #             g_avg = int(g_s / s)
-# #             b_avg = int(b_s / s)
-# #             # Znajdź najbliższy kafelek
-# #             best_match = znajdz_najblizszy_kafelek(r_avg, g_avg, b_avg)
-# #             # Wczytaj kafelek
-# #             kafelek = Image.open(os.path.join(KATALOG_ZDJEC, best_match))
-# #             #kafelek = kafelek.resize((KAFELEK_SIZE, KAFELEK_SIZE))  # dopasuj rozmiar kafelka
-# #             mozaika.paste(kafelek, (i * KAFELEK_SIZE, j * KAFELEK_SIZE))
-
-
-#             # OBRAZ WIĘKSZY
-#     mozaika = Image.new("RGB", (
-#         (cols // KAFELEK_SIZE) * TILE_WIDTH,
-#         (rows // KAFELEK_SIZE) * TILE_WIDTH
-#     ))
-#     newpixels=mozaika.load()# do zapisywania po pixelu
-#     for i in range(cols // KAFELEK_SIZE):
-#         for j in range(rows // KAFELEK_SIZE):
-#             r_s = g_s = b_s = 0
-#             for x in range(KAFELEK_SIZE):
-#                 for y in range(KAFELEK_SIZE):
-#                     r, g, b = pixels[i * KAFELEK_SIZE + x, j * KAFELEK_SIZE + y]
-#                     r_s += r
-#                     g_s += g
-#                     b_s += b
-#             r_avg = int(r_s / s)
-#             g_avg = int(g_s / s)
-#             b_avg = int(b_s / s)
-#                 # Znajdź najbardziej pasujący obrazek
-#             best_match = znajdz_najblizszy_kafelek(r_avg, g_avg, b_avg)
-#             if best_match:
-#                 kafelek = Image.open(os.path.join(KATALOG_ZDJEC, best_match))
-#                 mozaika.paste(kafelek, (i * TILE_WIDTH, j * TILE_WIDTH))# do paste
-                
-#                 #kafelek=Image.open(imgpath) # do paste
-  
-
-#     mozaika.save(RESULT_IMAGE)
-#     print(f"Zapisano mozaikę jako {RESULT_IMAGE}")
-
-# PIXEL PO PIXELU
 def generuj_mozaike():
     img = Image.open(MAIN_IMAGE)
     pixels = img.load()
