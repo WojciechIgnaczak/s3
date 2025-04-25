@@ -3,7 +3,7 @@ from PIL import Image
 from multiprocessing import Process, Pipe
 import time
 import random
-KAFELEK_SIZE = 5 # rozmiar kafelka
+KAFELEK_SIZE = 1 # rozmiar kafelka
 KATALOG_ZDJEC = "images24k" # katalog zdjęć które mogą zostać wykorzystane do przetworzenia obrazu
 OUTPUT_FILE = "srednie_rgb.txt" # plik z średnimi rgb wszystkich obrazów z katalogu
 MAIN_IMAGE = "test.png" # nazwa obrazu do przerobienia
@@ -146,19 +146,19 @@ def generuj_mozaike():
     for j, wiersz_wyniki in enumerate(wyniki_wszystkie):
         for i, nazwa in enumerate(wiersz_wyniki):
             if nazwa:
-                kafelek = Image.open(os.path.join(KATALOG_ZDJEC, nazwa)).resize((TILE_WIDTH, TILE_WIDTH))
+                kafelek = Image.open(os.path.join(KATALOG_ZDJEC, nazwa)).resize((TILE_WIDTH, TILE_WIDTH)) # bo trafia się zdjęcie o innym rozmiarze niż powiniemn
                 mozaika.paste(kafelek, (i * TILE_WIDTH, j * TILE_WIDTH))
 
     print("ZAPISYWANIE")
     mozaika.save(RESULT_IMAGE, format=IMG_FORMAT,compress_level=COMPRESS_LEVEL)
-    #mozaika.save(RESULT_IMAGE)
+    #mozaika.save(RESULT_IMAGE, format=IMG_FORMAT)
     print(f"Zapisano mozaikę jako {RESULT_IMAGE}")
 
 if __name__ == "__main__":
     start = time.time()
     print("SREDNIA")
     # Obliczanie średnich 
-    srednie_z_katalogu_paczkami(KATALOG_ZDJEC, OUTPUT_FILE)
+    #srednie_z_katalogu_paczkami(KATALOG_ZDJEC, OUTPUT_FILE)
     print("KONIEc SREDNIA")
 
     #  mozaiki
