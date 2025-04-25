@@ -3,12 +3,14 @@ from PIL import Image
 from multiprocessing import Process, Pipe
 import time
 import random
-KAFELEK_SIZE = 1
-KATALOG_ZDJEC = "images_0003"
-OUTPUT_FILE = "srednie_rgb.txt"
-MAIN_IMAGE = "test.png"
-RESULT_IMAGE = "mozaika.png"
-TILE_WIDTH = 150  # rozmiar nowego obrazu w pikselach
+KAFELEK_SIZE = 5 # rozmiar kafelka
+KATALOG_ZDJEC = "images24k" # katalog zdjęć które mogą zostać wykorzystane do przetworzenia obrazu
+OUTPUT_FILE = "srednie_rgb.txt" # plik z średnimi rgb wszystkich obrazów z katalogu
+MAIN_IMAGE = "test.png" # nazwa obrazu do przerobienia
+RESULT_IMAGE = "mozaika.png" # nazwa końcowego obrzu
+TILE_WIDTH = 150  # rozmiar nowego obrazu w pikselach jako jeden kafelk
+COMPRESS_LEVEL=1 # rozmiar kompresji pliku do zappisu im mniejszy tym szybciej plik się zapisuje ale za to plik jest większych rozmiarów
+IMG_FORMAT="PNG" # format zdjęcia
 
 
 def podziel_na_paczki(pliki, liczba_paczek):
@@ -22,6 +24,7 @@ def licz_srednie_dla_paczki(paczka, conn):
     wyniki = []
     for img_path in paczka:
         with Image.open(img_path) as img:
+            img = img.convert("RGB") # bo w tych 24k obrazach był problem , bo prawdopodobnie niektóre obrazy oprócz RGB miały kanał alfa
             pixels = img.load()
             cols, rows = img.size
             r_s = g_s = b_s = 0
@@ -39,7 +42,8 @@ def licz_srednie_dla_paczki(paczka, conn):
 
 
 def srednie_z_katalogu_paczkami(directory, output_file, liczba_paczek=24):
-    pliki = [os.path.join(directory, f) for f in os.listdir(directory)]
+    rozszerzenia_dozwolone = (".jpg", ".jpeg", ".png", ".bmp", ".gif")
+    pliki = [os.path.join(directory, f) for f in os.listdir(directory) if f.lower().endswith(rozszerzenia_dozwolone)] # bo mogą trafić się inne pliki
     paczki = podziel_na_paczki(pliki, liczba_paczek)
 
     procesy = []
@@ -77,7 +81,7 @@ def znajdz_najblizszy_kafelek(r_s, g_s, b_s):
             dist = (r_s - r) ** 2 + (g_s - g) ** 2 + (b_s - b) ** 2
             if dist < min_dist:
                 if dist ==min_dist:
-                        minimum_distance_list.append(nazwa)
+                    minimum_distance_list.append(nazwa)
                 min_dist = dist
                 minimum_distance_list.clear()
                 minimum_distance_list.append(nazwa)
@@ -145,15 +149,16 @@ def generuj_mozaike():
                 kafelek = Image.open(os.path.join(KATALOG_ZDJEC, nazwa)).resize((TILE_WIDTH, TILE_WIDTH))
                 mozaika.paste(kafelek, (i * TILE_WIDTH, j * TILE_WIDTH))
 
-    mozaika.save(RESULT_IMAGE)
+    print("ZAPISYWANIE")
+    mozaika.save(RESULT_IMAGE, format=IMG_FORMAT,compress_level=COMPRESS_LEVEL)
+    #mozaika.save(RESULT_IMAGE)
     print(f"Zapisano mozaikę jako {RESULT_IMAGE}")
-#___________________________________________________________________________________________________________________
-# TODO | plik jeżeli takie same lub podobne rgb to zapisać do jednej linii | do każdego kafelka zapisać średnią rgb i liste nazw obrazów pasujących do słownika i z tego słownika wybierac losowo
+
 if __name__ == "__main__":
     start = time.time()
     print("SREDNIA")
     # Obliczanie średnich 
-    #srednie_z_katalogu_paczkami(KATALOG_ZDJEC, OUTPUT_FILE)
+    srednie_z_katalogu_paczkami(KATALOG_ZDJEC, OUTPUT_FILE)
     print("KONIEc SREDNIA")
 
     #  mozaiki
@@ -162,4 +167,3 @@ if __name__ == "__main__":
 
     end = time.time()
     print(f"Czas wykonania: {end - start: } sekund")
-#cos
