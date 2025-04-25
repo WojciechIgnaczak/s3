@@ -4,7 +4,7 @@ from multiprocessing import Process, Pipe
 import time
 import random
 KAFELEK_SIZE = 1
-KATALOG_ZDJEC = "seg_pred"
+KATALOG_ZDJEC = "images_0003"
 OUTPUT_FILE = "srednie_rgb.txt"
 MAIN_IMAGE = "test.png"
 RESULT_IMAGE = "mozaika.png"
@@ -109,6 +109,7 @@ def przetworz_wiersz(j, kolumny, pixels, conn):
     conn.send((j, wiersz_wyniki))
     conn.close()
 
+
 def generuj_mozaike():
     img = Image.open(MAIN_IMAGE)
     pixels = img.load()
@@ -158,6 +159,7 @@ if __name__ == "__main__":
     print("KONIEc SREDNIA")
 
     #  mozaiki
+    
     generuj_mozaike()
 
     end = time.time()
