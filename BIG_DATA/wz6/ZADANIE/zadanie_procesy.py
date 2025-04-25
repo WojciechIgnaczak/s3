@@ -85,7 +85,6 @@ def znajdz_najblizszy_kafelek(r_s, g_s, b_s):
     return best_match
 
 
-#___________________________________________________________________________________________________________
 def przetworz_wiersz(j, kolumny, pixels, conn):
     s = KAFELEK_SIZE * KAFELEK_SIZE
     wiersz_wyniki = []
@@ -149,7 +148,6 @@ def generuj_mozaike():
     print(f"Zapisano mozaikę jako {RESULT_IMAGE}")
 #___________________________________________________________________________________________________________________
 # TODO | plik jeżeli takie same lub podobne rgb to zapisać do jednej linii | do każdego kafelka zapisać średnią rgb i liste nazw obrazów pasujących do słownika i z tego słownika wybierac losowo
-
 if __name__ == "__main__":
     start = time.time()
     print("SREDNIA")
@@ -162,3 +160,4 @@ if __name__ == "__main__":
 
     end = time.time()
     print(f"Czas wykonania: {end - start: } sekund")
+#cos
