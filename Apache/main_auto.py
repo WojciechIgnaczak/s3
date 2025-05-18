@@ -20,7 +20,7 @@ while True:
     print("6. Usuń pacjenta")
     print("7. Wyjdź")
     print("8. Usuń bazę danych")
-    choice = input("Wybierz opcję (1-7): ")
+    choice = input("Wybierz opcję (1-8): ")
 
     
     if choice not in ['1', '2', '3', '4', '5','6','7','8']:
@@ -123,10 +123,9 @@ while True:
         pacjent_cache.close()
         sys.exit()
 
-        
+
         ############################################### Usunięcie bazy danych
     if choice == '8':
-        pacjent_cache.clear()
         print("Baza danych została usunięta.")
         pacjent_cache.destroy()
         sys.exit()

@@ -48,7 +48,7 @@ class Wizyta:
 class Recepta:
     def __init__(self, data, lekarz, leki=None):
         self.data = data
-        self.lekarz_id = lekarz
+        self.lekarz = lekarz
         self.leki = leki if leki else []
 
 class Skierowanie:
