@@ -17,27 +17,28 @@ while True:
     print("3. Dodaj receptę")
     print("4. Dodaj skierowanie")
     print("5. Odczytaj pacjenta")
-    print("6. Wyjdź")
-    choice = input("Wybierz opcję (1-6): ")
+    print("6. Usuń pacjenta")
+    print("7. Wyjdź")
+    print("8. Usuń bazę danych")
+    choice = input("Wybierz opcję (1-7): ")
 
-    if choice == '6':
-        print("Koniec programu.")
-        client.close()
-        sys.exit()
-    elif choice not in ['1', '2', '3', '4', '5']:
+    
+    if choice not in ['1', '2', '3', '4', '5','6','7','8']:
         print("Nieprawidłowy wybór. Spróbuj ponownie.")
         continue
-    ############################################## Dodanie pacjenta
+
+        ############################################## Dodanie pacjenta
     if choice == '1':
         pesel = input("Podaj PESEL pacjenta: ")
         imie = input("Podaj imię pacjenta: ")
-        imie2 = input("Podaj drugie imię pacjenta: ")
+        imie2 = imie2 = input("Podaj drugie imię pacjenta (enter jeśli brak): ").strip() or None
         nazwisko =  input("Podaj nazwisko pacjenta: ")
         adres =     input("Podaj adres pacjenta: ")
         telefon =   input("Podaj telefon pacjenta: ")
         dodaj_pacjenta(pacjent_cache, pesel, imie, imie2, nazwisko, adres, telefon)
 
-    ############################################## Dodanie wizyty
+
+        ############################################## Dodanie wizyty
     if choice == '2':
         pesel = input("Podaj PESEL pacjenta: ")
         json_data = pacjent_cache.get(pesel)
@@ -55,6 +56,7 @@ while True:
 
         pacjent.dodaj_wizyte(wizyta)
         pacjent_cache.put(pesel, json.dumps(pacjent.to_dict(), ensure_ascii=False))
+
 
         ############################################## Dodanie recepty
     if choice == '3':
@@ -74,6 +76,7 @@ while True:
         pacjent.dodaj_recepte(recepta)
         pacjent_cache.put(pesel, json.dumps(pacjent.to_dict(), ensure_ascii=False))
 
+
         ############################################## Dodanie skierowania do pacjenta
     if choice == '4':
         pesel = input("Podaj PESEL pacjenta: ")
@@ -90,13 +93,40 @@ while True:
 
         pacjent.dodaj_skierowanie(skierowanie)
         pacjent_cache.put(pesel, json.dumps(pacjent.to_dict(), ensure_ascii=False))
-        
+
+
         ############################################### Odczyt pacjenta i wypisanie
     if choice == '5':
         print("\nOdczyt pacjenta z cache:")
         pesel = input("Podaj PESEL pacjenta: ")
+        json_data = pacjent_cache.get(pesel)
         if json_data is None:
             print("Pacjent o podanym PESEL nie istnieje.")
             continue
         odczytaj_pacjenta(pacjent_cache, pesel)
-    
+
+
+        ############################################### Usunięcie pacjenta
+    if choice == '6':
+        pesel = input("Podaj PESEL pacjenta: ")
+        json_data = pacjent_cache.get(pesel)
+        if json_data is None:
+            print("Pacjent o podanym PESEL nie istnieje.")
+            continue
+        pacjent_cache.clear_key(pesel)
+        print(f"Pacjent o PESEL {pesel} został usunięty z bazy danych.")
+
+
+        ############################################### Wyjście z programu
+    if choice == '7':
+        print("Do widzenia!")
+        pacjent_cache.close()
+        sys.exit()
+
+        
+        ############################################### Usunięcie bazy danych
+    if choice == '8':
+        pacjent_cache.clear()
+        print("Baza danych została usunięta.")
+        pacjent_cache.destroy()
+        sys.exit()
