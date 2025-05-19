@@ -1,5 +1,5 @@
 from pyignite import Client
-from dane_z_pesel import day_of_birth, month_of_birth_number,sex, year_of_birth
+from dane_z_pesel import day_of_birth, month_of_birth_number,sex, year_of_birth, validate_pesel
 from klasy import Pacjent, Wizyta, Recepta, Skierowanie,odbuduj_pacjenta
 from zapis_odczyt import dodaj_pacjenta, odczytaj_pacjenta
 import json
@@ -30,6 +30,9 @@ while True:
         ############################################## Dodanie pacjenta
     if choice == '1':
         pesel = input("Podaj PESEL pacjenta: ")
+        if validate_pesel(pesel) == False:
+            print("Nieprawidłowy PESEL. Spróbuj ponownie.")
+            continue
         imie = input("Podaj imię pacjenta: ")
         imie2 = imie2 = input("Podaj drugie imię pacjenta (enter jeśli brak): ").strip() or None
         nazwisko =  input("Podaj nazwisko pacjenta: ")
