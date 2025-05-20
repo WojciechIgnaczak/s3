@@ -51,12 +51,12 @@ weights = [
 
 
 def sum_of_products(input: list[int], weights: list[int]) -> int :
-    sum = 0
+    total  = 0
 
     for i in range(len(input)):
-        sum += input[i] * weights[i]
+        total  += input[i] * weights[i]
 
-    return sum
+    return total 
 
 
 def main():
