@@ -1,1 +1,23 @@
-fff
+przedmiot z grupy ogólnorozwojowych
+
+nazwa: organizacja produkcji i zarządzanie jakością
+W 15 P 15
+
+jedna ocena z zaliczenia
+warunki zaliczenia później
+
+zaliczenie:
+do wykonania 1 projekt zwiazana z organizacją przedsiewziecia pod wzgledem powiązania zadań, analizy czasowej itp.
+wykonanie projektu z zarzadzaniem jakością z "karty shewarda" (poprzez obserwacje sygnalów z produkcji wyciągać wnisoki czy nasz system jest zdolny do produkcji wyrobow w odpowiedniej jakosći)
+
+Poka-Yoke
+metoda projektowania czegos zeby zminimalizować błędy, pomyłki, defekty produkcji
+
+
+teraz kontrola jakości przy produkcji masowej jest statystyczna
+
+podrecznik i zadnaia z "Introduction to statistical Quality Control" 5e Douglas C.Montgomery
+
+
+na czesci projektowej beda zadania i na koniec w domu będzie zadanie do zrobienia
+
