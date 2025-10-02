@@ -1,0 +1,4 @@
+wykres przez środki prostokątów
+interpolacja wzory wykresy generowanie danych wzór poczatek koniec precyzja
+aproksymacja wzory wykresy
+wykresy do simpsona
