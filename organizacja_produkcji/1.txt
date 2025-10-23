@@ -35,5 +35,66 @@ są uniwersalne i pasuja do każdej produkcji
 
 
 
+W2
+przedsięwzięcie - wszystko to co chcemy zrobic i co ma swój konkretny cel. aby osiagnelo cel musimy to zaplanować bez planu może byc porażka . istotna rzecza jest zaplanowanie przedsiewziecia. na bazie planu mozemy weryfikować realizacje i postep prac, budżet.
+planowanie jest istotne aby przed rozpoczeniem realizacji przedsiewziecia przejrzec plan i stwierdzic czy wszytko zaplanowaliśmy, przewidzieliśmy, czy jest realne. Planowanie przedsięwziecia jest to 1 z elementów project managment (zarzadzania projektami)
+
+metody planowania:
+metoda ścieżki krytycznej CPM (tym robić projekt) - czasy zadań są zdeterminowane
+pert -oparte na statystyce, uwzgedniamy różne sytuacje najgorsze, najlepsze i najbardziej prawdopodobne - czasy zadań nie musi być zdeterminowany może byc probilistycznie
 
 
+Co składa się na zaplanowanie przedsięwzięcia?:
+-określenie celu
+-wyszczególnienie jakie zadania musimy zrealizować, lub czynności które musimy zrobić
+-powiązanie logiczne zadań (4 rodzaje) typy: finish to start, start to start, finish to finish, start to finish
+-przypisanie zasobów do zadań (nie będziemy tego robic w projekcie)np. zasoby ludzkie, sprzęt do realizacji, finanse, miejsce realizacji
+-zdeterminowanie czasu ile zadanie ma trwać
+-sprawdzanie konfliktów
+-optymalizacja planu pod pewnym kątem np. minimalizacja kosztów, czasu, zatrudnienia, wielokryterialna, optymalizacja != rezygnacja
+
+można planować przedsięwzięcie od początku albo od końca
+
+Metoda sieciowa:
+
+Projekt
+wprowadzenie do produkcji nowego wyrobu. szereg zynności i zadań. ułożyc to czasowo i zrobić harmonogram.
+najczęściej powiązania finish to finish (najczęściej ale nie wszędzie)
+podział na etapy ale to ciąg tylko do rysowania
+treść też umieścić
+np. musimy skończyć A żeby zacząć B 
+Czas podany: każdy będzie miał inne dane dlatego kolumny A-E
+przykładowa sieć w zeszycie
+wykres gantta (sami ustalamy kiedy rozpoczynamy)
+
+
+czynnosci krytyczne : zadanie się przedłuzy to projekt się przedłuzy, nad nimi trzeba czuwać
+ścieżka krytyczna
+
+wydłużenie czynności na ścieżce krytycznej: przesuwa termin zakończenia lub prowadzi do tego że nie skończymy przedsięwzięcia
+
+harmonogram gantta
+rysunek schematu czasowego
+
+
+W3
+o jakości
+
+W4
+
+zakłócenia procesu: 
+-losowe - przyczyny losowe - występują w dużej liczbie, wpływ niewielki, prowadzą do zmienności, np. drgania w łożyskach,nie możemy wyprodukować 2 identycnzych wyrobów przez zakłócenia losowe, niemożliwe zniwelowanie do 0 
+-specjalne -trzeba je zidentyfikować, pojawiaja sie nagle, intensywny wpływ, trzeba eliminować, 
+
+statystyczne sterowanie procesami - bieżąca kontrola porcesu służąca do wykrywania jego ewentualnych rozregulowań i w konsekwencji służąca stałej poprawie jakości. 
+
+
+Karty Shewharda : powstaje na podstawie badania wyrobu pod względem danego parametru np. pod wzgledem jakiegos wymiaru. Pobieranie próbki na początku często i duża ilość (6-10) po ustabilizowaniu żadziej i mniej . można zauwazyć wcześniej zakłócenie specjalne
+
+Karty kontrolne:
+- alternatywne - oceniane dobra-zła
+- liczbowe - ocena mierzalna : karta X średniej, karta s odchylenie standardowego,karta r rozstęp, karta me mediany, karta cusum sum skumulomanych
+
+Karta X
+
+wzór na odchylenie standardowe
