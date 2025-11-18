@@ -11,310 +11,34 @@ tmpfs           5,0M   12K  5,0M   1% /run/lock
 efivarfs        438K  248K  186K  58% /sys/firmware/efi/efivars
 /dev/sda1      1022M   47M  976M   5% /boot/efi
 tmpfs           1,6G  2,5M  1,6G   1% /run/user/1001
+
+
+
+
 u334535@user-Precision-3460:~$ sudo apt update
-[sudo] hasło użytkownika u334535: 
-Stary:1 https://packages.microsoft.com/repos/azure-cli noble InRelease
-Pobieranie:2 https://packages.microsoft.com/repos/code stable InRelease [3 590 B]                  
-Pobieranie:3 https://dl.google.com/linux/chrome/deb stable InRelease [1 825 B]                     
-Stary:4 https://apt.postgresql.org/pub/repos/apt noble-pgdg InRelease                              
-Pobieranie:5 https://packages.microsoft.com/repos/code stable/main amd64 Packages [20,1 kB]        
-Stary:6 https://ppa.launchpadcontent.net/kicad/kicad-9.0-releases/ubuntu noble InRelease           
-Pobieranie:7 https://dl.google.com/linux/chrome/deb stable/main amd64 Packages [1 209 B]           
-Pobieranie:8 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]                   
-Stary:9 http://archive.ubuntu.com/ubuntu noble InRelease                             
-Pobieranie:10 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]                    
-Pobieranie:11 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]                  
-Pobieranie:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1 581 kB]        
-Pobieranie:13 http://archive.ubuntu.com/ubuntu noble-updates/main Translation-en [298 kB]          
-Pobieranie:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]        
-Pobieranie:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15,4 kB]   
-Pobieranie:16 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2 240 kB]  
-Pobieranie:17 http://archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [508 kB]    
-Pobieranie:18 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]   
-Pobieranie:19 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1 298 kB]      
-Pobieranie:20 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [213 kB]        
-Pobieranie:21 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21,6 kB]     
-Pobieranie:22 http://security.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9 012 B] 
-Pobieranie:23 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2 131 kB]
-Pobieranie:24 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [483 kB]  
-Pobieranie:25 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B] 
-Pobieranie:26 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [906 kB]    
-Pobieranie:27 http://security.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]    
-Pobieranie:28 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [52,3 kB] 
-Pobieranie:29 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B] 
-Zign:30 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components                   
-Pobieranie:31 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-Pobieranie:32 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7 132 B]
-Pobieranie:33 http://archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-Pobieranie:34 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11,0 kB]
-Pobieranie:35 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-Pobieranie:30 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]    
-Pobrano 10,9 MB w 1min 2s (177 kB/s)                                                               
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-6 pakietów może być zaktualizowanych. Można je zobaczyć wykonując 'apt list --upgradable'.
-u334535@user-Precision-3460:~$ sudo apt upgrade -y
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-Obliczanie aktualizacji... Gotowe
-Get more security updates through Ubuntu Pro with 'esm-apps' enabled:
-  libmagickcore-6.q16-7t64 libzvbi-common imagemagick
-  libmagickcore-6.q16-7-extra libcjson1 libpostproc57 libavcodec60
-  libgstreamer-plugins-bad1.0-0 libzvbi0t64 libgraphicsmagick++-q16-12t64
-  libavutil58 imagemagick-6.q16 libswscale7 libswresample4
-  imagemagick-6-common 7zip libavformat60 libgraphicsmagick-q16-3t64
-  libavfilter9 libmagickwand-6.q16-7t64
-Learn more about Ubuntu Pro at https://ubuntu.com/pro
-Zostaną zainstalowane następujące NOWE pakiety:
-  linux-headers-6.14.0-35-generic linux-hwe-6.14-headers-6.14.0-35 linux-hwe-6.14-tools-6.14.0-35
-  linux-image-6.14.0-35-generic linux-modules-6.14.0-35-generic
-  linux-modules-extra-6.14.0-35-generic linux-modules-nvidia-580-6.14.0-35-generic
-  linux-objects-nvidia-580-6.14.0-35-generic linux-signatures-nvidia-6.14.0-35-generic
-  linux-tools-6.14.0-35-generic
-Następujące pakiety zostały zatrzymane:
-  linux-signatures-nvidia-6.14.0-33-generic
-Następujące pakiety zostaną zaktualizowane:
-  linux-generic-hwe-24.04 linux-headers-generic-hwe-24.04 linux-image-generic-hwe-24.04
-  linux-modules-nvidia-550-generic-hwe-24.04 linux-modules-nvidia-580-generic-hwe-24.04
-5 aktualizowanych, 10 nowo instalowanych, 0 usuwanych i 1 nieaktualizowanych.
-Konieczne pobranie 292 MB archiwów.
-Po tej operacji zostanie dodatkowo użyte 494 MB miejsca na dysku.
-Pobieranie:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-modules-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1 [40,7 MB]
-Pobieranie:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-image-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1 [15,3 MB]
-Pobieranie:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-modules-extra-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1 [119 MB]
-Pobieranie:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1 [1 728 B]
-Pobieranie:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-image-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1 [2 486 B]
-Pobieranie:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-hwe-6.14-headers-6.14.0-35 all 6.14.0-35.35~24.04.1 [14,1 MB]
-Pobieranie:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-headers-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1 [3 739 kB]
-Zign:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-headers-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1
-Pobieranie:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-hwe-6.14-tools-6.14.0-35 amd64 6.14.0-35.35~24.04.1 [1 178 kB]
-Pobieranie:10 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-signatures-nvidia-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1+1 [22,9 kB]
-Pobieranie:11 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-objects-nvidia-580-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1+1 [97,9 MB]
-Zign:11 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-objects-nvidia-580-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1+1
-Pobieranie:12 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-modules-nvidia-580-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1+1 [8 382 B]
-Pobieranie:13 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-modules-nvidia-580-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1+1 [6 702 B]
-Pobieranie:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-modules-nvidia-550-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1+1 [6 634 B]
-Pobieranie:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-tools-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1 [1 636 B]
-Pobieranie:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-headers-generic-hwe-24.04 amd64 6.14.0-35.35~24.04.1 [2 328 B]
-Pobieranie:11 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 linux-objects-nvidia-580-6.14.0-35-generic amd64 6.14.0-35.35~24.04.1+1 [97,9 MB]
-Pobrano 213 MB w 7min 55s (449 kB/s)                                                               
-Prekonfiguracja pakietów ...
-Wybieranie wcześniej niewybranego pakietu linux-modules-6.14.0-35-generic.
-(Odczytywanie bazy danych ... 573840 plików i katalogów obecnie zainstalowanych.)
-Przygotowywanie do rozpakowania pakietu .../00-linux-modules-6.14.0-35-generic_6.14.0-35.35~24.04.1_
-amd64.deb ...
-Rozpakowywanie pakietu linux-modules-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Wybieranie wcześniej niewybranego pakietu linux-image-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../01-linux-image-6.14.0-35-generic_6.14.0-35.35~24.04.1_am
-d64.deb ...
-Rozpakowywanie pakietu linux-image-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Wybieranie wcześniej niewybranego pakietu linux-modules-extra-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../02-linux-modules-extra-6.14.0-35-generic_6.14.0-35.35~24
-.04.1_amd64.deb ...
-Rozpakowywanie pakietu linux-modules-extra-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Przygotowywanie do rozpakowania pakietu .../03-linux-generic-hwe-24.04_6.14.0-35.35~24.04.1_amd64.de
-b ...
-Rozpakowywanie pakietu linux-generic-hwe-24.04 (6.14.0-35.35~24.04.1) nad (6.14.0-34.34~24.04.1) ...
-Przygotowywanie do rozpakowania pakietu .../04-linux-image-generic-hwe-24.04_6.14.0-35.35~24.04.1_am
-d64.deb ...
-Rozpakowywanie pakietu linux-image-generic-hwe-24.04 (6.14.0-35.35~24.04.1) nad (6.14.0-34.34~24.04.
-1) ...
-Wybieranie wcześniej niewybranego pakietu linux-hwe-6.14-headers-6.14.0-35.
-Przygotowywanie do rozpakowania pakietu .../05-linux-hwe-6.14-headers-6.14.0-35_6.14.0-35.35~24.04.1
-_all.deb ...
-Rozpakowywanie pakietu linux-hwe-6.14-headers-6.14.0-35 (6.14.0-35.35~24.04.1) ...
-Wybieranie wcześniej niewybranego pakietu linux-headers-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../06-linux-headers-6.14.0-35-generic_6.14.0-35.35~24.04.1_
-amd64.deb ...
-Rozpakowywanie pakietu linux-headers-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Przygotowywanie do rozpakowania pakietu .../07-linux-headers-generic-hwe-24.04_6.14.0-35.35~24.04.1_
-amd64.deb ...
-Rozpakowywanie pakietu linux-headers-generic-hwe-24.04 (6.14.0-35.35~24.04.1) nad (6.14.0-34.34~24.0
-4.1) ...
-Wybieranie wcześniej niewybranego pakietu linux-hwe-6.14-tools-6.14.0-35.
-Przygotowywanie do rozpakowania pakietu .../08-linux-hwe-6.14-tools-6.14.0-35_6.14.0-35.35~24.04.1_a
-md64.deb ...
-Rozpakowywanie pakietu linux-hwe-6.14-tools-6.14.0-35 (6.14.0-35.35~24.04.1) ...
-Wybieranie wcześniej niewybranego pakietu linux-signatures-nvidia-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../09-linux-signatures-nvidia-6.14.0-35-generic_6.14.0-35.3
-5~24.04.1+1_amd64.deb ...
-Rozpakowywanie pakietu linux-signatures-nvidia-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-Wybieranie wcześniej niewybranego pakietu linux-objects-nvidia-580-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../10-linux-objects-nvidia-580-6.14.0-35-generic_6.14.0-35.
-35~24.04.1+1_amd64.deb ...
-Rozpakowywanie pakietu linux-objects-nvidia-580-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-Wybieranie wcześniej niewybranego pakietu linux-modules-nvidia-580-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../11-linux-modules-nvidia-580-6.14.0-35-generic_6.14.0-35.
-35~24.04.1+1_amd64.deb ...
-Rozpakowywanie pakietu linux-modules-nvidia-580-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-Przygotowywanie do rozpakowania pakietu .../12-linux-modules-nvidia-580-generic-hwe-24.04_6.14.0-35.
-35~24.04.1+1_amd64.deb ...
-Rozpakowywanie pakietu linux-modules-nvidia-580-generic-hwe-24.04 (6.14.0-35.35~24.04.1+1) nad (6.14
-.0-34.34~24.04.1+1) ...
-Przygotowywanie do rozpakowania pakietu .../13-linux-modules-nvidia-550-generic-hwe-24.04_6.14.0-35.
-35~24.04.1+1_amd64.deb ...
-Rozpakowywanie pakietu linux-modules-nvidia-550-generic-hwe-24.04 (6.14.0-35.35~24.04.1+1) nad (6.14
-.0-34.34~24.04.1+1) ...
-Wybieranie wcześniej niewybranego pakietu linux-tools-6.14.0-35-generic.
-Przygotowywanie do rozpakowania pakietu .../14-linux-tools-6.14.0-35-generic_6.14.0-35.35~24.04.1_am
-d64.deb ...
-Rozpakowywanie pakietu linux-tools-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-hwe-6.14-headers-6.14.0-35 (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-objects-nvidia-580-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-Konfigurowanie pakietu linux-modules-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-hwe-6.14-tools-6.14.0-35 (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-image-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-I: /boot/vmlinuz.old is now a symlink to vmlinuz-6.14.0-34-generic
-I: /boot/initrd.img.old is now a symlink to initrd.img-6.14.0-34-generic
-I: /boot/vmlinuz is now a symlink to vmlinuz-6.14.0-35-generic
-I: /boot/initrd.img is now a symlink to initrd.img-6.14.0-35-generic
-Konfigurowanie pakietu linux-modules-extra-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-headers-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-/etc/kernel/header_postinst.d/dkms:
- * dkms: running auto installation service for kernel 6.14.0-35-generic
-Sign command: /usr/bin/kmodsign
-Signing key: /var/lib/shim-signed/mok/MOK.priv
-Public certificate (MOK): /var/lib/shim-signed/mok/MOK.der
 
-Building module:
-Cleaning build area...
-unset ARCH; [ ! -h /usr/bin/cc ] && export CC=/usr/bin/gcc; env NV_VERBOSE=1 'make' -j12 NV_EXCLUDE_
-BUILD_MODULES='' KERNEL_UNAME=6.14.0-35-generic IGNORE_XEN_PRESENCE=1 IGNORE_CC_MISMATCH=1 SYSSRC=/l
-ib/modules/6.14.0-35-generic/build LD=/usr/bin/ld.bfd CONFIG_X86_KERNEL_IBT= modules...........
-Signing module /var/lib/dkms/nvidia/580.95.05/build/nvidia.ko
-Signing module /var/lib/dkms/nvidia/580.95.05/build/nvidia-modeset.ko
-Signing module /var/lib/dkms/nvidia/580.95.05/build/nvidia-drm.ko
-Signing module /var/lib/dkms/nvidia/580.95.05/build/nvidia-uvm.ko
-Signing module /var/lib/dkms/nvidia/580.95.05/build/nvidia-peermem.ko
-Cleaning build area...
 
-nvidia.ko.zst:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/6.14.0-35-generic/updates/dkms/
-
-nvidia-modeset.ko.zst:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/6.14.0-35-generic/updates/dkms/
-
-nvidia-drm.ko.zst:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/6.14.0-35-generic/updates/dkms/
-
-nvidia-uvm.ko.zst:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/6.14.0-35-generic/updates/dkms/
-
-nvidia-peermem.ko.zst:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/6.14.0-35-generic/updates/dkms/
-depmod...
-dkms autoinstall on 6.14.0-35-generic/x86_64 succeeded for nvidia
- * dkms: autoinstall for kernel 6.14.0-35-generic
-   ...done.
-Konfigurowanie pakietu linux-tools-6.14.0-35-generic (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-signatures-nvidia-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-Konfigurowanie pakietu linux-image-generic-hwe-24.04 (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-headers-generic-hwe-24.04 (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-modules-nvidia-580-6.14.0-35-generic (6.14.0-35.35~24.04.1+1) ...
-linux-image-nvidia-6.14.0-35-generic: constructing .ko files
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-/usr/bin/ld.bfd: warning: --package-metadata is empty, ignoring
-nvidia-drm.ko: DOBRZE
-nvidia-modeset.ko: DOBRZE
-nvidia-peermem.ko: DOBRZE
-nvidia-uvm.ko: DOBRZE
-nvidia.ko: DOBRZE
-Konfigurowanie pakietu linux-generic-hwe-24.04 (6.14.0-35.35~24.04.1) ...
-Konfigurowanie pakietu linux-modules-nvidia-580-generic-hwe-24.04 (6.14.0-35.35~24.04.1+1) ...
-Konfigurowanie pakietu linux-modules-nvidia-550-generic-hwe-24.04 (6.14.0-35.35~24.04.1+1) ...
-Przetwarzanie wyzwalaczy pakietu linux-image-6.14.0-35-generic (6.14.0-35.35~24.04.1)...
-/etc/kernel/postinst.d/dkms:
- * dkms: running auto installation service for kernel 6.14.0-35-generic
- * dkms: autoinstall for kernel 6.14.0-35-generic
-   ...done.
-/etc/kernel/postinst.d/initramfs-tools:
-update-initramfs: Generating /boot/initrd.img-6.14.0-35-generic
-/etc/kernel/postinst.d/zz-update-grub:
-Sourcing file `/etc/default/grub'
-Generating grub configuration file ...
-Found linux image: /boot/vmlinuz-6.14.0-35-generic
-Found initrd image: /boot/initrd.img-6.14.0-35-generic
-Found linux image: /boot/vmlinuz-6.14.0-34-generic
-Found initrd image: /boot/initrd.img-6.14.0-34-generic
-Found linux image: /boot/vmlinuz-6.14.0-33-generic
-Found initrd image: /boot/initrd.img-6.14.0-33-generic
-Found linux image: /boot/vmlinuz-6.11.0-21-generic
-Found initrd image: /boot/initrd.img-6.11.0-21-generic
-Found linux image: /boot/vmlinuz-6.8.0-47-generic
-Found initrd image: /boot/initrd.img-6.8.0-47-generic
-Found memtest86+ 64bit EFI image: /boot/memtest86+x64.efi
-Warning: os-prober will be executed to detect other bootable partitions.
-Its output will be used to detect bootable binaries on them and create new boot entries.
-Found Windows Boot Manager on /dev/nvme0n1p1@/efi/Microsoft/Boot/bootmgfw.efi
-Adding boot menu entry for UEFI Firmware Settings ...
-Found grml-rescueboot ISO image: /boot/grml/kali-linux-2025.1a-live-amd64.iso
-done
-u334535@user-Precision-3460:~$ sudo apt-get install -y \
-ca-certificates \
-curl gnupg \
-lsb-relase
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-E: Nie udało się odnaleźć pakietu lsb-relase
 u334535@user-Precision-3460:~$ sudo apt-get install -y \
 ca-certificates \
 curl gnupg \
 lsb-release
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-ca-certificates jest już w najnowszej wersji (20240203).
-curl jest już w najnowszej wersji (8.5.0-2ubuntu10.6).
-gnupg jest już w najnowszej wersji (2.4.4-2ubuntu17.3).
-lsb-release jest już w najnowszej wersji (12.0-2).
-Następujące pakiety zostały zainstalowane automatycznie i nie są już więcej wymagane:
-  linux-headers-6.14.0-33-generic linux-hwe-6.14-headers-6.14.0-33 linux-hwe-6.14-tools-6.14.0-33
-  linux-image-6.14.0-33-generic linux-modules-6.14.0-33-generic
-  linux-modules-extra-6.14.0-33-generic linux-modules-nvidia-550-6.14.0-33-generic
-  linux-objects-nvidia-550-6.14.0-33-generic linux-objects-nvidia-580-6.14.0-33-generic
-  linux-signatures-nvidia-6.14.0-33-generic linux-tools-6.14.0-33-generic nvidia-kernel-common-550
-Aby je usunąć należy użyć "sudo apt autoremove".
-0 aktualizowanych, 0 nowo instalowanych, 0 usuwanych i 1 nieaktualizowanych.
-u334535@user-Precision-3460:~$ ^[[200~sudo mkdir -p /etc/apt/keyrings
-sudo: nie znaleziono polecenia
+
+
 u334535@user-Precision-3460:~$ sudo mkdir -p /etc/apt/keyrings
+
+
+
 u334535@user-Precision-3460:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+
+
 u334535@user-Precision-3460:~$ echo \
 "deb [arch=amd64 signed-by=/etc/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+
+
+
+
 u334535@user-Precision-3460:~$ docker
 Polecenie 'docker' nie zostało znalezione, ale można je zainstalować za pomocą:
 sudo snap install docker         # version 28.4.0, or
@@ -322,6 +46,9 @@ sudo snap install docker         # version 28.1.1+1
 sudo apt  install docker.io      # version 28.2.2-0ubuntu1~24.04.1
 sudo apt  install podman-docker  # version 4.9.3+ds1-1ubuntu0.2
 Zobacz 'snap info <nazwasnapa>' dla dodatkowych wersji.
+
+
+
 u334535@user-Precision-3460:~$ sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -333,134 +60,36 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
 sudo apt-get update
-Pobieranie:1 https://download.docker.com/linux/ubuntu noble InRelease [48,5 kB]
-Stary:2 https://packages.microsoft.com/repos/azure-cli noble InRelease                             
-Stary:3 https://packages.microsoft.com/repos/code stable InRelease                                 
-Stary:4 https://apt.postgresql.org/pub/repos/apt noble-pgdg InRelease                              
-Błąd:1 https://download.docker.com/linux/ubuntu noble InRelease                                    
-  Następujące podpisy nie mogły zostać zweryfikowane z powodu braku klucza publicznego: NO_PUBKEY 7EA0A9C3F273FCD8
-Stary:5 https://dl.google.com/linux/chrome/deb stable InRelease                                    
-Stary:6 https://ppa.launchpadcontent.net/kicad/kicad-9.0-releases/ubuntu noble InRelease           
-Stary:7 http://security.ubuntu.com/ubuntu noble-security InRelease                                 
-Stary:8 http://archive.ubuntu.com/ubuntu noble InRelease                          
-Stary:9 http://archive.ubuntu.com/ubuntu noble-updates InRelease
-Stary:10 http://archive.ubuntu.com/ubuntu noble-backports InRelease
-Czytanie list pakietów... Gotowe
-W: Błąd GPG: https://download.docker.com/linux/ubuntu noble InRelease: Następujące podpisy nie mogły zostać zweryfikowane z powodu braku klucza publicznego: NO_PUBKEY 7EA0A9C3F273FCD8
-E: Repozytorium "https://download.docker.com/linux/ubuntu noble InRelease" nie jest podpisane.
-N: Aktualizacja z takiego repozytorium nie może być bezpiecznie wykonana, zatem jest domyślnie wyłączona.
-N: Więcej informacji o tworzeniu repozytorium i szczegółach konfiguracji użytkownika znajduje się w podręczniku apt-secure(8).
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-ca-certificates jest już w najnowszej wersji (20240203).
-curl jest już w najnowszej wersji (8.5.0-2ubuntu10.6).
-Następujące pakiety zostały zainstalowane automatycznie i nie są już więcej wymagane:
-  linux-headers-6.14.0-33-generic linux-hwe-6.14-headers-6.14.0-33 linux-hwe-6.14-tools-6.14.0-33
-  linux-image-6.14.0-33-generic linux-modules-6.14.0-33-generic
-  linux-modules-extra-6.14.0-33-generic linux-modules-nvidia-550-6.14.0-33-generic
-  linux-objects-nvidia-550-6.14.0-33-generic linux-objects-nvidia-580-6.14.0-33-generic
-  linux-signatures-nvidia-6.14.0-33-generic linux-tools-6.14.0-33-generic nvidia-kernel-common-550
-Aby je usunąć należy użyć "sudo apt autoremove".
-0 aktualizowanych, 0 nowo instalowanych, 0 usuwanych i 1 nieaktualizowanych.
-Pobieranie:1 https://download.docker.com/linux/ubuntu noble InRelease [48,5 kB]
-Stary:2 https://dl.google.com/linux/chrome/deb stable InRelease                                    
-Stary:3 https://apt.postgresql.org/pub/repos/apt noble-pgdg InRelease                              
-Stary:4 https://packages.microsoft.com/repos/azure-cli noble InRelease                             
-Stary:5 https://packages.microsoft.com/repos/code stable InRelease                                 
-Pobieranie:6 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages [33,5 kB]        
-Stary:7 https://ppa.launchpadcontent.net/kicad/kicad-9.0-releases/ubuntu noble InRelease           
-Stary:8 http://security.ubuntu.com/ubuntu noble-security InRelease                                 
-Stary:9 http://archive.ubuntu.com/ubuntu noble InRelease                         
-Pobieranie:10 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-Stary:11 http://archive.ubuntu.com/ubuntu noble-backports InRelease                                
-Pobrano 208 kB w 6s (33,2 kB/s)                                                                    
-Czytanie list pakietów... Gotowe
+
+
+
+
 u334535@user-Precision-3460:~$ sudo apt-get update
+
 sudo apt-get install ca-certificates curl
+
 sudo install -m 0755 -d /etc/apt/keyrings
+
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+
+
 sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+
+
 
 # Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && ec^C
 u334535@user-Precision-3460:~$  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-Czytanie list pakietów... Gotowe
-Budowanie drzewa zależności... Gotowe
-Odczyt informacji o stanie... Gotowe   
-Następujące pakiety zostały zainstalowane automatycznie i nie są już więcej wymagane:
-  linux-headers-6.14.0-33-generic linux-hwe-6.14-headers-6.14.0-33 linux-hwe-6.14-tools-6.14.0-33
-  linux-image-6.14.0-33-generic linux-modules-6.14.0-33-generic
-  linux-modules-extra-6.14.0-33-generic linux-modules-nvidia-550-6.14.0-33-generic
-  linux-objects-nvidia-550-6.14.0-33-generic linux-objects-nvidia-580-6.14.0-33-generic
-  linux-signatures-nvidia-6.14.0-33-generic linux-tools-6.14.0-33-generic nvidia-kernel-common-550
-Aby je usunąć należy użyć "sudo apt autoremove".
-Zostaną zainstalowane następujące dodatkowe pakiety:
-  docker-ce-rootless-extras libslirp0 pigz slirp4netns
-Sugerowane pakiety:
-  cgroupfs-mount | cgroup-lite docker-model-plugin
-Zostaną zainstalowane następujące NOWE pakiety:
-  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras
-  docker-compose-plugin libslirp0 pigz slirp4netns
-0 aktualizowanych, 9 nowo instalowanych, 0 usuwanych i 1 nieaktualizowanych.
-Konieczne pobranie 105 MB archiwów.
-Po tej operacji zostanie dodatkowo użyte 437 MB miejsca na dysku.
-Kontynuować? [T/n] t
-Pobieranie:1 https://download.docker.com/linux/ubuntu noble/stable amd64 containerd.io amd64 1.7.28-1~ubuntu.24.04~noble [31,9 MB]
-Pobieranie:2 http://archive.ubuntu.com/ubuntu noble/universe amd64 pigz amd64 2.8-1 [65,6 kB]
-Pobieranie:3 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce-cli amd64 5:28.5.1-1~ubuntu.24.04~noble [16,5 MB]
-Pobieranie:4 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce amd64 5:28.5.1-1~ubuntu.24.04~noble [19,7 MB]
-Pobieranie:5 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-buildx-plugin amd64 0.29.1-1~ubuntu.24.04~noble [15,9 MB]
-Pobieranie:6 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce-rootless-extras amd64 5:28.5.1-1~ubuntu.24.04~noble [6 481 kB]
-Pobieranie:7 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-compose-plugin amd64 2.40.3-1~ubuntu.24.04~noble [14,3 MB]
-Pobieranie:8 http://archive.ubuntu.com/ubuntu noble/main amd64 libslirp0 amd64 4.7.0-1ubuntu3 [63,8 kB]
-Pobieranie:9 http://archive.ubuntu.com/ubuntu noble/universe amd64 slirp4netns amd64 1.2.1-1build2 [34,9 kB]
-Pobrano 105 MB w 2s (63,7 MB/s)                                                           
-Wybieranie wcześniej niewybranego pakietu containerd.io.
-(Odczytywanie bazy danych ... 613384 pliki i katalogi obecnie zainstalowane.)
-Przygotowywanie do rozpakowania pakietu .../0-containerd.io_1.7.28-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu containerd.io (1.7.28-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu docker-ce-cli.
-Przygotowywanie do rozpakowania pakietu .../1-docker-ce-cli_5%3a28.5.1-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu docker-ce-cli (5:28.5.1-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu docker-ce.
-Przygotowywanie do rozpakowania pakietu .../2-docker-ce_5%3a28.5.1-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu docker-ce (5:28.5.1-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu pigz.
-Przygotowywanie do rozpakowania pakietu .../3-pigz_2.8-1_amd64.deb ...
-Rozpakowywanie pakietu pigz (2.8-1) ...
-Wybieranie wcześniej niewybranego pakietu docker-buildx-plugin.
-Przygotowywanie do rozpakowania pakietu .../4-docker-buildx-plugin_0.29.1-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu docker-buildx-plugin (0.29.1-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu docker-ce-rootless-extras.
-Przygotowywanie do rozpakowania pakietu .../5-docker-ce-rootless-extras_5%3a28.5.1-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu docker-ce-rootless-extras (5:28.5.1-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu docker-compose-plugin.
-Przygotowywanie do rozpakowania pakietu .../6-docker-compose-plugin_2.40.3-1~ubuntu.24.04~noble_amd64.deb ...
-Rozpakowywanie pakietu docker-compose-plugin (2.40.3-1~ubuntu.24.04~noble) ...
-Wybieranie wcześniej niewybranego pakietu libslirp0:amd64.
-Przygotowywanie do rozpakowania pakietu .../7-libslirp0_4.7.0-1ubuntu3_amd64.deb ...
-Rozpakowywanie pakietu libslirp0:amd64 (4.7.0-1ubuntu3) ...
-Wybieranie wcześniej niewybranego pakietu slirp4netns.
-Przygotowywanie do rozpakowania pakietu .../8-slirp4netns_1.2.1-1build2_amd64.deb ...
-Rozpakowywanie pakietu slirp4netns (1.2.1-1build2) ...
-Konfigurowanie pakietu docker-buildx-plugin (0.29.1-1~ubuntu.24.04~noble) ...
-Konfigurowanie pakietu containerd.io (1.7.28-1~ubuntu.24.04~noble) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /usr/lib/systemd/system/containerd.service.
-Konfigurowanie pakietu docker-compose-plugin (2.40.3-1~ubuntu.24.04~noble) ...
-Konfigurowanie pakietu docker-ce-cli (5:28.5.1-1~ubuntu.24.04~noble) ...
-Konfigurowanie pakietu libslirp0:amd64 (4.7.0-1ubuntu3) ...
-Konfigurowanie pakietu pigz (2.8-1) ...
-Konfigurowanie pakietu docker-ce-rootless-extras (5:28.5.1-1~ubuntu.24.04~noble) ...
-Konfigurowanie pakietu slirp4netns (1.2.1-1build2) ...
-Konfigurowanie pakietu docker-ce (5:28.5.1-1~ubuntu.24.04~noble) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
-Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /usr/lib/systemd/system/docker.socket.
-Przetwarzanie wyzwalaczy pakietu man-db (2.12.0-4build2)...
-Przetwarzanie wyzwalaczy pakietu libc-bin (2.39-0ubuntu8.6)...
+C
+
+
+
+
 u334535@user-Precision-3460:~$  sudo systemctl status docker
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
@@ -576,6 +205,10 @@ Global Options:
 Run 'docker COMMAND --help' for more information on a command.
 
 For more help on how to use Docker, head to https://docs.docker.com/go/guides/
+
+
+
+
 u334535@user-Precision-3460:~$ docker --version
 Docker version 28.5.1, build e180ab8
 u334535@user-Precision-3460:~$ docker info
@@ -657,6 +290,9 @@ Server:
   127.0.0.0/8
  Live Restore Enabled: false
 
+
+
+
 u334535@user-Precision-3460:~$  sudo docker run hello-world
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
@@ -685,28 +321,25 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-u334535@user-Precision-3460:~$ sudo docekr ps
-sudo: docekr: nie znaleziono polecenia
-u334535@user-Precision-3460:~$ ^[[200~sudo usermod -aG docker $USER
-sudo: nie znaleziono polecenia
-u334535@user-Precision-3460:~$ sudo usermod -aG docker $USER
-u334535@user-Precision-3460:~$ newgrp docker
-u334535@user-Precision-3460:~$ docker run hello-word
-Unable to find image 'hello-word:latest' locally
-docker: Error response from daemon: pull access denied for hello-word, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
-Run 'docker run --help' for more information
+
+
+
+u334535@user-Precision-3460:~$ sudo usermod -aG docker $USER
+
+u334535@user-Precision-3460:~$ newgrp docker
+
+
 u334535@user-Precision-3460:~$ sudo groupadd docker
 groupadd: group 'docker' already exists
+
+
 u334535@user-Precision-3460:~$ sudo usermod -aG docker $USER
+
+
 u334535@user-Precision-3460:~$ newgrp docker
-u334535@user-Precision-3460:~$ docekr run hello-world
-Nie znaleziono polecenia 'docekr', czy chodziło o:
-  polecenie 'docker' ze snapa docker (28.4.0)
-  polecenie 'docker' ze snapa docker (28.1.1+1)
-  polecenie 'docker' z pakietu deb docker.io (28.2.2-0ubuntu1~24.04.1)
-  polecenie 'docker' z pakietu deb podman-docker (4.9.3+ds1-1ubuntu0.2)
-Zobacz 'snap info <nazwasnapa>' dla dodatkowych wersji.
+
+
 u334535@user-Precision-3460:~$ docker run hello-world
 
 Hello from Docker!
@@ -730,36 +363,59 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
+
+
+
+
+
 u334535@user-Precision-3460:~$ docker run -it ubuntu bash
 Unable to find image 'ubuntu:latest' locally
 latest: Pulling from library/ubuntu
 4b3ffd8ccb52: Pull complete 
 Digest: sha256:66460d557b25769b102175144d538d88219c077c678a49af4afca6fbfc1b5252
 Status: Downloaded newer image for ubuntu:latest
+
+
+
+
 root@8ec89171ca40:/# whoami
 root
+
+
 root@8ec89171ca40:/# exit
 exit
+
+
 u334535@user-Precision-3460:~$ docker run -it ubuntu bash
 root@2be2496cc9e5:/# exit
 exit
+
+
 u334535@user-Precision-3460:~$ docker pull alpine:latest
 latest: Pulling from library/alpine
 2d35ebdb57d9: Pull complete 
 Digest: sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412
 Status: Downloaded newer image for alpine:latest
 docker.io/library/alpine:latest
+
+
 u334535@user-Precision-3460:~$ docker images
 REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 alpine        latest    706db57fb206   3 weeks ago    8.32MB
 ubuntu        latest    97bed23a3497   4 weeks ago    78.1MB
 hello-world   latest    1b44b5a3e06a   2 months ago   10.1kB
+
+
 u334535@user-Precision-3460:~$ docker run -it alpine sh
 / # exit
+
+
 u334535@user-Precision-3460:~$ docker run -it alpine sh
 / # cat /plik.txt
 cat: can't open '/plik.txt': No such file or directory
 / # exit
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name web-test \
 > -p 8080:80 \
 > -v ~/docker-test:/usr/share/nginx/html \
@@ -769,16 +425,25 @@ Unable to find image '8080:80' locally
 docker: Error response from daemon: pull access denied for 8080, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
 Run 'docker run --help' for more information
+
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name web-test > -p 8080:80 > -v ~/docker-test:/usr/share/nginx/html > nginx:alpine
 Unable to find image '8080:80' locally
 docker: Error response from daemon: pull access denied for 8080, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
 Run 'docker run --help' for more information
+
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name web-test > -p 8080:80 > -v ~/docker-test:/usr/share/nginx/html > nginx:alpine
 Unable to find image '8080:80' locally
 docker: Error response from daemon: pull access denied for 8080, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
 Run 'docker run --help' for more information
+
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name web-test -p 8080:80 -v ~/docker-test:/usr/share/nginx/html nginx:alpine
 Unable to find image 'nginx:alpine' locally
 alpine: Pulling from library/nginx
@@ -793,36 +458,60 @@ bdabb0d44271: Pull complete
 Digest: sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14
 Status: Downloaded newer image for nginx:alpine
 4c836c4fabc7443c9b9f797f2681507e29c1b2760ff50d0eab2fc4755ef8e92e
+
+
+
+
 u334535@user-Precision-3460:~$ ls
 Android                docker-test  Downloads  Muzyka        ngnx:alpine  -p       postgres:15-alpine  Pulpit  Szablony  Wideo
 AndroidStudioProjects  Dokumenty    -e         nginx:alpine  Obrazy       Pobrane  Publiczny           snap    -v
+
+
 u334535@user-Precision-3460:~$ cd docker-test/
+
+
 u334535@user-Precision-3460:~/docker-test$ ls
 index.html
+
+
 u334535@user-Precision-3460:~/docker-test$ echo "<h3>Update from Host</h3>" >>index.html
+
+
 u334535@user-Precision-3460:~/docker-test$ sudo docker volume ls
 DRIVER    VOLUME NAME
 local     3bdc22614ce9c45379eca6684cc9d8688a87cfbf8a7da7871d326b515a80595f
 local     ac8838120d03f3e945c85702dfa7b8f439e23db1d8b062fed8e3a3117e779da4
+
+
 u334535@user-Precision-3460:~/docker-test$ sudo docker stop web-test
 web-test
+
+
 u334535@user-Precision-3460:~/docker-test$ sudo docker rm web-test
 web-test
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ls
 docker: unknown command: docker ls
 
 Run 'docker --help' for more information
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS          PORTS      NAMES
 f884f9498e47   postgres:15-alpine   "docker-entrypoint.s…"   25 minutes ago   Up 25 minutes   5432/tcp   db-test
+
+
 u334535@user-Precision-3460:~/docker-test$ sudo docker stop db-test
 db-test
+
+
 u334535@user-Precision-3460:~/docker-test$ sudo docker rm db-test
 db-test
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-u334535@user-Precision-3460:~/docker-test$ ^C
-u334535@user-Precision-3460:~/docker-test$ 
 
 
 
@@ -836,14 +525,14 @@ u334535@user-Precision-3460:~/docker-test$
 
 
 
-u334535@user-Precision-3460:~$ docker ps
-permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
 u334535@user-Precision-3460:~$ sudo docker ps
 [sudo] hasło użytkownika u334535: 
 CONTAINER ID   IMAGE     COMMAND   CREATED              STATUS              PORTS     NAMES
 8ec89171ca40   ubuntu    "bash"    About a minute ago   Up About a minute             frosty_newton
-u334535@user-Precision-3460:~$ docker logs 8ec89171ca40
-permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/containers/8ec89171ca40/json": dial unix /var/run/docker.sock: connect: permission denied
+
+
+
 u334535@user-Precision-3460:~$ sudo docker logs 8ec89171ca40
 root@8ec89171ca40:/# whoami
 root
@@ -852,21 +541,9 @@ root@8ec89171ca40:/# whoami
 root
 root@8ec89171ca40:/# exit
 exit
-u334535@user-Precision-3460:~$ docker info
-Client: Docker Engine - Community
- Version:    28.5.1
- Context:    default
- Debug Mode: false
- Plugins:
-  buildx: Docker Buildx (Docker Inc.)
-    Version:  v0.29.1
-    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
-  compose: Docker Compose (Docker Inc.)
-    Version:  v2.40.3
-    Path:     /usr/libexec/docker/cli-plugins/docker-compose
 
-Server:
-permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/info": dial unix /var/run/docker.sock: connect: permission denied
+
+
 u334535@user-Precision-3460:~$ sudo docker info
 Client: Docker Engine - Community
  Version:    28.5.1
@@ -931,25 +608,20 @@ Server:
   127.0.0.0/8
  Live Restore Enabled: false
 
-u334535@user-Precision-3460:~$ docker ps
-permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/containers/json": dial unix /var/run/docker.sock: connect: permission denied
-u334535@user-Precision-3460:~$ sudo docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES
-c3a0ff690e72   alpine    "sh"      34 seconds ago   Up 34 seconds             kind_matsumoto
-u334535@user-Precision-3460:~$ sudo docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES
-cc5567ee9cf9   alpine    "sh"      4 seconds ago   Up 4 seconds             kontener1
-c3a0ff690e72   alpine    "sh"      2 minutes ago   Up 2 minutes             kind_matsumoto
-u334535@user-Precision-3460:~$ sudo docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES
-611cefaaccae   alpine    "sh"      19 seconds ago   Up 18 seconds             kontener2
-c3a0ff690e72   alpine    "sh"      3 minutes ago    Up 3 minutes              kind_matsumoto
+
+
+ 
+
+
 u334535@user-Precision-3460:~$ sudo docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED              STATUS              PORTS     NAMES
 a230b8996909   alpine    "sh"      About a minute ago   Up About a minute             serene_mclaren
 611cefaaccae   alpine    "sh"      2 minutes ago        Up 28 seconds                 kontener2
 u334535@user-Precision-3460:~$ sudo docker image history ngix:latest
 Error response from daemon: No such image: ngix:latest
+
+
+
 u334535@user-Precision-3460:~$ sudo docker pull nginx:latest
 latest: Pulling from library/nginx
 38513bd72563: Pull complete 
@@ -962,6 +634,10 @@ a0a6ab141558: Pull complete
 Digest: sha256:f547e3d0d5d02f7009737b284abc87d808e4252b42dceea361811e9fc606287f
 Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
+
+
+
+
 u334535@user-Precision-3460:~$ sudo docker image history nginx:latest
 IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
 9d0e6f6199dc   6 days ago    CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
@@ -981,12 +657,18 @@ IMAGE          CREATED       CREATED BY                                      SIZ
 <missing>      6 days ago    ENV NGINX_VERSION=1.29.3                        0B        buildkit.dockerfile.v0
 <missing>      6 days ago    LABEL maintainer=NGINX Docker Maintainers <d…   0B        buildkit.dockerfile.v0
 <missing>      2 weeks ago   # debian.sh --arch 'amd64' out/ 'trixie' '@1…   78.6MB    debuerreotype 0.16
+
+
+
 u334535@user-Precision-3460:~$ sudo docker images
 REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 nginx         latest    9d0e6f6199dc   6 days ago     152MB
 alpine        latest    706db57fb206   3 weeks ago    8.32MB
 ubuntu        latest    97bed23a3497   4 weeks ago    78.1MB
 hello-world   latest    1b44b5a3e06a   2 months ago   10.1kB
+
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name db-test \
 > -e PoSTGRES_PASSWORD=secret \
 > postgres:15-alpine
@@ -1006,6 +688,9 @@ b7a5b6d84454: Pull complete
 Digest: sha256:64583b3cb4f2010277bdd9749456de78e5c36f8956466ba14b0b96922e510950
 Status: Downloaded newer image for postgres:15-alpine
 523605f6dd0a9e3717192bd8df86efcd3ad99eec3d4e71c6e9080ed7b7a8eef1
+
+
+
 u334535@user-Precision-3460:~$ sudo docker images
 REPOSITORY    TAG         IMAGE ID       CREATED        SIZE
 nginx         latest      9d0e6f6199dc   6 days ago     152MB
@@ -1013,906 +698,85 @@ postgres      15-alpine   ba05c11fe977   2 weeks ago    273MB
 alpine        latest      706db57fb206   3 weeks ago    8.32MB
 ubuntu        latest      97bed23a3497   4 weeks ago    78.1MB
 hello-world   latest      1b44b5a3e06a   2 months ago   10.1kB
+
+
+
 u334535@user-Precision-3460:~$ sudo docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 u334535@user-Precision-3460:~$ sudo docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name db-test \
 > -e POSTGRES_PASSWORD=secret \
 > postgres:15-alpine
 docker: invalid reference format: repository name (library/POSTGRES_PASSWORD=secret) must be lowercase
 
 Run 'docker run --help' for more information
-u334535@user-Precision-3460:~$ sudo docker run -d --name db-test -e POSTGRES_PASSWORD=secret postgres:15-alpine
-docker: Error response from daemon: Conflict. The container name "/db-test" is already in use by container "523605f6dd0a9e3717192bd8df86efcd3ad99eec3d4e71c6e9080ed7b7a8eef1". You have to remove (or rename) that container to be able to reuse that name.
 
-Run 'docker run --help' for more information
+
+
+
+
 u334535@user-Precision-3460:~$ sudo docker exec -it db-test psql -U postgres
 Error response from daemon: container 523605f6dd0a9e3717192bd8df86efcd3ad99eec3d4e71c6e9080ed7b7a8eef1 is not running
+
+
 u334535@user-Precision-3460:~$ docker rm db-test
 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Delete "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/containers/db-test": dial unix /var/run/docker.sock: connect: permission denied
+
+
 u334535@user-Precision-3460:~$ sudo docker rm db-test
 db-test
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name db-test -e POSTGRES_PASSWORD=secret postgres:15-alpine
 f884f9498e47fb79d96c93bd084591b5d210c183f1c6ba3ecf6af1239c41ee1d
+
+
 u334535@user-Precision-3460:~$ sudo docker exec -it db-test psql -U postgres
 psql (15.14)
 Type "help" for help.
 
 postgres=# \q
+
+
 u334535@user-Precision-3460:~$ sudo docker volume create postgres-data
 postgres-data
+
+
 u334535@user-Precision-3460:~$ sudo docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS              PORTS      NAMES
 f884f9498e47   postgres:15-alpine   "docker-entrypoint.s…"   About a minute ago   Up About a minute   5432/tcp   db-test
+
+
 u334535@user-Precision-3460:~$ sudo docker start db-test
 db-test
+
+
 u334535@user-Precision-3460:~$ sudo docker exec -it db-test sh
 / # psql -U postgres
 psql (15.14)
 Type "help" for help.
 
-postgres=# SHOW config_file;
-               config_file                
-------------------------------------------
- /var/lib/postgresql/data/postgresql.conf
-(1 row)
 
-postgres=# \q
-/ # cat /var/lib/postgresql/data/postgresql.conf
-# -----------------------------
-# PostgreSQL configuration file
-# -----------------------------
-#
-# This file consists of lines of the form:
-#
-#   name = value
-#
-# (The "=" is optional.)  Whitespace may be used.  Comments are introduced with
-# "#" anywhere on a line.  The complete list of parameter names and allowed
-# values can be found in the PostgreSQL documentation.
-#
-# The commented-out settings shown in this file represent the default values.
-# Re-commenting a setting is NOT sufficient to revert it to the default value;
-# you need to reload the server.
-#
-# This file is read on server startup and when the server receives a SIGHUP
-# signal.  If you edit the file on a running system, you have to SIGHUP the
-# server for the changes to take effect, run "pg_ctl reload", or execute
-# "SELECT pg_reload_conf()".  Some parameters, which are marked below,
-# require a server shutdown and restart to take effect.
-#
-# Any parameter can also be given as a command-line option to the server, e.g.,
-# "postgres -c log_connections=on".  Some parameters can be changed at run time
-# with the "SET" SQL command.
-#
-# Memory units:  B  = bytes            Time units:  us  = microseconds
-#                kB = kilobytes                     ms  = milliseconds
-#                MB = megabytes                     s   = seconds
-#                GB = gigabytes                     min = minutes
-#                TB = terabytes                     h   = hours
-#                                                   d   = days
-
-
-#------------------------------------------------------------------------------
-# FILE LOCATIONS
-#------------------------------------------------------------------------------
-
-# The default values of these variables are driven from the -D command-line
-# option or PGDATA environment variable, represented here as ConfigDir.
-
-#data_directory = 'ConfigDir'		# use data in another directory
-					# (change requires restart)
-#hba_file = 'ConfigDir/pg_hba.conf'	# host-based authentication file
-					# (change requires restart)
-#ident_file = 'ConfigDir/pg_ident.conf'	# ident configuration file
-					# (change requires restart)
-
-# If external_pid_file is not explicitly set, no extra PID file is written.
-#external_pid_file = ''			# write an extra PID file
-					# (change requires restart)
-
-
-#------------------------------------------------------------------------------
-# CONNECTIONS AND AUTHENTICATION
-#------------------------------------------------------------------------------
-
-# - Connection Settings -
-
-listen_addresses = '*'
-					# comma-separated list of addresses;
-					# defaults to 'localhost'; use '*' for all
-					# (change requires restart)
-#port = 5432				# (change requires restart)
-max_connections = 100			# (change requires restart)
-#superuser_reserved_connections = 3	# (change requires restart)
-#unix_socket_directories = '/var/run/postgresql'	# comma-separated list of directories
-					# (change requires restart)
-#unix_socket_group = ''			# (change requires restart)
-#unix_socket_permissions = 0777		# begin with 0 to use octal notation
-					# (change requires restart)
-#bonjour = off				# advertise server via Bonjour
-					# (change requires restart)
-#bonjour_name = ''			# defaults to the computer name
-					# (change requires restart)
-
-# - TCP settings -
-# see "man tcp" for details
-
-#tcp_keepalives_idle = 0		# TCP_KEEPIDLE, in seconds;
-					# 0 selects the system default
-#tcp_keepalives_interval = 0		# TCP_KEEPINTVL, in seconds;
-					# 0 selects the system default
-#tcp_keepalives_count = 0		# TCP_KEEPCNT;
-					# 0 selects the system default
-#tcp_user_timeout = 0			# TCP_USER_TIMEOUT, in milliseconds;
-					# 0 selects the system default
-
-#client_connection_check_interval = 0	# time between checks for client
-					# disconnection while running queries;
-					# 0 for never
-
-# - Authentication -
-
-#authentication_timeout = 1min		# 1s-600s
-#password_encryption = scram-sha-256	# scram-sha-256 or md5
-#db_user_namespace = off
-
-# GSSAPI using Kerberos
-#krb_server_keyfile = 'FILE:${sysconfdir}/krb5.keytab'
-#krb_caseins_users = off
-
-# - SSL -
-
-#ssl = off
-#ssl_ca_file = ''
-#ssl_cert_file = 'server.crt'
-#ssl_crl_file = ''
-#ssl_crl_dir = ''
-#ssl_key_file = 'server.key'
-#ssl_ciphers = 'HIGH:MEDIUM:+3DES:!aNULL' # allowed SSL ciphers
-#ssl_prefer_server_ciphers = on
-#ssl_ecdh_curve = 'prime256v1'
-#ssl_min_protocol_version = 'TLSv1.2'
-#ssl_max_protocol_version = ''
-#ssl_dh_params_file = ''
-#ssl_passphrase_command = ''
-#ssl_passphrase_command_supports_reload = off
-
-
-#------------------------------------------------------------------------------
-# RESOURCE USAGE (except WAL)
-#------------------------------------------------------------------------------
-
-# - Memory -
-
-shared_buffers = 128MB			# min 128kB
-					# (change requires restart)
-#huge_pages = try			# on, off, or try
-					# (change requires restart)
-#huge_page_size = 0			# zero for system default
-					# (change requires restart)
-#temp_buffers = 8MB			# min 800kB
-#max_prepared_transactions = 0		# zero disables the feature
-					# (change requires restart)
-# Caution: it is not advisable to set max_prepared_transactions nonzero unless
-# you actively intend to use prepared transactions.
-#work_mem = 4MB				# min 64kB
-#hash_mem_multiplier = 2.0		# 1-1000.0 multiplier on hash table work_mem
-#maintenance_work_mem = 64MB		# min 1MB
-#autovacuum_work_mem = -1		# min 1MB, or -1 to use maintenance_work_mem
-#logical_decoding_work_mem = 64MB	# min 64kB
-#max_stack_depth = 2MB			# min 100kB
-#shared_memory_type = mmap		# the default is the first option
-					# supported by the operating system:
-					#   mmap
-					#   sysv
-					#   windows
-					# (change requires restart)
-dynamic_shared_memory_type = posix	# the default is usually the first option
-					# supported by the operating system:
-					#   posix
-					#   sysv
-					#   windows
-					#   mmap
-					# (change requires restart)
-#min_dynamic_shared_memory = 0MB	# (change requires restart)
-
-# - Disk -
-
-#temp_file_limit = -1			# limits per-process temp file space
-					# in kilobytes, or -1 for no limit
-
-# - Kernel Resources -
-
-#max_files_per_process = 1000		# min 64
-					# (change requires restart)
-
-# - Cost-Based Vacuum Delay -
-
-#vacuum_cost_delay = 0			# 0-100 milliseconds (0 disables)
-#vacuum_cost_page_hit = 1		# 0-10000 credits
-#vacuum_cost_page_miss = 2		# 0-10000 credits
-#vacuum_cost_page_dirty = 20		# 0-10000 credits
-#vacuum_cost_limit = 200		# 1-10000 credits
-
-# - Background Writer -
-
-#bgwriter_delay = 200ms			# 10-10000ms between rounds
-#bgwriter_lru_maxpages = 100		# max buffers written/round, 0 disables
-#bgwriter_lru_multiplier = 2.0		# 0-10.0 multiplier on buffers scanned/round
-#bgwriter_flush_after = 512kB		# measured in pages, 0 disables
-
-# - Asynchronous Behavior -
-
-#backend_flush_after = 0		# measured in pages, 0 disables
-#effective_io_concurrency = 1		# 1-1000; 0 disables prefetching
-#maintenance_io_concurrency = 10	# 1-1000; 0 disables prefetching
-#max_worker_processes = 8		# (change requires restart)
-#max_parallel_workers_per_gather = 2	# limited by max_parallel_workers
-#max_parallel_maintenance_workers = 2	# limited by max_parallel_workers
-#max_parallel_workers = 8		# number of max_worker_processes that
-					# can be used in parallel operations
-#parallel_leader_participation = on
-#old_snapshot_threshold = -1		# 1min-60d; -1 disables; 0 is immediate
-					# (change requires restart)
-
-
-#------------------------------------------------------------------------------
-# WRITE-AHEAD LOG
-#------------------------------------------------------------------------------
-
-# - Settings -
-
-#wal_level = replica			# minimal, replica, or logical
-					# (change requires restart)
-#fsync = on				# flush data to disk for crash safety
-					# (turning this off can cause
-					# unrecoverable data corruption)
-#synchronous_commit = on		# synchronization level;
-					# off, local, remote_write, remote_apply, or on
-#wal_sync_method = fsync		# the default is the first option
-					# supported by the operating system:
-					#   open_datasync
-					#   fdatasync (default on Linux and FreeBSD)
-					#   fsync
-					#   fsync_writethrough
-					#   open_sync
-#full_page_writes = on			# recover from partial page writes
-#wal_log_hints = off			# also do full page writes of non-critical updates
-					# (change requires restart)
-#wal_compression = off			# enables compression of full-page writes;
-					# off, pglz, lz4, zstd, or on
-#wal_init_zero = on			# zero-fill new WAL files
-#wal_recycle = on			# recycle WAL files
-#wal_buffers = -1			# min 32kB, -1 sets based on shared_buffers
-					# (change requires restart)
-#wal_writer_delay = 200ms		# 1-10000 milliseconds
-#wal_writer_flush_after = 1MB		# measured in pages, 0 disables
-#wal_skip_threshold = 2MB
-
-#commit_delay = 0			# range 0-100000, in microseconds
-#commit_siblings = 5			# range 1-1000
-
-# - Checkpoints -
-
-#checkpoint_timeout = 5min		# range 30s-1d
-#checkpoint_completion_target = 0.9	# checkpoint target duration, 0.0 - 1.0
-#checkpoint_flush_after = 256kB		# measured in pages, 0 disables
-#checkpoint_warning = 30s		# 0 disables
-max_wal_size = 1GB
-min_wal_size = 80MB
-
-# - Prefetching during recovery -
-
-#recovery_prefetch = try		# prefetch pages referenced in the WAL?
-#wal_decode_buffer_size = 512kB		# lookahead window used for prefetching
-					# (change requires restart)
-
-# - Archiving -
-
-#archive_mode = off		# enables archiving; off, on, or always
-				# (change requires restart)
-#archive_library = ''		# library to use to archive a logfile segment
-				# (empty string indicates archive_command should
-				# be used)
-#archive_command = ''		# command to use to archive a logfile segment
-				# placeholders: %p = path of file to archive
-				#               %f = file name only
-				# e.g. 'test ! -f /mnt/server/archivedir/%f && cp %p /mnt/server/archivedir/%f'
-#archive_timeout = 0		# force a logfile segment switch after this
-				# number of seconds; 0 disables
-
-# - Archive Recovery -
-
-# These are only used in recovery mode.
-
-#restore_command = ''		# command to use to restore an archived logfile segment
-				# placeholders: %p = path of file to restore
-				#               %f = file name only
-				# e.g. 'cp /mnt/server/archivedir/%f %p'
-#archive_cleanup_command = ''	# command to execute at every restartpoint
-#recovery_end_command = ''	# command to execute at completion of recovery
-
-# - Recovery Target -
-
-# Set these only when performing a targeted recovery.
-
-#recovery_target = ''		# 'immediate' to end recovery as soon as a
-                                # consistent state is reached
-				# (change requires restart)
-#recovery_target_name = ''	# the named restore point to which recovery will proceed
-				# (change requires restart)
-#recovery_target_time = ''	# the time stamp up to which recovery will proceed
-				# (change requires restart)
-#recovery_target_xid = ''	# the transaction ID up to which recovery will proceed
-				# (change requires restart)
-#recovery_target_lsn = ''	# the WAL LSN up to which recovery will proceed
-				# (change requires restart)
-#recovery_target_inclusive = on # Specifies whether to stop:
-				# just after the specified recovery target (on)
-				# just before the recovery target (off)
-				# (change requires restart)
-#recovery_target_timeline = 'latest'	# 'current', 'latest', or timeline ID
-				# (change requires restart)
-#recovery_target_action = 'pause'	# 'pause', 'promote', 'shutdown'
-				# (change requires restart)
-
-
-#------------------------------------------------------------------------------
-# REPLICATION
-#------------------------------------------------------------------------------
-
-# - Sending Servers -
-
-# Set these on the primary and on any standby that will send replication data.
-
-#max_wal_senders = 10		# max number of walsender processes
-				# (change requires restart)
-#max_replication_slots = 10	# max number of replication slots
-				# (change requires restart)
-#wal_keep_size = 0		# in megabytes; 0 disables
-#max_slot_wal_keep_size = -1	# in megabytes; -1 disables
-#wal_sender_timeout = 60s	# in milliseconds; 0 disables
-#track_commit_timestamp = off	# collect timestamp of transaction commit
-				# (change requires restart)
-
-# - Primary Server -
-
-# These settings are ignored on a standby server.
-
-#synchronous_standby_names = ''	# standby servers that provide sync rep
-				# method to choose sync standbys, number of sync standbys,
-				# and comma-separated list of application_name
-				# from standby(s); '*' = all
-#vacuum_defer_cleanup_age = 0	# number of xacts by which cleanup is delayed
-
-# - Standby Servers -
-
-# These settings are ignored on a primary server.
-
-#primary_conninfo = ''			# connection string to sending server
-#primary_slot_name = ''			# replication slot on sending server
-#promote_trigger_file = ''		# file name whose presence ends recovery
-#hot_standby = on			# "off" disallows queries during recovery
-					# (change requires restart)
-#max_standby_archive_delay = 30s	# max delay before canceling queries
-					# when reading WAL from archive;
-					# -1 allows indefinite delay
-#max_standby_streaming_delay = 30s	# max delay before canceling queries
-					# when reading streaming WAL;
-					# -1 allows indefinite delay
-#wal_receiver_create_temp_slot = off	# create temp slot if primary_slot_name
-					# is not set
-#wal_receiver_status_interval = 10s	# send replies at least this often
-					# 0 disables
-#hot_standby_feedback = off		# send info from standby to prevent
-					# query conflicts
-#wal_receiver_timeout = 60s		# time that receiver waits for
-					# communication from primary
-					# in milliseconds; 0 disables
-#wal_retrieve_retry_interval = 5s	# time to wait before retrying to
-					# retrieve WAL after a failed attempt
-#recovery_min_apply_delay = 0		# minimum delay for applying changes during recovery
-
-# - Subscribers -
-
-# These settings are ignored on a publisher.
-
-#max_logical_replication_workers = 4	# taken from max_worker_processes
-					# (change requires restart)
-#max_sync_workers_per_subscription = 2	# taken from max_logical_replication_workers
-
-
-#------------------------------------------------------------------------------
-# QUERY TUNING
-#------------------------------------------------------------------------------
-
-# - Planner Method Configuration -
-
-#enable_async_append = on
-#enable_bitmapscan = on
-#enable_gathermerge = on
-#enable_hashagg = on
-#enable_hashjoin = on
-#enable_incremental_sort = on
-#enable_indexscan = on
-#enable_indexonlyscan = on
-#enable_material = on
-#enable_memoize = on
-#enable_mergejoin = on
-#enable_nestloop = on
-#enable_parallel_append = on
-#enable_parallel_hash = on
-#enable_partition_pruning = on
-#enable_partitionwise_join = off
-#enable_partitionwise_aggregate = off
-#enable_seqscan = on
-#enable_sort = on
-#enable_tidscan = on
-
-# - Planner Cost Constants -
-
-#seq_page_cost = 1.0			# measured on an arbitrary scale
-#random_page_cost = 4.0			# same scale as above
-#cpu_tuple_cost = 0.01			# same scale as above
-#cpu_index_tuple_cost = 0.005		# same scale as above
-#cpu_operator_cost = 0.0025		# same scale as above
-#parallel_setup_cost = 1000.0	# same scale as above
-#parallel_tuple_cost = 0.1		# same scale as above
-#min_parallel_table_scan_size = 8MB
-#min_parallel_index_scan_size = 512kB
-#effective_cache_size = 4GB
-
-#jit_above_cost = 100000		# perform JIT compilation if available
-					# and query more expensive than this;
-					# -1 disables
-#jit_inline_above_cost = 500000		# inline small functions if query is
-					# more expensive than this; -1 disables
-#jit_optimize_above_cost = 500000	# use expensive JIT optimizations if
-					# query is more expensive than this;
-					# -1 disables
-
-# - Genetic Query Optimizer -
-
-#geqo = on
-#geqo_threshold = 12
-#geqo_effort = 5			# range 1-10
-#geqo_pool_size = 0			# selects default based on effort
-#geqo_generations = 0			# selects default based on effort
-#geqo_selection_bias = 2.0		# range 1.5-2.0
-#geqo_seed = 0.0			# range 0.0-1.0
-
-# - Other Planner Options -
-
-#default_statistics_target = 100	# range 1-10000
-#constraint_exclusion = partition	# on, off, or partition
-#cursor_tuple_fraction = 0.1		# range 0.0-1.0
-#from_collapse_limit = 8
-#jit = on				# allow JIT compilation
-#join_collapse_limit = 8		# 1 disables collapsing of explicit
-					# JOIN clauses
-#plan_cache_mode = auto			# auto, force_generic_plan or
-					# force_custom_plan
-#recursive_worktable_factor = 10.0	# range 0.001-1000000
-
-
-#------------------------------------------------------------------------------
-# REPORTING AND LOGGING
-#------------------------------------------------------------------------------
-
-# - Where to Log -
-
-#log_destination = 'stderr'		# Valid values are combinations of
-					# stderr, csvlog, jsonlog, syslog, and
-					# eventlog, depending on platform.
-					# csvlog and jsonlog require
-					# logging_collector to be on.
-
-# This is used when logging to stderr:
-#logging_collector = off		# Enable capturing of stderr, jsonlog,
-					# and csvlog into log files. Required
-					# to be on for csvlogs and jsonlogs.
-					# (change requires restart)
-
-# These are only used if logging_collector is on:
-#log_directory = 'log'			# directory where log files are written,
-					# can be absolute or relative to PGDATA
-#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'	# log file name pattern,
-					# can include strftime() escapes
-#log_file_mode = 0600			# creation mode for log files,
-					# begin with 0 to use octal notation
-#log_rotation_age = 1d			# Automatic rotation of logfiles will
-					# happen after that time.  0 disables.
-#log_rotation_size = 10MB		# Automatic rotation of logfiles will
-					# happen after that much log output.
-					# 0 disables.
-#log_truncate_on_rotation = off		# If on, an existing log file with the
-					# same name as the new log file will be
-					# truncated rather than appended to.
-					# But such truncation only occurs on
-					# time-driven rotation, not on restarts
-					# or size-driven rotation.  Default is
-					# off, meaning append to existing files
-					# in all cases.
-
-# These are relevant when logging to syslog:
-#syslog_facility = 'LOCAL0'
-#syslog_ident = 'postgres'
-#syslog_sequence_numbers = on
-#syslog_split_messages = on
-
-# This is only relevant when logging to eventlog (Windows):
-# (change requires restart)
-#event_source = 'PostgreSQL'
-
-# - When to Log -
-
-#log_min_messages = warning		# values in order of decreasing detail:
-					#   debug5
-					#   debug4
-					#   debug3
-					#   debug2
-					#   debug1
-					#   info
-					#   notice
-					#   warning
-					#   error
-					#   log
-					#   fatal
-					#   panic
-
-#log_min_error_statement = error	# values in order of decreasing detail:
-					#   debug5
-					#   debug4
-					#   debug3
-					#   debug2
-					#   debug1
-					#   info
-					#   notice
-					#   warning
-					#   error
-					#   log
-					#   fatal
-					#   panic (effectively off)
-
-#log_min_duration_statement = -1	# -1 is disabled, 0 logs all statements
-					# and their durations, > 0 logs only
-					# statements running at least this number
-					# of milliseconds
-
-#log_min_duration_sample = -1		# -1 is disabled, 0 logs a sample of statements
-					# and their durations, > 0 logs only a sample of
-					# statements running at least this number
-					# of milliseconds;
-					# sample fraction is determined by log_statement_sample_rate
-
-#log_statement_sample_rate = 1.0	# fraction of logged statements exceeding
-					# log_min_duration_sample to be logged;
-					# 1.0 logs all such statements, 0.0 never logs
-
-
-#log_transaction_sample_rate = 0.0	# fraction of transactions whose statements
-					# are logged regardless of their duration; 1.0 logs all
-					# statements from all transactions, 0.0 never logs
-
-#log_startup_progress_interval = 10s	# Time between progress updates for
-					# long-running startup operations.
-					# 0 disables the feature, > 0 indicates
-					# the interval in milliseconds.
-
-# - What to Log -
-
-#debug_print_parse = off
-#debug_print_rewritten = off
-#debug_print_plan = off
-#debug_pretty_print = on
-#log_autovacuum_min_duration = 10min	# log autovacuum activity;
-					# -1 disables, 0 logs all actions and
-					# their durations, > 0 logs only
-					# actions running at least this number
-					# of milliseconds.
-#log_checkpoints = on
-#log_connections = off
-#log_disconnections = off
-#log_duration = off
-#log_error_verbosity = default		# terse, default, or verbose messages
-#log_hostname = off
-#log_line_prefix = '%m [%p] '		# special values:
-					#   %a = application name
-					#   %u = user name
-					#   %d = database name
-					#   %r = remote host and port
-					#   %h = remote host
-					#   %b = backend type
-					#   %p = process ID
-					#   %P = process ID of parallel group leader
-					#   %t = timestamp without milliseconds
-					#   %m = timestamp with milliseconds
-					#   %n = timestamp with milliseconds (as a Unix epoch)
-					#   %Q = query ID (0 if none or not computed)
-					#   %i = command tag
-					#   %e = SQL state
-					#   %c = session ID
-					#   %l = session line number
-					#   %s = session start timestamp
-					#   %v = virtual transaction ID
-					#   %x = transaction ID (0 if none)
-					#   %q = stop here in non-session
-					#        processes
-					#   %% = '%'
-					# e.g. '<%u%%%d> '
-#log_lock_waits = off			# log lock waits >= deadlock_timeout
-#log_recovery_conflict_waits = off	# log standby recovery conflict waits
-					# >= deadlock_timeout
-#log_parameter_max_length = -1		# when logging statements, limit logged
-					# bind-parameter values to N bytes;
-					# -1 means print in full, 0 disables
-#log_parameter_max_length_on_error = 0	# when logging an error, limit logged
-					# bind-parameter values to N bytes;
-					# -1 means print in full, 0 disables
-#log_statement = 'none'			# none, ddl, mod, all
-#log_replication_commands = off
-#log_temp_files = -1			# log temporary files equal or larger
-					# than the specified size in kilobytes;
-					# -1 disables, 0 logs all temp files
-log_timezone = 'UTC'
-
-
-#------------------------------------------------------------------------------
-# PROCESS TITLE
-#------------------------------------------------------------------------------
-
-#cluster_name = ''			# added to process titles if nonempty
-					# (change requires restart)
-#update_process_title = on
-
-
-#------------------------------------------------------------------------------
-# STATISTICS
-#------------------------------------------------------------------------------
-
-# - Cumulative Query and Index Statistics -
-
-#track_activities = on
-#track_activity_query_size = 1024	# (change requires restart)
-#track_counts = on
-#track_io_timing = off
-#track_wal_io_timing = off
-#track_functions = none			# none, pl, all
-#stats_fetch_consistency = cache
-
-
-# - Monitoring -
-
-#compute_query_id = auto
-#log_statement_stats = off
-#log_parser_stats = off
-#log_planner_stats = off
-#log_executor_stats = off
-
-
-#------------------------------------------------------------------------------
-# AUTOVACUUM
-#------------------------------------------------------------------------------
-
-#autovacuum = on			# Enable autovacuum subprocess?  'on'
-					# requires track_counts to also be on.
-#autovacuum_max_workers = 3		# max number of autovacuum subprocesses
-					# (change requires restart)
-#autovacuum_naptime = 1min		# time between autovacuum runs
-#autovacuum_vacuum_threshold = 50	# min number of row updates before
-					# vacuum
-#autovacuum_vacuum_insert_threshold = 1000	# min number of row inserts
-					# before vacuum; -1 disables insert
-					# vacuums
-#autovacuum_analyze_threshold = 50	# min number of row updates before
-					# analyze
-#autovacuum_vacuum_scale_factor = 0.2	# fraction of table size before vacuum
-#autovacuum_vacuum_insert_scale_factor = 0.2	# fraction of inserts over table
-					# size before insert vacuum
-#autovacuum_analyze_scale_factor = 0.1	# fraction of table size before analyze
-#autovacuum_freeze_max_age = 200000000	# maximum XID age before forced vacuum
-					# (change requires restart)
-#autovacuum_multixact_freeze_max_age = 400000000	# maximum multixact age
-					# before forced vacuum
-					# (change requires restart)
-#autovacuum_vacuum_cost_delay = 2ms	# default vacuum cost delay for
-					# autovacuum, in milliseconds;
-					# -1 means use vacuum_cost_delay
-#autovacuum_vacuum_cost_limit = -1	# default vacuum cost limit for
-					# autovacuum, -1 means use
-					# vacuum_cost_limit
-
-
-#------------------------------------------------------------------------------
-# CLIENT CONNECTION DEFAULTS
-#------------------------------------------------------------------------------
-
-# - Statement Behavior -
-
-#client_min_messages = notice		# values in order of decreasing detail:
-					#   debug5
-					#   debug4
-					#   debug3
-					#   debug2
-					#   debug1
-					#   log
-					#   notice
-					#   warning
-					#   error
-#search_path = '"$user", public'	# schema names
-#row_security = on
-#default_table_access_method = 'heap'
-#default_tablespace = ''		# a tablespace name, '' uses the default
-#default_toast_compression = 'pglz'	# 'pglz' or 'lz4'
-#temp_tablespaces = ''			# a list of tablespace names, '' uses
-					# only default tablespace
-#check_function_bodies = on
-#default_transaction_isolation = 'read committed'
-#default_transaction_read_only = off
-#default_transaction_deferrable = off
-#session_replication_role = 'origin'
-#statement_timeout = 0			# in milliseconds, 0 is disabled
-#lock_timeout = 0			# in milliseconds, 0 is disabled
-#idle_in_transaction_session_timeout = 0	# in milliseconds, 0 is disabled
-#idle_session_timeout = 0		# in milliseconds, 0 is disabled
-#vacuum_freeze_table_age = 150000000
-#vacuum_freeze_min_age = 50000000
-#vacuum_failsafe_age = 1600000000
-#vacuum_multixact_freeze_table_age = 150000000
-#vacuum_multixact_freeze_min_age = 5000000
-#vacuum_multixact_failsafe_age = 1600000000
-#bytea_output = 'hex'			# hex, escape
-#xmlbinary = 'base64'
-#xmloption = 'content'
-#gin_pending_list_limit = 4MB
-
-# - Locale and Formatting -
-
-datestyle = 'iso, mdy'
-#intervalstyle = 'postgres'
-timezone = 'UTC'
-#timezone_abbreviations = 'Default'     # Select the set of available time zone
-					# abbreviations.  Currently, there are
-					#   Default
-					#   Australia (historical usage)
-					#   India
-					# You can create your own file in
-					# share/timezonesets/.
-#extra_float_digits = 1			# min -15, max 3; any value >0 actually
-					# selects precise output mode
-#client_encoding = sql_ascii		# actually, defaults to database
-					# encoding
-
-# These settings are initialized by initdb, but they can be changed.
-lc_messages = 'en_US.utf8'			# locale for system error message
-					# strings
-lc_monetary = 'en_US.utf8'			# locale for monetary formatting
-lc_numeric = 'en_US.utf8'			# locale for number formatting
-lc_time = 'en_US.utf8'				# locale for time formatting
-
-# default configuration for text search
-default_text_search_config = 'pg_catalog.english'
-
-# - Shared Library Preloading -
-
-#local_preload_libraries = ''
-#session_preload_libraries = ''
-#shared_preload_libraries = ''	# (change requires restart)
-#jit_provider = 'llvmjit'		# JIT library to use
-
-# - Other Defaults -
-
-#dynamic_library_path = '$libdir'
-#gin_fuzzy_search_limit = 0
-
-
-#------------------------------------------------------------------------------
-# LOCK MANAGEMENT
-#------------------------------------------------------------------------------
-
-#deadlock_timeout = 1s
-#max_locks_per_transaction = 64		# min 10
-					# (change requires restart)
-#max_pred_locks_per_transaction = 64	# min 10
-					# (change requires restart)
-#max_pred_locks_per_relation = -2	# negative values mean
-					# (max_pred_locks_per_transaction
-					#  / -max_pred_locks_per_relation) - 1
-#max_pred_locks_per_page = 2            # min 0
-
-
-#------------------------------------------------------------------------------
-# VERSION AND PLATFORM COMPATIBILITY
-#------------------------------------------------------------------------------
-
-# - Previous PostgreSQL Versions -
-
-#array_nulls = on
-#backslash_quote = safe_encoding	# on, off, or safe_encoding
-#escape_string_warning = on
-#lo_compat_privileges = off
-#quote_all_identifiers = off
-#standard_conforming_strings = on
-#synchronize_seqscans = on
-
-# - Other Platforms and Clients -
-
-#transform_null_equals = off
-
-
-#------------------------------------------------------------------------------
-# ERROR HANDLING
-#------------------------------------------------------------------------------
-
-#exit_on_error = off			# terminate session on any error?
-#restart_after_crash = on		# reinitialize after backend crash?
-#data_sync_retry = off			# retry or panic on failure to fsync
-					# data?
-					# (change requires restart)
-#recovery_init_sync_method = fsync	# fsync, syncfs (Linux 5.8+)
-
-
-#------------------------------------------------------------------------------
-# CONFIG FILE INCLUDES
-#------------------------------------------------------------------------------
-
-# These options allow settings to be loaded from files other than the
-# default postgresql.conf.  Note that these are directives, not variable
-# assignments, so they can usefully be given more than once.
-
-#include_dir = '...'			# include files ending in '.conf' from
-					# a directory, e.g., 'conf.d'
-#include_if_exists = '...'		# include file only if it exists
-#include = '...'			# include file
-
-
-#------------------------------------------------------------------------------
-# CUSTOMIZED OPTIONS
-#------------------------------------------------------------------------------
-
-# Add settings for extensions here
-/ # ls -ls /var/lib/postgresql/data
-total 128
-     4 -rw-------    1 postgres postgres         3 Nov  4 10:03 PG_VERSION
-     4 drwx------    5 postgres postgres      4096 Nov  4 10:03 base
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:06 global
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_commit_ts
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_dynshmem
-     8 -rw-------    1 postgres postgres      4821 Nov  4 10:03 pg_hba.conf
-     4 -rw-------    1 postgres postgres      1636 Nov  4 10:03 pg_ident.conf
-     4 drwx------    4 postgres postgres      4096 Nov  4 10:08 pg_logical
-     4 drwx------    4 postgres postgres      4096 Nov  4 10:03 pg_multixact
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_notify
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_replslot
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_serial
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_snapshots
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_stat
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_stat_tmp
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_subtrans
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_tblspc
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_twophase
-     4 drwx------    3 postgres postgres      4096 Nov  4 10:03 pg_wal
-     4 drwx------    2 postgres postgres      4096 Nov  4 10:03 pg_xact
-     4 -rw-------    1 postgres postgres        88 Nov  4 10:03 postgresql.auto.conf
-    32 -rw-------    1 postgres postgres     29400 Nov  4 10:03 postgresql.conf
-     4 -rw-------    1 postgres postgres        24 Nov  4 10:03 postmaster.opts
-     4 -rw-------    1 postgres postgres        94 Nov  4 10:03 postmaster.pid
-/ # exit
 u334535@user-Precision-3460:~$ sudo docker run -d --name db-persistent -e POSTGRES_PASSWORD=secret -v postgres-data:/var/lib/postgresql/data postgres:15-alpine
 cc54f10428841fdbd230bc191af0013638aa17b9138919dbf65ee8cc6d6f8db0
+
+
 u334535@user-Precision-3460:~$ sudo docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS          PORTS      NAMES
 cc54f1042884   postgres:15-alpine   "docker-entrypoint.s…"   16 seconds ago   Up 16 seconds   5432/tcp   db-persistent
 f884f9498e47   postgres:15-alpine   "docker-entrypoint.s…"   9 minutes ago    Up 9 minutes    5432/tcp   db-test
+
+
 u334535@user-Precision-3460:~$ sudo docker volume ls
 DRIVER    VOLUME NAME
 local     3bdc22614ce9c45379eca6684cc9d8688a87cfbf8a7da7871d326b515a80595f
 local     ac8838120d03f3e945c85702dfa7b8f439e23db1d8b062fed8e3a3117e779da4
 local     postgres-data
-u334535@user-Precision-3460:~$ sudo docekr exec -it db-persistent psql -U postgres
-sudo: docekr: nie znaleziono polecenia
+
+
 u334535@user-Precision-3460:~$ sudo docker exec -it db-persistent psql -U postgres
 psql (15.14)
 Type "help" for help.
@@ -1930,12 +794,20 @@ postgres-# ;
 (2 rows)
 
 postgres=# \q
+
+
 u334535@user-Precision-3460:~$ sudo docker stop db-persistent
 db-persistent
+
+
 u334535@user-Precision-3460:~$ sudo docker rm db-persistent
 db-persistent
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name db-persistent -e POSTGRES_PASSWORD=secret -v postgres-data:/var/lib/postgresql/data postgres:15-alpine
 6699faab20246d364ea8883773a3f6a770b5447ea65f859292c1651fa843ae12
+
+
 u334535@user-Precision-3460:~$ sudo docker exec -it db-persistent psql -U postgres
 psql (15.14)
 Type "help" for help.
@@ -1959,11 +831,17 @@ postgres=# SELECT * FROM users;
 (2 rows)
 
 postgres=# \q
+
+
+
 u334535@user-Precision-3460:~$ sudo docker volume ls
 DRIVER    VOLUME NAME
 local     3bdc22614ce9c45379eca6684cc9d8688a87cfbf8a7da7871d326b515a80595f
 local     ac8838120d03f3e945c85702dfa7b8f439e23db1d8b062fed8e3a3117e779da4
 local     postgres-data
+
+
+
 u334535@user-Precision-3460:~$ sudo docker volume inspect postgres-data
 [
     {
@@ -1976,26 +854,50 @@ u334535@user-Precision-3460:~$ sudo docker volume inspect postgres-data
         "Scope": "local"
     }
 ]
+
+
 u334535@user-Precision-3460:~$ sudo docker volume rm postgres-data
 Error response from daemon: remove postgres-data: volume is in use - [6699faab20246d364ea8883773a3f6a770b5447ea65f859292c1651fa843ae12]
+
+
 u334535@user-Precision-3460:~$ sudo docker stop db-persistent
 db-persistent
+
+
 u334535@user-Precision-3460:~$ sudo rm db-persistent
 rm: nie można usunąć 'db-persistent': Nie ma takiego pliku ani katalogu
+
+
 u334535@user-Precision-3460:~$ sudo docker rm db-persistent
 db-persistent
+
+
 u334535@user-Precision-3460:~$ sudo docker volume rm postgres-data
 postgres-data
+
+
 u334535@user-Precision-3460:~$ pwd
 /home/u334535
+
+
 u334535@user-Precision-3460:~$ mkdir docker-test
+
+
 u334535@user-Precision-3460:~$ echo"<h1>Hello from host</h1>" >docker-test/index.html
 bash: echo<h1>Hello from host</h1>: Nie ma takiego pliku ani katalogu
+
+
 u334535@user-Precision-3460:~$ echo"<h1>Hello from host</h1>" > docker-test/index.html
 bash: echo<h1>Hello from host</h1>: Nie ma takiego pliku ani katalogu
+
+
 u334535@user-Precision-3460:~$ echo "<h1>Hello from host</h1>" > docker-test/index.html
+
+
 u334535@user-Precision-3460:~$ cat docker-test/index.html 
 <h1>Hello from host</h1>
+
+
 u334535@user-Precision-3460:~$ sudo docker run -d --name web-test \
 > -p 8080:80 \
 > -v ~/docker-test:/usr/share/nginx/html \
@@ -2004,8 +906,7 @@ Unable to find image 'ngnx:alpine' locally
 docker: Error response from daemon: pull access denied for ngnx, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
 Run 'docker run --help' for more information
-u334535@user-Precision-3460:~$ 
-
+\
 
 
 
@@ -2124,6 +1025,8 @@ u334535@user-Precision-3460:~/docker-test$ docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS         PORTS                                     NAMES
 99db444f6c63   wordpress:latest     "docker-entrypoint.s…"   8 seconds ago   Up 5 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   blog-app
 67163f716d55   postgres:15-alpine   "docker-entrypoint.s…"   5 minutes ago   Up 5 minutes   5432/tcp                                  blog-db
+
+
 u334535@user-Precision-3460:~/docker-test$ docker logs blog-app
 WordPress not found in /var/www/html - copying now...
 Complete! WordPress has been successfully copied to /var/www/html
@@ -2134,14 +1037,22 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Tue Nov 04 11:02:10.023656 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 u334535@user-Precision-3460:~/docker-test$ docker run -d \
 > ^C
+
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS         PORTS                                     NAMES
 99db444f6c63   wordpress:latest     "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   blog-app
 67163f716d55   postgres:15-alpine   "docker-entrypoint.s…"   8 minutes ago   Up 8 minutes   5432/tcp                                  blog-db
 u334535@user-Precision-3460:~/docker-test$ docker stop blog-db
 blog-db
+
+
 u334535@user-Precision-3460:~/docker-test$ docker rm blog-db
 blog-db
+
+
+
 u334535@user-Precision-3460:~/docker-test$ docker run -d \
 > --name blog-db
 docker: 'docker run' requires at least 1 argument
@@ -3186,9 +2097,15 @@ b5748940c413241c17098bbed95bd4a56fa04ccf9af092a875c1dcefc8493253
 b1f05df826e0464ed55614a1731672ff66bce895420cf426220465c5699c22b6
 
 Total reclaimed space: 230.6MB
+
+
+
 u334535@user-Precision-3460:~/docker-test$ docker network prune
 WARNING! This will remove all custom networks not used by at least one container.
 Are you sure you want to continue? [y/N] y
+
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps
 CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                                       NAMES
 fd54acfb1ebc   d4918ca78576       "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes   80/tcp                                      app-limit
@@ -3204,6 +2121,8 @@ unknown flag: --dry-run
 Usage:  docker system prune [OPTIONS]
 
 Run 'docker system prune --help' for more information
+
+
 u334535@user-Precision-3460:~/docker-test$ docker system prune -a --volumes
 WARNING! This will remove:
   - all stopped containers
@@ -3214,30 +2133,21 @@ WARNING! This will remove:
 
 Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
+
+
 u334535@user-Precision-3460:~/docker-test$ docker system df
 TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
 Images          5         5         1.794GB   86.94MB (4%)
 Containers      7         7         4.411kB   0B (0%)
 Local Volumes   3         2         345.2MB   47.82MB (13%)
 Build Cache     0         0         0B        0B
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps
-CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-fd54acfb1ebc   d4918ca78576       "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes   80/tcp                                      app-limit
-6f584e341a4d   alpine             "sleep 3600"             18 minutes ago   Up 18 minutes                                               app-test
-5e7c50176c18   nginx:latest       "/docker-entrypoint.…"   25 minutes ago   Up 25 minutes   0.0.0.0:32769->80/tcp, [::]:32769->80/tcp   elastic_kapitsa
-cebe92207ecd   nginx:latest       "/docker-entrypoint.…"   26 minutes ago   Up 26 minutes   0.0.0.0:8001->80/tcp, [::]:8001->80/tcp     modest_shockley
-6bc08ebf7f85   nginx:latest       "/docker-entrypoint.…"   29 minutes ago   Up 29 minutes   0.0.0.0:32768->80/tcp, [::]:32768->80/tcp   wizardly_gagarin
-918995e229ad   wordpress:latest   "docker-entrypoint.s…"   38 minutes ago   Up 38 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp     blog-app
-43720d7cfe44   mysql:latest       "docker-entrypoint.s…"   41 minutes ago   Up 41 minutes   3306/tcp, 33060/tcp                         blog-db
+
+
+
 u334535@user-Precision-3460:~/docker-test$ docker ps -a
-CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-fd54acfb1ebc   d4918ca78576       "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes   80/tcp                                      app-limit
-6f584e341a4d   alpine             "sleep 3600"             18 minutes ago   Up 18 minutes                                               app-test
-5e7c50176c18   nginx:latest       "/docker-entrypoint.…"   25 minutes ago   Up 25 minutes   0.0.0.0:32769->80/tcp, [::]:32769->80/tcp   elastic_kapitsa
-cebe92207ecd   nginx:latest       "/docker-entrypoint.…"   26 minutes ago   Up 26 minutes   0.0.0.0:8001->80/tcp, [::]:8001->80/tcp     modest_shockley
-6bc08ebf7f85   nginx:latest       "/docker-entrypoint.…"   29 minutes ago   Up 29 minutes   0.0.0.0:32768->80/tcp, [::]:32768->80/tcp   wizardly_gagarin
-918995e229ad   wordpress:latest   "docker-entrypoint.s…"   38 minutes ago   Up 38 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp     blog-app
-43720d7cfe44   mysql:latest       "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes   3306/tcp, 33060/tcp                         blog-db
 
 
 

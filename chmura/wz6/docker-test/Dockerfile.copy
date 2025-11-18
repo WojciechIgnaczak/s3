@@ -1,0 +1,7 @@
+FROM alpine
+
+WORKDIR /test
+
+COPY app.py .
+
+RUN ls -la

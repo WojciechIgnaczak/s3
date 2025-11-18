@@ -1,0 +1,21 @@
+# budowanie aplikacji na bazie obrazu Pythona w wersji 3.11
+FROM python:3.11 AS builder
+
+WORKDIR /app
+
+# kopiowanie pliku
+COPY requirements.txt .
+
+RUN python -m venv /opt/venv
+RUN pip install -r requirements.txt
+
+# runtime aplikacji
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /opt/venv /opt/venv
+COPY app.py .
+
+ENV PATH="/opt/venv/bin:$PATH"
+
+EXPOSE 5000
+CMD ["python", "app.py"]

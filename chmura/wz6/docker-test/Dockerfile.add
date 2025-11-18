@@ -1,0 +1,7 @@
+FROM alpine
+
+WORKDIR /test
+
+ADD archive.tar.gz .
+
+RUN ls -la
