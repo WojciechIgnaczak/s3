@@ -1,0 +1,52 @@
+# postgres 16
+# user: netflixuser
+# password: netflixpass
+# db_name: netflix
+# healthcjeck: pg_isready
+# port 5432
+services:
+  db:
+    image: postgres:16-alpine
+    platform: linux/amd64
+    container_name: netflix_postgres_db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./backups:/backups
+      - ./scripts:/scripts
+
+    healthcheck:
+      test: ["CMD", "pg_isready","-U", "${DB_USER}","-d", "${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: netflix_pgadmin
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    
+    ports:
+      - "5040:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: adminpass
+      
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  pgadmin_data: {}

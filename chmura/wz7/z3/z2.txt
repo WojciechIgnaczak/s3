@@ -1,0 +1,5 @@
+docker compose up       -tryb watch
+docker compose up --build
+docker compose up -d
+
+

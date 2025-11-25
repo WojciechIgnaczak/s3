@@ -1,0 +1,5 @@
+docker build -t z2-4 .
+docker run -t --name test z2-4
+
+docker stop test
+docker rm test

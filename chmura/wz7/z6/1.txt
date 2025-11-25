@@ -1,0 +1,1 @@
+# utworz w docker compose baze mysql i phpmyadmin wraz z importem bazy sanych i backupem

@@ -1,0 +1,27 @@
+docker compose up -d
+localhost:5040
+docker compose stop
+docker compose rm 
+
+w terminalu:
+docker exec -it netflix_postgres_db psql -U netflixuser -d netflix          - wejscir do baza
+
+wget https://raw.githubusercontent.com/neondatabase/postgres-sample-dbs/main/netflix.sql
+
+docker exec -it netflix_postgres_db /bin/bash
+cd scripts
+exit
+
+docker cp netflix.sql netflix_postgres_db:/tmp/netflix.sql 
+
+docker exec -it netflix_postgres_db /bin/bash
+cd tmp/
+head -n 2 netflix.sql
+
+exit
+
+
+docker exec -it netflix_postgres_db psql -U netflixuser -d netflix < netflix.sql     lub     docker exec -it netflix_postgres_db psql -U netflixuser -d netflix -f /tmp/netflix.sql
+
+
+docker exec -t netflix_postgres_db pg_dump -U netflixuser -d netflix > scripts/backup.sql

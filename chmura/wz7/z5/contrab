@@ -1,0 +1,4 @@
+contrab -e
+0 2 * * * /home/u334535/Pulpit/s3/chmura/wz7/z5/backup.sh >> logs/backup.log 2>&1 # codziennie o 2 w nocy
+
+0 /6 * * * /home/u334535/Pulpit/s3/chmura/wz7/z5/backup.sh >> logs/backup.log 2>&1 # co 6 godzin
