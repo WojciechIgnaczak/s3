@@ -1,0 +1,27 @@
+NGINX - zadanie
+
+Twoje zadania
+
+Przygotuj Dockerfile dla aplikacji Python:
+Użyj oficjalnego obrazu python:3.9-slim.
+Skopiuj requirements.txt i zainstaluj zależności.
+Skopiuj resztę kodu aplikacji.
+
+Pytanie: Jaka komenda powinna być użyta do uruchomienia aplikacji FastAPI za pomocą uvicorn?
+
+Przygotuj Dockerfile dla Nginx:
+Użyj oficjalnego obrazu nginx:latest.
+Skopiuj plik konfiguracyjny nginx.conf do odpowiedniego katalogu w kontenerze (/etc/nginx/conf.d/default.conf).
+
+Uzupełnij plik app/main.py:
+Stwórz prosty endpoint GET /, który zwróci odpowiedź JSON, np. {"message": "Hello from FastAPI!"}.
+Uzupełnij plik app/requirements.txt:
+Dodaj biblioteki fastapi i uvicorn.
+Uzupełnij plik nginx/nginx.conf:
+Skonfiguruj Nginx tak, aby nasłuchiwał na porcie 80.
+Skonfiguruj przekierowanie (proxy_pass) wszystkich zapytań do serwisu web na port 8000.
+Pytanie: Jak nazwa serwisu web z docker-compose.yml jest rozwiązywana na adres IP wewnątrz sieci Dockera?
+Uruchom kompozycję:
+Użyj komendy docker-compose up --build.
+Sprawdź w przeglądarce pod adresem http://localhost, czy otrzymujesz odpowiedź z aplikacji FastAPI.
+ 

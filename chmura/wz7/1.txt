@@ -1,0 +1,7 @@
+ubuntu curl label bash
+
+python slim
+arg z app version
+karalog roboczy
+requraierments kopiuj i instaluj
+etykieta z wersja

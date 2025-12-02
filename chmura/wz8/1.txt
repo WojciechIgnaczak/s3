@@ -1,0 +1,15 @@
+nginx- lekki serwer http, serwer proxy
+
+nginx vs apache
+
+curl
+
+docker run -d -p 80:80 nginx:latest
+docker logs eloquent_germain
+docker exec -it eloquent_germain /bin/bash
+docker logs --since 2025-12-02T08:05:00 eloquent_germain 
+docker logs --since 15m eloquent_germain
+docker logs eloquent_germain 2>&1 | grep error
+bash: nginx -t
+docker exec eloquent_germain nginx -s reload
+docker restart eloquent_germain
