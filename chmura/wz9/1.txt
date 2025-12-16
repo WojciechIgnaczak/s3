@@ -1,0 +1,94 @@
+nginx
+nagłówki
+reverse proxy - przekierowanie ruchu na konkrentne porty, bezpieczeństwo, loadbalancer, ssl, cache, kompresja, centralizacja punktów
+routing
+cert ssl
+
+
+Z1
+FOLDER BACKEND
+docker build -t backend-app .
+
+docker run -d \
+  --name backend \
+  --network app-network \
+  backend-app
+
+docker stop backend && docker rm backend
+docker stop nginx-proxy && docker rm nginx-proxy
+
+
+
+
+
+
+
+
+
+
+ZADANIE
+2 aplikacje
+backend
+admin
+
+te aplikacje uruchomić na portach: backend :3000, admin:4000
+admin ma mieć główny route zawiewał info że jesteśmu w adminie np. hello from admin
+do tego dobudować dockerfile
+
+w nginx
+api:3000
+admin:4000
+mapowanie po api: i admin
+
+/api/ -> api:3000
+location /api/ {
+    rewrite ^/api/(.*)$ /$1 break;  # jeśli /admin/healt -> /health
+    proxy_pass http://api;
+}
+
+/admin/ -> admin:4000
+location /admin/ {
+    rewrite ^/admin/(.*)$ /$1 break;
+    proxy_pass http://admin;
+}
+
+
+location / {
+    return 200 '{"message":"To jest api lub admin"}';
+    add_header Content-Type application/json;
+}
+
+
+
+
+cd backend
+docker build -t backend_app .
+docker run -d --name backend --network app-network backend_app
+
+
+
+cd ../admin
+docker build -t admin_app .
+docker run -d --name admin --network app-network admin_app
+
+
+cd ../nginx
+docker run -d \
+  --name nginx-proxy \
+  --network app-network \
+  -p 80:80 \
+  -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
+  nginx:alpine
+
+
+
+
+
+
+
+
+
+
+GITLAB
+CI/CD
+
