@@ -1,0 +1,41 @@
+Część 1: Rozgrzewka (Setup)
+
+    Inicjalizacja: Stwórz plik dziekanat.py. Zainicjalizuj aplikację FastAPI z tytułem "E-Dziekanat API" i wersją "2.0".
+    Strona startowa: Stwórz endpoint GET / zwracający JSON: {"uczelnia": "Politechnika Wrocławska", "autor": "Twoje Imię"}.
+    Uruchomienie: Uruchom serwer i sprawdź w przeglądarce, czy pod adresem /docs wyświetla się Swagger UI.
+
+Część 2: Modele Danych (Pydantic)
+
+    Model Studenta: Zdefiniuj klasę Student(BaseModel) zawierającą pola:
+        indeks (int)
+        imie (str)
+        nazwisko (str)
+        kierunek (str)
+        rok_studiow (int)
+    Walidacja: Dodaj walidację do pola rok_studiow – student może być tylko na roku od 1 do 5 (użyj Field(..., ge=1, le=5) z modułu pydantic).
+
+Część 3: Operacje na Studentach (CRUD)
+
+    Dodawanie (CREATE): Stwórz endpoint POST /studenci, który przyjmuje obiekt Student i dodaje go do listy. Zwróć komunikat sukcesu.
+    Wyświetlanie (READ): Stwórz endpoint GET /studenci, który zwraca listę wszystkich studentów.
+    Szczegóły (READ One): Stwórz endpoint GET /studenci/{indeks}, który zwraca dane studenta o konkretnym numerze indeksu.
+    Wyszukiwanie: Zmodyfikuj endpoint GET /studenci tak, aby przyjmował opcjonalny parametr ?kierunek=.... Jeśli podano kierunek, zwróć tylko studentów z tego kierunku.
+    Usuwanie (DELETE): Stwórz endpoint DELETE /studenci/{indeks}, który usuwa studenta z listy.
+
+Część 4: Oceny (Relacje i Logika)
+
+    Model Oceny: Zdefiniuj klasę Ocena(BaseModel) z polami: przedmiot (str), wartosc (float).
+    Dodawanie oceny: Stwórz endpoint POST /studenci/{indeks}/oceny, który pozwala dodać ocenę przypisaną do konkretnego studenta (musisz przechowywać oceny wewnątrz obiektu studenta lub w osobnej liście powiązanej indeksem).
+    Walidacja oceny: Upewnij się, że wartosc oceny to jedna z dopuszczalnych liczb: 2.0, 3.0, 3.5, 4.0, 4.5, 5.0 (skorzystaj z Enum lub walidacji Pydantic).
+    Pobieranie ocen: Stwórz endpoint GET /studenci/{indeks}/oceny, który zwraca listę ocen danego studenta.
+
+Część 5: Profesjonalizacja (Swagger UI)
+
+    Tagowanie: Uporządkuj endpointy. Dodaj tags=["Studenci"] do operacji na studentach i tags=["Oceny"] do operacji na ocenach.
+    Status Codes: Skonfiguruj endpoint POST, aby w przypadku sukcesu zwracał kod HTTP 201 Created (zamiast domyślnego 200).
+    Obsługa błędów: Jeśli użytkownik zapyta o studenta, którego nie ma (np. w GET /studenci/{indeks}), zwróć wyjątek HTTPException z kodem 404 Not Found.
+    Opisy: Dodaj parametr summary do każdego endpointu (krótki opis widoczny na belce w Swaggerze) oraz description (dłuższy opis markdown).
+    Przykłady: W modelu Student dodaj klasę Config z przykładowym obiektem (schema_extra), aby w Swaggerze przycisk "Try it out" podpowiadał sensowne dane (np. Jan Kowalski).
+    Deprecated: Oznacz stary endpoint GET / jako deprecated=True, symulując wygaszanie starej wersji API.
+
+
