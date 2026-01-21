@@ -1,0 +1,24 @@
+rozni sztuczn int algo od uczenia masz
+co to przestrzeń stanow
+opis algorytmow do opisania przestrzeni stanow
+opisa best fisrtt seach , A*
+algorytmy genetyczne pojęcia, problemy
+minimax
+bez zbiorów rozmytych
+hill climbing porównanie z wyżażaniem
+opisaine modelu sztucznego neuronu
+funkcje aktywacji modać wzory itp
+ogólne pojęcia : net, itp
+bez reguły hebba
+dzielenia danych na uczace i testowe
+perceptron
+jak wprowadzić nielinowość w sieci neuronowej
+co to błąd delta
+co to wartwa konwuluncyjna, łącząca itp
+co to funkcja relu
+problemy z gradientem
+DBN nie beedzie
+warstry konwoluncyjne sieci co to do czego
+do czego sa sieci GAN
+drzewa decyzyjne - jaki model zeby byl on deterministyczny wzgledem bialej skrzynki
+entropia w drzewach decyzyjnych
