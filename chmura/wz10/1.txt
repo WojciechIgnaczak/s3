@@ -1,0 +1,7 @@
+swagger
+open api
+postman
+
+extension - thunder client
+
+uvicorn

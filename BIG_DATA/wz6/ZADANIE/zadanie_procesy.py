@@ -36,14 +36,7 @@ def licz_srednie_dla_paczki(paczka, conn):
                     b_s += b
             total_pixels = cols * rows
             sr = [int(r_s / total_pixels), int(g_s / total_pixels), int(b_s / total_pixels)]
-            wyniki.append((os.path.basename(img_path), sr))
-    conn.send(wyniki)
-    conn.close()
-
-
-def srednie_z_katalogu_paczkami(directory, output_file, liczba_paczek=24):
-    rozszerzenia_dozwolone = (".jpg", ".jpeg", ".png", ".bmp", ".gif")
-    pliki = [os.path.join(directory, f) for f in os.listdir(directory) if f.lower().endswith(rozszerzenia_dozwolone)] # bo mogą trafić się inne pliki
+            wyniki.append((os.path.basename(img_path), sr))saverectory) if f.lower().endswith(rozszerzenia_dozwolone)] # bo mogą trafić się inne pliki
     paczki = podziel_na_paczki(pliki, liczba_paczek)
 
     procesy = []

@@ -1,0 +1,424 @@
+apliakacja 4 endpointy podpiąć swagger dockerfile dockercompose ci/cd wypchnął na gitlab
+weryfikacja na podstawie, dostęp do naszego gitlaba
+utworz repo publiczne na gitlab- commituj zmiany
+
+
+Zaliczeznie
+# 🎓 Zadanie Zaliczeniowe: Aplikacja CRUD w FastAPI
+ 
+Twoim celem jest stworzenie prostej aplikacji backendowej w Pythonie, która pozwala na zarządzanie listą zadań (operacje CRUD: Create, Read, Update, Delete). Aplikacja musi być "zapakowana" w kontenery Docker, a cały proces budowania i testowania ma być zautomatyzowany za pomocą GitLab CI/CD.
+ 
+To zadanie sprawdzi Twoją umiejętność łączenia programowania, pracy z bazami danych, konteneryzacji i dobrych praktyk DevOps.
+ 
+---
+ 
+## 🛠️ Wymagane Technologie
+*   **Język**: Python (framework **FastAPI**)
+*   **Baza danych**: PostgreSQL (zalecana) lub SQLite
+*   **Konteneryzacja**: Docker + Docker Compose
+*   **CI/CD**: GitLab CI
+*   **Repozytorium**: GitLab
+ 
+---
+ 
+## 📋 Instrukcja Krok po Kroku
+ 
+### Krok 1: Przygotowanie środowiska i struktury projektu
+ 
+Na początku musisz utworzyć folder dla swojego projektu i przygotować odpowiednią strukturę plików. To pomoże Ci utrzymać porządek.
+ 
+1.  Utwórz katalog `moja-apka-crud`.
+2.  Wewnątrz utwórz następującą strukturę katalogów i pustych plików:
+    ```text
+    moja-apka-crud/
+    ├── app/
+    │   ├── __init__.py      # Pusty plik, oznacza, że to pakiet Pythona
+    │   ├── main.py          # Główny plik aplikacji (tutaj startuje FastAPI)
+    │   ├── models.py        # Modele bazy danych (SQLAlchemy)
+    │   ├── schemas.py       # Schematy danych (Pydantic - co wchodzi/wychodzi z API)
+    │   ├── crud.py          # Logika biznesowa (funkcje do zapisu/odczytu z bazy)
+    │   └── database.py      # Konfiguracja połączenia z bazą danych
+    ├── tests/
+    │   └── test_main.py     # Testy jednostkowe Twojej aplikacji
+    ├── Dockerfile           # Instrukcja budowania obrazu aplikacji
+    ├── docker-compose.yml   # Konfiguracja uruchamiania wielu kontenerów (app + db)
+    ├── .gitlab-ci.yml       # Konfiguracja pipeline'u CI/CD
+    ├── requirements.txt     # Lista bibliotek (fastapi, uvicorn, sqlalchemy, itp.)
+    └── .env.example         # Przykładowe zmienne środowiskowe
+    ```
+3.  Zainicjuj repozytorium Git (`git init`) i połącz je ze swoim projektem na GitLabie.
+ 
+### Krok 2: Implementacja Aplikacji (Backend)
+ 
+Teraz napiszemy kod. Aplikacja ma obsługiwać prostą encję, np. **"Zadanie" (Task)**, które ma tytuł i opis.
+ 
+1.  **Zależności (`requirements.txt`)**: Wpisz biblioteki, których użyjesz: `fastapi`, `uvicorn`, `sqlalchemy`, `pydantic`, `psycopg2-binary` (do Postgresa).
+2.  **Baza danych (`database.py`)**: Skonfiguruj połączenie używając `SQLAlchemy`. Pamiętaj, aby pobierać URL do bazy ze zmiennych środowiskowych (`os.getenv`).
+3.  **Modele (`models.py`)**: Stwórz klasę `Task` dziedziczącą po `Base`. Powinna mieć pola: `id`, `title`, `description`.
+4.  **Schematy (`schemas.py`)**: Stwórz klasy Pydantic (np. `TaskCreate`, `TaskResponse`). Służą one do walidacji danych wysyłanych przez użytkownika.
+5.  **Logika CRUD (`crud.py`)**: Napisz funkcje:
+    *   `get_task` (pobierz jedno),
+    *   `get_tasks` (pobierz listę),
+    *   `create_task` (dodaj nowe),
+    *   `delete_task` (usuń).
+6.  **API (`main.py`)**: Połącz wszystko w całość. Stwórz obiekt `app = FastAPI()` i zdefiniuj endpointy (ścieżki), np.:
+    *   `POST /tasks/` - tworzenie zadania
+    *   `GET /tasks/` - lista zadań
+    *   `DELETE /tasks/{id}` - usuwanie
+    *   Dzięki FastAPI automatycznie otrzymasz dokumentację pod adresem `/docs`.
+ 
+### Krok 3: Weryfikacja Autora (Mechanizm "Podpisu")
+ 
+**To jest krytyczny punkt zaliczenia.** Musisz udowodnić, że aplikacja została uruchomiona na Twoim komputerze.
+ 
+1.  W `main.py` dodaj nowy endpoint `GET /verify`.
+2.  Endpoint ten ma:
+    *   Pobrać zmienną środowiskową `STUDENT_NAME` (która będzie zawierać Twój login systemowy).
+    *   Zakodować ją algorytmem **Base64**.
+    *   Zwrócić JSON: `{"signature": "twój_login_w_base64"}`.
+3.  Wymaga to importu bibliotek `os` i `base64`.
+ 
+### Krok 4: Konteneryzacja (Docker)
+ 
+Nie chcemy uruchamiać aplikacji "luzem" na komputerze. Użyjemy Dockera.
+ 
+1.  **Dockerfile**:
+    *   Użyj obrazu bazowego `python:3.12-slim`.
+    *   Skopiuj `requirements.txt` i zainstaluj zależności.
+    *   Skopiuj kod aplikacji.
+    *   Ustaw komendę startową: `uvicorn app.main:app --host 0.0.0.0`.
+2.  **docker-compose.yml**:
+    *   Zdefiniuj usługę `app` (Twoja aplikacja).
+    *   Zdefiniuj usługę `db` (baza danych).
+    *   **Ważne:** W sekcji `environment` dla usługi `app` przekaż zmienną systemową:
+        ```yaml
+        environment:
+          - STUDENT_NAME=${USER}  # Przekazuje Twój login z terminala do kontenera
+        ```
+ 
+### Krok 5: Automatyzacja (GitLab CI/CD)
+ 
+Chcemy, aby kod był sprawdzany automatycznie po każdym `git push`.
+ 
+1.  Edytuj plik `.gitlab-ci.yml`.
+2.  Zdefiniuj etapy (`stages`):
+    *   **Test**: Uruchomienie testów jednostkowych (`pytest`).
+    *   **Build**: Zbudowanie obrazu Docker i wysłanie go do rejestru.
+    *   **Scan**: Skanowanie bezpieczeństwa (np. SAST).
+3.  Upewnij się, że pipeline w GitLabie przechodzi na zielono ✅.
+ 
+### Krok 6: Zaliczenie
+ 
+Aby zaliczyć zadanie:
+ 
+1.  Uruchom aplikację: `docker compose up --build`.
+2.  Wejdź na `http://localhost:8000/verify` i pokaż wygenerowany kod Base64.
+3.  Kod wyslij na Teams do prowadzacego.
+4.  Pokaż zielony pipeline w GitLabie.
+ 
+---
+ 
+### 💡 Wskazówki
+*   Jeśli używasz Windows (PowerShell), zmienna `${USER}` może nie działać w `docker-compose`. Jeśli Docker zgłosi błąd "variable is not set", stwórz plik `.env` i wpisz tam: `STUDENT_NAME=twoje_imie`.
+*   Pamiętaj o `git push` po każdej większej zmianie, aby CI/CD pracowało na bieżąco.
+ 
+
+
+ moja-apka-crud/
+├── app/
+│   ├── __init__.py      # (pusty plik)
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── crud.py
+│   └── database.py
+├── tests/
+│   └── test_main.py
+├── Dockerfile
+├── docker-compose.yml
+├── .gitlab-ci.yml
+├── requirements.txt
+└── .env                 # (opcjonalny, do lokalnego developmentu)
+
+
+requirements
+
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+psycopg2-binary
+httpx
+pytest
+
+2. app/database.py
+
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Pobieramy URL bazy ze zmiennych środowiskowych, domyślnie SQLite dla testów lokalnych
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+
+3. app/models.py
+
+from sqlalchemy import Column, Integer, String
+from .database import Base
+
+class Task(Base):
+    __tablename__ = "tasks"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    description = Column(String, index=True)
+
+
+4. app/schemas.py
+from pydantic import BaseModel
+
+class TaskBase(BaseModel):
+    title: str
+    description: str | None = None
+
+class TaskCreate(TaskBase):
+    pass
+
+class Task(TaskBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+5. app/crud.py
+from sqlalchemy.orm import Session
+from . import models, schemas
+
+def get_task(db: Session, task_id: int):
+    return db.query(models.Task).filter(models.Task.id == task_id).first()
+
+def get_tasks(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Task).offset(skip).limit(limit).all()
+
+def create_task(db: Session, task: schemas.TaskCreate):
+    db_task = models.Task(title=task.title, description=task.description)
+    db.add(db_task)
+    db.commit()
+    db.refresh(db_task)
+    return db_task
+
+def delete_task(db: Session, task_id: int):
+    db_task = db.query(models.Task).filter(models.Task.id == task_id).first()
+    if db_task:
+        db.delete(db_task)
+        db.commit()
+    return db_task
+
+
+
+6. app/main.py
+
+import os
+import base64
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from . import crud, models, schemas
+from .database import SessionLocal, engine
+
+# Tworzenie tabel w bazie
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+
+# Dependency do pobierania sesji bazy danych
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# --- ENDPOINT WERYFIKACYJNY (ZADANIE ZALICZENIOWE) ---
+@app.get("/verify")
+def verify_student():
+    # Pobierz login z systemu (zmienna przekazana przez Docker)
+    student_name = os.getenv("STUDENT_NAME", "Nieznany")
+    
+    # Kodowanie do Base64
+    encoded_bytes = base64.b64encode(student_name.encode("utf-8"))
+    encoded_str = encoded_bytes.decode("utf-8")
+    
+    return {"signature": encoded_str}
+
+# --- ENDPOINTY CRUD ---
+
+@app.post("/tasks/", response_model=schemas.Task)
+def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
+    return crud.create_task(db=db, task=task)
+
+@app.get("/tasks/", response_model=list[schemas.Task])
+def read_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_tasks(db, skip=skip, limit=limit)
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int, db: Session = Depends(get_db)):
+    db_task = crud.delete_task(db, task_id=task_id)
+    if db_task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return {"message": "Task deleted"}
+
+
+
+tests/test_main.py
+
+from fastapi.testclient import TestClient
+from app.main import app
+
+client = TestClient(app)
+
+def test_verify_endpoint():
+    response = client.get("/verify")
+    assert response.status_code == 200
+    assert "signature" in response.json()
+
+def test_create_task():
+    response = client.post(
+        "/tasks/",
+        json={"title": "Testowe zadanie", "description": "Opis testowy"}
+    )
+    assert response.status_code == 200
+    assert response.json()["title"] == "Testowe zadanie"
+
+
+
+
+
+
+
+Dockerfile
+# Używamy lekkiego obrazu Pythona
+FROM python:3.12-slim
+
+# Ustawiamy katalog roboczy
+WORKDIR /code
+
+# Instalujemy zależności
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+# Kopiujemy kod aplikacji
+COPY ./app /code/app
+
+# Komenda startowa
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+
+
+
+
+2. docker-compose.yml
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=taskdb
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      # URL do bazy danych (host to nazwa usługi: 'db')
+      - DATABASE_URL=postgresql://user:password@db/taskdb
+      # Zmienna systemowa przekazana do kontenera (KLUCZOWE DLA ZALICZENIA)
+      - STUDENT_NAME=${STUDENT_NAME:-Student} 
+
+volumes:
+  postgres_data:
+
+
+
+
+
+
+(.gitlab-ci.yml
+
+stages:
+  - test
+  - build
+
+# Uruchomienie testów
+test_job:
+  stage: test
+  image: python:3.12-slim
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - pytest
+
+# Sprawdzenie czy Docker build działa (bez wypychania, dla uproszczenia)
+build_job:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t my-app .
+
+
+
+
+.env
+
+STUDENT_NAME=Twoj_Login_Systemowy
+
+
+
+
+
+uruchomiona
+docker compose up --build
+
+
+
+
+
+Weryfikacja (Do zaliczenia)
+
+    Otwórz przeglądarkę i wejdź na: http://localhost:8000/docs. Zobaczysz Swagger UI – możesz tam przetestować dodawanie zadań (Create Task).
+
+    Najważniejsze: Wejdź na http://localhost:8000/verify.
+
+        Powinieneś otrzymać JSON, np.: {"signature": "VHdval9Mb2dpbl9TeXN0ZW1vd3k="}.
+
+        Ten ciąg znaków to Twój login zakodowany w Base64.
+
+        Skopiuj ten wynik, żeby wysłać prowadzącemu.
+
+4. Wypchnięcie na GitLab
+Bash
+
+git init
+git add .
+git commit -m "Initial commit - CRUD app verification"
+# Podmień poniższy URL na swój adres repozytorium
+git remote add origin https://gitlab.com/twoj-user/moja-apka-crud.git
+git push -u origin master
+
+Po wykonaniu git push, wejdź na GitLab w zakładkę Build -> Pipelines i upewnij się, że masz tam zielony znaczek "passed" ✅.
