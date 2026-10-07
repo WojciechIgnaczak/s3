@@ -1,0 +1,25 @@
+płytki rb433ah
+
+winbox
+podłączyc i zaktualizowac do wersji 7 przez plik npk
+
+ustaw adres ip w winbox i na komputerze brame z mikrotik
+
+zmostkować wszystkie interfejsy sieciowe
+utowrzyc bridge
+zmostkować do bridge 
+adres nie na ethX tylko na mostku
+
+
+Zapisywanie konfiguracji /export
+
+reset do ustawien fabrycznych
+
+
+2-3 memy do prezentacji - trzeba umiec cos opowiedzieć 30-45 minut
+
+Tunelowanie oraz wirtualne sieci prywatne (SSH, VPN, Wireguard)
+
+
+login: 123
+haslo: 321
