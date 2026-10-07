@@ -1,0 +1,52 @@
+SIECI PRZEMYSŁOWE
+
+
+
+Modbus działa na porcje 502
+ma 3 wersje: ASCII, rtu, overethernet
+urządzenie na styku automatyki a gdzie na styku z siecia firmową
+wystarczy para przewodów (2przewody) można do 128 urządzeń
+czy mogą być jednocześnie 2 mastery w Modbus
+
+ProfiBus
+
+Romwork
+
+Can
+
+Czynniki o negatywnym wpływie na urządzenia: wilgotność, temperatura, drgania, kurz, pola elektromagnetyczne
+
+grupy rejestrów Modbus: 4 grupy
+
+mediakonwenter : zamienia sygnał świetlny na przewód ethernet
+
+
+
+odpowiada za ilustracje
+
+
+
+
+Oprogramowania do wizualizacji działania Modbus
+Modbus tools
+qmodemaster pro
+
+
+
+Architektura sieci przemyslowych 
+jest hierarchiczna
+łączy urządzenia wykonawcze z systemem zarządzania
+
+systemy przemysłowe mają dodatkowo w skrócie OT (operational technology)
+
+Urządzenia muszą być:
+niezawodne, odporne na zakłócenia, pracować w czasie rzeczywistym
+
+SCADA - system zarządzania wykorzystując OT z całą strefą przemysłową. monitorowanie procesów w czasie rzeczywistym
+
+protokół snmp - monitorowanie urządzeń w sieciach IP.
+
+
+teltonika - zamienia sygnał Modbusem na ethernet
+
+
