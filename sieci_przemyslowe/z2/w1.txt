@@ -1,0 +1,172 @@
+do transmisji korzysta się z ramki
+
+ProfiBus
+opracowany przez Siemens w rozposzonych sys sterowania i sys nadzoru
+można połączyć odmienne pod wzgeledm architektury i różnych producentów
+węzły sieci to moga byc urzadzenia analogowe, cyfrowe, elementy wykonawcze, komputery, sterowniki dowolnie programowalne, falowniki(terminale operatorskie)
+zadanie sieci: efektywne przekazywanie duzych ilosci informacji, ale musza być krótki, zawierajace instrukcje sterujace, informacje odbierane z czujników, przy zachowaniu determicznym czasie przekazywania danych, ramka nie moze byc zbyt duża
+składa sie z warstw fizyczna, liniowa, aplikcyjna, przy czym aplikacyjne jest opcjonalna
+user wykonuje wgrane programy gdzie sa instrukcje, wywołuje usługi warstwy liniowej(niezawdna przekazywanie komunikatu z potwierdzeniem lub bez) lub apliakcyjnej(udostepniaja obiekty programow zdefiniowane w innych wezlach sieci np zmienna zdarzenia, przekazywanie ich do odbiorców w wielu wezlach)
+
+sieć działa : idzie żądanie i idzie odpowiedź żądania (np. żądanie odczytu), lub bez odpowiedzi żądania(nadanie wartości zmiennych) jak TCP/UDP.
+
+                                    ^       __________________
+    warstwa użytkownika             |       |__zastosowanie__|                              }
+                                    |______________________________                         }    profil ProfiBus 
+    warstwa użytkownika             |_________profil apliakcji____|                       __}__                 
+    warstwa użytkownika             |       |___DP___|                                      }
+                                    |                                                       }
+                                    |________                                               }   
+    warstwa aplikacji               |__FMS__|                                               }    
+                                    |                                                       }
+                                    |       nu (never used) lub nd (non definied)           }   EN50170 ProfiBus    EN - European Norm Norma Europejska         EN-PL nie tylko europejska ale i polska
+                                    |______________________________________________         }
+    warstwa przesyłu danych         |_______FDL_______________________|interfejs IEC|       }
+                                    |______________________________________                 }
+    warstwa fizyczna                |____RS-485(modbus)/FO(fiber optic)____|              __}__
+
+Helukabel - kabel wykorzystywany w sieci profibus do prowadników kabli| przewód bezhalogenowy - ma utrudnione palenie
+Profile komunikacyje- DB, FMS, PA okreslaja mechanizmy wspolpracy z medium transmisyjnym
+
+MPLS- otagowanie sieci. zapakowany umowny tunel , etykieta 1 klienta ma dotrzec z 1 konca przewodu do drugiego końca, to nie jest VLAN.
+
+TokenRing- komuniakcja między masterami jest jednokierunkowa. następuje odczytywanie urządzeń typu slave.
+
+FMS jest dostępny również w wartswie użytkownika.
+
+
+
+
+
+Warstwa 2 sieci ProfiBus FDL może się komunikować z funkcjami odzwzorowania łącza (DDLM) 
+
+Strujtura programowania wezla nadrzednego DDL pierwszego rodzaju::
+
+                                                        Program aplikacyjny:
+Dane wejściowe (do aplikacji)     Dane wyjściowe (z app)      Dane diagnostyczne (z app)        parametry sieci(do app)(jeden blok)parametry węzłów biernych(z app)     funkcje(z app)
+
+                                                        (sprzęg użytkownika)
+
+                                                        Funkcje odzwzorowania łącza
+                                                        Warstwa profibus
+
+
+Warstwa DP została opasrta o interfejs szeregowy RS-485. 
+
+
+
+struktury sieci: magistralna, drzewiasta, gwiazdowa.
+
+może mieć 127 węzłów. można rozszeżyć przez adresy....
+
+
+RS-422A
+
+
+
+
+RS-485
+ramka musi miec powyzej 1.5v
+złącza przyłączeniowe: pojedyncze , rozgałęzione przesyłające dane do dalszych urzadzen
+rozdział sygnału na złączu db9
+
+Rozkład sygnału na łączu DB-9 ProfiBus
+Nr wtyku|sygnał
+1|SHIELD        - ekran skrętki kabla/przewodu
+2|RP            - zasilanie urządzeń polowych
+3|RxD/ TxD-P    - sygnał przesyłu danych sygnał plus
+4|CNTR-P        - sygnał sterowania plus
+5|DGND
+6|VP            - zasilanie nadajnikow/odbiornikow sieci
+7|RP            - zasilanie urządzeń polowych
+8|RxD/TxD-N     - sygnał przesyłu danych sygnał minus
+9|CNTR-N        - sygnał sterowania minus
+
+kabel sieciowy nie musi byc ekranowany
+
+dane zakodowane napięciem różnicowym między 3 a 8.
+
+dodatnie napiecie stałe wystepuje podczas nadawania 1 bitu, napiecie ujemne to 0 logiczne
+
+standard profibus dp dopuszcza standard typu B jak i starszego typu A.
+Typ B i A może być ekranowana
+Pojemnosc między typem A a B różnica 30pF na m , ze względu na rodzaj skrętu kabla
+
+Długość segmentu do 1200m.
+
+Mogą być max 32 węzły w przypadku kabla B. Lub moga byc wzmacniacze liniowa
+W przypadku kabla A 128węzłów.
+
+Sieć swiatlowodowa odporna na zaklocenia magnetyczne
+kierunek od N do O w magistrali
+
+PHY_DATA - physical data. requests , indication
+
+Warstwa liniowa sieci profibus: sda,sdn,csrd
+
+
+Wszystkie komunikaty składają sie z 11bit znakow: bit startu niski 0, dane 8bit (bajt informacyjny), bit parzystosci, bit stop  wysoki 1. Całość (11 bit) to 1 bajt w rozumieniu profibus'u
+Nadawana 1 po 2 bez przerw miedzy nimi.
+komunikat SDX(x=[1,2,3,4,5])
+SD1 - znacznik FC, SD2 pole danych zmieen dlugosci, SD3 pole danych 8bajt, SD4 komunikat znacznik przekazywany dalszemu wezlowi, SD5 1 znakowy komunikat potwierdzenia
+
+struktura komunikatów w profibus:
+SD1|DA|SA|FC|FCS|ED                                         -polecenie
+
+SD3 DA SA FC    DANE    FCS ED                              -stała długosc danych
+
+SD2 LE  LEr SD2 DA  SA  FC        DANE        FCS ED        -zmienna dlugosc danych
+
+SD5                                                         -potwierdzenie
+
+SD4 DA  SA                                                  -znacznik
+
+
+
+Czas oznaczany TSDR send and requests with data acknowlage. Wyzacza przerwe miedzy komunikatem akcji a ... Komunikat akcji moze zostac wyslany po najwyzszym czasie w TSDR.
+komunikat składa się z Ogranicznik początkowy SDx, pola danych o stalej lub zmiennej dlugosci, sumy kontrolnej FCS, ogranicznika koncowego ED.
+komunikaty krotkiego potwierdzenia: ogranicznik poczatkowy , ogranicznik koncowy.
+pole danych zaczyna sie 3 znakowym naglowkiem: adres wezla odbiorny DA, adres wezla nadawcy SA, znak sterujacy FC. Łączna długosc komunikatu max 255znakow. kazdy znak adresu sklada sie z 8bit, 7 z nich to adres wezla, 1 z nich to adres rozszezenia adresu.
+wystawienie adresu DA=127 powoduje przeslanie komuniaktu rozgloszenia broadcast do wszystkich wezlow.
+odebranie komunikatu sprawdza: bit start/stopu, parzystosci znaku, ograniczniki poczatku/konca,sume kontrolna komunikatu FCS. Wykrycie bledu powoduje odrzucenie komunikatu.
+
+Komunikacja master-slave: master-- wysyła komunikat(stopka, dane wyjsciowe, nagłówek)akcji-> slave dp
+przetwarzane i idzie w w odwrotnej kolejnosci nagłówek wchodzi do master, dane wejściowe, stopka- nazwywa się komunikat odpowiedzi
+
+
+Z ramką
+
+            komunikat akcji(nadania)
+Master--- syn, SD2, LE, LEr, SD2, DA, SA, FC, DU, FCS, ED-->slave
+                                                                |
+                                                                |
+                                                                |
+        SD2, LE, LEr, SD2, DA, SA, FC, DU, FCS, ED<-------------
+                komunikat odpowiedzi
+
+
+syn-synchronization time 
+SD2-znacznik 2 typu
+LE-dlugosc ramki komunikatu
+LEr-powtorzona dlugosc ramki komunikatu
+DA-destination adres
+SA-adres wezla zrodlowego source adres
+DU- data unit, dane
+FCS-suma kontrolna
+ED-ogranicznik konca , end delimiter
+
+Dane są w znaczniku DU.
+
+
+RS-requests,set (wyslij i ustaw, bez potwierdzenia)
+RR-requests, response (wyślij i odbierz)
+
+
+
+
+
+Modbus
+
+CAN
+
+LonWorks

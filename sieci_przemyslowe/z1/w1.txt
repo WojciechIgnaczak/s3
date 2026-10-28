@@ -29,7 +29,7 @@ odpowiada za ilustracje
 
 Oprogramowania do wizualizacji działania Modbus
 Modbus tools
-qmodemaster pro
+qmodemaster
 
 
 
