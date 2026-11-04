@@ -1,0 +1,37 @@
+/export
+# 2026-09-15 13:07:11 by RouterOS 7.23.7
+# software id = GHXM-X51V
+#
+# model = RB433AH
+# serial number = 2794017BB233
+/interface bridge
+add name=bridge1
+/interface ethernet
+set [ find default-name=ether3 ] mac-address=CC:96:E5:12:10:1C
+/interface wireguard
+add listen-port=13231 mtu=1420 name=wg1
+/interface bridge port
+add bridge=bridge1 interface=ether2
+add bridge=bridge1 interface=ether1
+/interface wireguard peers
+add allowed-address=10.10.10.1/32,10.0.0.0/24 endpoint-address=192.168.48.76 \
+    endpoint-port=13231 interface=wg1 name=peer1 public-key=\
+    "8w26kINxT+gopQwrC/LX50MsiLcNc3VGonRz/Afd4zo="
+/ip address
+add address=10.0.1.1/24 interface=bridge1 network=10.0.1.0
+add address=10.10.10.2/24 interface=wg1 network=10.10.10.0
+/ip dhcp-client
+add interface=ether3 name=client1
+/ip route
+add dst-address=10.0.0.0/24 gateway=wg1
+/system routerboard settings
+set enter-setup-on=delete-key
+
+
+
+
+
+
+
+
+iperf3 -s

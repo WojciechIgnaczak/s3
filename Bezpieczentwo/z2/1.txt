@@ -1,0 +1,25 @@
+
+
+1. Skonfiguruj interfejs bridge1 na MikroTiku. Dodaj do niego porty ether1, ether2 i ether3. Sprawdź, czy wszystkie porty są aktywnymi portami mostu.
+
+2. Nadajemy adres IP 192.168.254.X/25 na MikroTiku, gdzie X to końcówka adresu komputera z sali. Czy adres może być przydzielony do interfejsu etherX, jeżeli interfejsy są częścią bridge1?
+
+3. Jak pasywnie wykryć adresy MAC urządzeń MikroTik (z domyślną konfiguracją) podłączonych do lokalnej sieci? Podaj przykładowy adres.
+
+4. Jak sprawdzić producenta urządzenia na podstawie adresu MAC? Podaj dopasowanie do adresu MikroTika.
+
+5. Zmień adres MAC na losowy (bridge1).
+
+6 .Jak wyłączyć rozgłaszanie informacji o urządzeniach MikroTik w RouterOS?
+
+7. Wyłączamy nieużywane serwery: bandwidth-test, mac server, mac winbox, mac ping?
+
+8. Konfiguracja www-ssl (generowanie certyfikatu).
+
+9. Wyłączenie wszystkich usług oprócz ssh lub www-ssl (do wyboru).
+
+10. Konfiguracja algorytmu ed25519 w usłudze SSH.
+
+11. Limitowanie dostępu do otwartych usług do zakresu adresów sieci lokalnej 192.168.254.X/25.
+
+12. Co jeszcze można wyłączyć?
