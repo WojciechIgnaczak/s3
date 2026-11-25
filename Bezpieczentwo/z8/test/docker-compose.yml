@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ssh-server:
+    build: .
+    container_name: test-ssh-server
+    ports:
+      - "2222:22"
+    volumes:
+      - ./data/config/authorized_keys:/home/testuser/.ssh/authorized_keys:ro
+    restart: unless-stopped
